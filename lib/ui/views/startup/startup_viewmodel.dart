@@ -10,8 +10,6 @@ import '../../../app/app.locator.dart';
 class StartupViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
-  
-
   navigation() {
     _navigationService.navigateToSigninView();
   }
