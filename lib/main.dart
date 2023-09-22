@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:topicdetectionweb/app/app.bottomsheets.dart';
 import 'package:topicdetectionweb/app/app.dialogs.dart';
@@ -8,22 +9,18 @@ import 'package:topicdetectionweb/app/app.locator.dart';
 
 import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.router.dart';
+import 'package:topicdetectionweb/firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
+  if (kIsWeb) {
     await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: "AIzaSyDYC0SABhr3fWI-yhGrHjgU1stKnxtWjPw",
-        authDomain: "topicdetection-93c2e.firebaseapp.com",
-        projectId: "topicdetection-93c2e",
-        storageBucket: "topicdetection-93c2e.appspot.com",
-        messagingSenderId: "770365428478",
-        appId: "1:770365428478:web:2a95ea34876c1277778baf",
-        measurementId: "G-NWZ7PDFMBS"
-      ),
-    );
+      options: DefaultFirebaseOptions.currentPlatform);
+  } else {
+    await Firebase.initializeApp();
+  }
 
     await setupLocator();
     setupDialogUi();
@@ -40,7 +37,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Routes.startupView,
+      initialRoute: Routes.homeView,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: StackedRouter().onGenerateRoute,
       navigatorKey: StackedService.navigatorKey,

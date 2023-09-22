@@ -12,6 +12,8 @@ import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
 import 'package:topicdetectionweb/ui/views/uploadmeeting/uploadmeeting_view.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
+import 'package:topicdetectionweb/services/authentication_service.dart';
+import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -24,6 +26,7 @@ import 'package:topicdetectionweb/services/toastmessage_service.dart';
     MaterialRoute(page: AboutusView),
     MaterialRoute(page: ContactusView),
     MaterialRoute(page: UploadmeetingView),
+    MaterialRoute(page: LandingPageView),
 // @stacked-route
   ],
   dependencies: [
@@ -31,6 +34,7 @@ import 'package:topicdetectionweb/services/toastmessage_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: ToastmessageService),
+    LazySingleton(classType: AuthenticationService),
 // @stacked-service
   ],
   bottomsheets: [

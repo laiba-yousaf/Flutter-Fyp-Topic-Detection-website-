@@ -53,7 +53,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       title: "Email",
                       ctrl: viewModel.emailctrl,
-                       validator: (value) {
+                      validator: (value) {
                         if (value!.isEmpty) {
                           return "Email is required";
                         }
@@ -62,61 +62,58 @@ class SignupView extends StackedView<SignupViewModel> {
                     ),
                     verticalSpaceSmall,
                     Mytextfield(
-                        title: "Password",
-                        ctrl: viewModel.passctrl,
-                        suffix: GestureDetector(
-                          onTap: () {
-                            viewModel.togglePasswordVisibility();
-                          },
-                          child: Icon(
-                            viewModel.obsecure
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                            color: kcPrimaryColor,
-                          ),
+                      title: "Password",
+                      ctrl: viewModel.passctrl,
+                      suffix: GestureDetector(
+                        onTap: () {
+                          viewModel.togglePasswordVisibility();
+                        },
+                        child: Icon(
+                          viewModel.obsecure
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: kcPrimaryColor,
                         ),
-                        obscureText: viewModel.obsecure,
-                         validator: (value) {
+                      ),
+                      obscureText: viewModel.obsecure,
+                      validator: (value) {
                         if (value!.isEmpty) {
                           return "Password is required";
                         }
                         return null; // Return null for no error
                       },
-                        ),
+                    ),
                     verticalSpaceSmall,
                     Mytextfield(
-                        title: "Confirm Password",
-                        ctrl: viewModel.conpassctrl,
-                        suffix: GestureDetector(
-                          onTap: () {
-                            viewModel.togglePasswordVisibility1();
-                          },
-                          child: Icon(
-                            viewModel.obsecure1
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                            color: kcPrimaryColor,
-                          ),
+                      title: "Confirm Password",
+                      ctrl: viewModel.conpassctrl,
+                      suffix: GestureDetector(
+                        onTap: () {
+                          viewModel.togglePasswordVisibility1();
+                        },
+                        child: Icon(
+                          viewModel.obsecure1
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: kcPrimaryColor,
                         ),
-                        obscureText: viewModel.obsecure1,
-                         validator: (value) {
+                      ),
+                      obscureText: viewModel.obsecure1,
+                      validator: (value) {
                         if (value!.isEmpty) {
                           return "Confirm password is required";
                         }
                         return null; // Return null for no error
                       },
-                        
-                        ),
+                    ),
                     verticalSpaceLarge,
                     Button(
                         title: "Sign up",
                         loading: viewModel.loading,
                         onTap: () {
-                      
                           //viewModel.navigateTOSignin();
                           if (viewModel.formKey.currentState!.validate()) {
-                            
-                                viewModel.setloadingvalue(true);
+                            viewModel.setloadingvalue(true);
                             viewModel.auth
                                 .createUserWithEmailAndPassword(
                                     email: viewModel.emailctrl.text.toString(),
@@ -126,8 +123,7 @@ class SignupView extends StackedView<SignupViewModel> {
                               viewModel.setloadingvalue(false);
                               viewModel.toastService
                                   .toastmessage("Registered Sucsessfully");
-                                     viewModel.navigateTOSignin();
-
+                              viewModel.navigateTOSignin();
                             }).onError((error, stackTrace) {
                               viewModel.setloadingvalue(false);
                               viewModel.toastService

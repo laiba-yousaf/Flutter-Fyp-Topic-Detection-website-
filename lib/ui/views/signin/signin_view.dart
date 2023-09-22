@@ -90,7 +90,8 @@ class SigninView extends StackedView<SigninViewModel> {
                               viewModel.toastService.toastmessage(
                                   "we have send you email to recover password,please check email");
                             }).onError((error, stackTrace) {
-                              viewModel.toastService.toastmessage(error.toString());
+                              viewModel.toastService
+                                  .toastmessage(error.toString());
                             });
                           },
                           child: const Text("Forgot Password?")),
@@ -100,23 +101,8 @@ class SigninView extends StackedView<SigninViewModel> {
                         title: "Login",
                         onTap: () {
                           if (viewModel.formKey.currentState!.validate()) {
-                            viewModel.setloadingvalue(true);
-
-                            viewModel.auth
-                                .signInWithEmailAndPassword(
-                                    email: viewModel.emailctrl.text.toString(),
-                                    password:
-                                        viewModel.passctrl.text.toString())
-                                .then((value) {
-                              viewModel.setloadingvalue(false);
-                              viewModel.toastService
-                                  .toastmessage("Login Succsessfully");
-                              viewModel.navigationHome();
-                            }).onError((error, stackTrace) {
-                              viewModel.setloadingvalue(false);
-                              viewModel.toastService
-                                  .toastmessage(error.toString());
-                            });
+                            viewModel.setloading(true);
+                            viewModel.login();
                           }
                         }),
 

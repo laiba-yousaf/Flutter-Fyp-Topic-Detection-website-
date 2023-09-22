@@ -15,7 +15,7 @@ class SignupViewModel extends BaseViewModel {
 
   bool obsecure = true;
   bool obsecure1 = true;
-   final  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final _navigationService = locator<NavigationService>();
   final toastService = locator<ToastmessageService>();

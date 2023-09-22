@@ -19,8 +19,8 @@ class StartupView extends StackedView<StartupViewModel> {
   ) {
     return const Scaffold(
       body: Center(
-            child: CircularProgressIndicator(),
-          ),
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 

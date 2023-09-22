@@ -5,5 +5,4 @@ class ContactusViewModel extends BaseViewModel {
   TextEditingController mailctrl = TextEditingController();
   TextEditingController phonectrl = TextEditingController();
   TextEditingController msgctrl = TextEditingController();
-  
 }

@@ -9,7 +9,7 @@ class Button extends StackedView<ButtonModel> {
   final String? title;
   final VoidCallback? onTap;
   final bool loading;
-  const Button({super.key, this.title, this.onTap,this.loading=false});
+  const Button({super.key, this.title, this.onTap, this.loading = false});
 
   @override
   Widget builder(
@@ -30,10 +30,16 @@ class Button extends StackedView<ButtonModel> {
           color: kcPrimaryColor,
         ),
         child: Center(
-          child:loading? const CircularProgressIndicator(strokeWidth: 3,color: Colors.white,) :Text(
-            title!,
-            style: const TextStyle(color: Color.fromARGB(255, 253, 251, 251)),
-          ),
+          child: loading
+              ? const CircularProgressIndicator(
+                  strokeWidth: 3,
+                  color: Colors.white,
+                )
+              : Text(
+                  title!,
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 253, 251, 251)),
+                ),
         ),
       ),
     );

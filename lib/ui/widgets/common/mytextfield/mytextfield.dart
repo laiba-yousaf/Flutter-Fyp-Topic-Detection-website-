@@ -13,16 +13,16 @@ class Mytextfield extends StackedView<MytextfieldModel> {
   final bool? maxcond;
   final FormFieldValidator<String>? validator;
 
-  const Mytextfield({
-    Key? key,
-    this.title,
-    this.ctrl,
-    this.suffix,
-    this.obscureText,
-    this.maxcond,
-    this.maxlines,
-    this.validator
-  }) : super(key: key);
+  const Mytextfield(
+      {Key? key,
+      this.title,
+      this.ctrl,
+      this.suffix,
+      this.obscureText,
+      this.maxcond,
+      this.maxlines,
+      this.validator})
+      : super(key: key);
 
   @override
   Widget builder(
@@ -52,7 +52,6 @@ class Mytextfield extends StackedView<MytextfieldModel> {
           ),
           hintStyle: TextStyle(fontSize: hintFontSize),
           suffixIcon: suffix,
-        
         ),
         validator: validator,
       ),
