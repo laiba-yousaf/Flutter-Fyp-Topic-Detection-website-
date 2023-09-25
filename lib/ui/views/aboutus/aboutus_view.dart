@@ -16,7 +16,8 @@ class AboutusView extends StackedView<AboutusViewModel> {
   ) {
     return const Padding(
       padding: EdgeInsets.only(
-        top: 50,
+        top: 80,
+        left: 200    
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

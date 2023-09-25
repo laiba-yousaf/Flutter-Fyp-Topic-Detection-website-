@@ -239,7 +239,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                           ),
                         ),
                       ),
-                   
                     ],
                   ),
                 ),

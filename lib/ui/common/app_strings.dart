@@ -21,7 +21,7 @@ String titleimg = 'assets/images/titletopic.png';
 String introimg = 'assets/images/intro.jpg';
 String growimg = 'assets/images/Grow.png';
 String nlpimg = 'assets/images/Nlp.png';
-String exportimg ='assets/images/Export.png';
+String exportimg = 'assets/images/Export.png';
 String feature1 = 'assets/images/feature1.png';
 String feature2 = 'assets/images/feature2.png';
 String feature3 = 'assets/images/feature3.png';
@@ -30,7 +30,3 @@ String working = 'assets/images/website working.png';
 String benifits = 'assets/images/benifit.png';
 String Tick = 'assets/images/tick.png';
 String arrow = 'assets/images/arrow.gif';
-
-
-
-

@@ -5,9 +5,9 @@ import 'package:topicdetectionweb/app/app.router.dart';
 import '../../../app/app.locator.dart';
 
 class LandingPageViewModel extends BaseViewModel {
- final _navigationService = locator<NavigationService>();
+  final _navigationService = locator<NavigationService>();
 
   void navigateTOSignin() {
-    _navigationService.navigateToSigninView();
+    _navigationService.navigateToLandingPageView();
   }
 }

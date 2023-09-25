@@ -20,7 +20,9 @@ class Sliderwidget extends StackedView<SliderModel> {
         Stack(children: [
           CarouselSlider(
             items: [
-              Image(image: AssetImage(image1)),
+              Container(
+                height: screenHeight(context),
+                child: Image(image: AssetImage(image1),)),
               Image(image: AssetImage(image2)),
               Image(image: AssetImage(image3)),
             ],
@@ -58,7 +60,7 @@ class Sliderwidget extends StackedView<SliderModel> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: viewModel.currentCarouselIndex == i
-                            ? Color.fromARGB(
+                            ? const Color.fromARGB(
                                 255, 172, 116, 245) // Set the active dot color
                             : const Color.fromARGB(255, 241, 236, 236),
                       ),

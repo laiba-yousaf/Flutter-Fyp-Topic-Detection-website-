@@ -15,7 +15,7 @@ Widget Tickmark() {
   );
 }
 
-Widget benifit(String title1, String title2,String title3,String title4) {
+Widget benifit(String title1, String title2, String title3, String title4) {
   return Column(
     children: [
       Row(
@@ -30,11 +30,10 @@ Widget benifit(String title1, String title2,String title3,String title4) {
         ],
       ),
       verticalSpaceLarge,
-        Row(
+      Row(
         children: [
-        horizontalSpaceTiny,
-         horizontalSpaceTiny,
-       
+          horizontalSpaceTiny,
+          horizontalSpaceTiny,
           Tickmark(),
           horizontalSpaceSmall,
           Text(title3),
