@@ -23,14 +23,16 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
                 bottomRight: Radius.circular(15)),
           ),
           iconTheme: IconThemeData(color: Colors.white)),
-
       items: const [
-        SidebarXItem(icon: Icons.home, label: "Home",),
-        SidebarXItem(icon: Icons.upload_file, label: "Upload"),
+        SidebarXItem(
+          icon: Icons.home,
+          label: "Home",
+        ),
+        // SidebarXItem(icon: Icons.upload_file, label: "Upload"),
         SidebarXItem(icon: Icons.group, label: "About us"),
         SidebarXItem(icon: Icons.contact_page, label: "Contact us"),
         SidebarXItem(icon: Icons.history, label: "History"),
-          SidebarXItem(icon: Icons.logout, label: "Logout"),
+        SidebarXItem(icon: Icons.logout, label: "Logout"),
       ],
       extendedTheme: const SidebarXTheme(width: 140),
     );

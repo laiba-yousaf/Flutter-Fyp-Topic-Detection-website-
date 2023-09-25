@@ -39,7 +39,7 @@ class SigninView extends StackedView<SigninViewModel> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     verticalSpaceLarge,
-                    googleButton(context, googleicon, "Continue with google",
+                    googleButton(context, googleicon, "Continue with Google",
                         screenHeight(context) * 0.06, () {}),
                     verticalSpaceMedium,
                     const Text("or"),

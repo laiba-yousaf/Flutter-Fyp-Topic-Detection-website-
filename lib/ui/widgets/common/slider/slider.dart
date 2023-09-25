@@ -21,8 +21,10 @@ class Sliderwidget extends StackedView<SliderModel> {
           CarouselSlider(
             items: [
               Container(
-                height: screenHeight(context),
-                child: Image(image: AssetImage(image1),)),
+                  height: screenHeight(context),
+                  child: Image(
+                    image: AssetImage(image1),
+                  )),
               Image(image: AssetImage(image2)),
               Image(image: AssetImage(image3)),
             ],

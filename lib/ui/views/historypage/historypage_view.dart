@@ -21,7 +21,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
           padding: const EdgeInsets.all(40.0),
           child: SizedBox(
             height: screenHeight(context),
-            width: screenWidth(context)*0.82,
+            width: screenWidth(context) * 0.82,
             child: Card(
               elevation: 5,
               child: Padding(
@@ -113,7 +113,6 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 25, right: 20),
                             child: SizedBox(
-                         
                               height: 360,
                               width: thirdScreenWidth(context) * 1.2,
                               child: Card(

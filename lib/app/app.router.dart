@@ -5,16 +5,18 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i13;
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart' as _i7;
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart'
     as _i8;
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart'
     as _i6;
 import 'package:topicdetectionweb/ui/views/home/home_view.dart' as _i5;
+import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart'
+    as _i11;
 import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart'
     as _i10;
 import 'package:topicdetectionweb/ui/views/signin/signin_view.dart' as _i4;
@@ -42,6 +44,8 @@ class Routes {
 
   static const landingPageView = '/landing-page-view';
 
+  static const homePageShowView = '/home-page-show-view';
+
   static const all = <String>{
     startupView,
     signupView,
@@ -52,6 +56,7 @@ class Routes {
     contactusView,
     uploadmeetingView,
     landingPageView,
+    homePageShowView,
   };
 }
 
@@ -93,60 +98,70 @@ class StackedRouter extends _i1.RouterBase {
       Routes.landingPageView,
       page: _i10.LandingPageView,
     ),
+    _i1.RouteDef(
+      Routes.homePageShowView,
+      page: _i11.HomePageShowView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.StartupView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
     _i3.SignupView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.SignupView(),
         settings: data,
       );
     },
     _i4.SigninView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.SigninView(),
         settings: data,
       );
     },
     _i5.HomeView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.HomeView(),
         settings: data,
       );
     },
     _i6.HistorypageView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.HistorypageView(),
         settings: data,
       );
     },
     _i7.AboutusView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.AboutusView(),
         settings: data,
       );
     },
     _i8.ContactusView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ContactusView(),
         settings: data,
       );
     },
     _i9.UploadmeetingView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.UploadmeetingView(),
         settings: data,
       );
     },
     _i10.LandingPageView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.LandingPageView(),
+        settings: data,
+      );
+    },
+    _i11.HomePageShowView: (data) {
+      return _i12.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i11.HomePageShowView(),
         settings: data,
       );
     },
@@ -158,7 +173,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+extension NavigatorStateExtension on _i13.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -285,6 +300,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToHomePageShowView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.homePageShowView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -405,6 +434,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.landingPageView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithHomePageShowView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.homePageShowView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

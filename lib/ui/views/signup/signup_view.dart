@@ -60,6 +60,17 @@ class SignupView extends StackedView<SignupViewModel> {
                         return null; // Return null for no error
                       },
                     ),
+                     verticalSpaceSmall,
+                    Mytextfield(
+                      title: "Phone",
+                      ctrl: viewModel.emailctrl,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Phone is required";
+                        }
+                        return null; // Return null for no error
+                      },
+                    ),
                     verticalSpaceSmall,
                     Mytextfield(
                       title: "Password",

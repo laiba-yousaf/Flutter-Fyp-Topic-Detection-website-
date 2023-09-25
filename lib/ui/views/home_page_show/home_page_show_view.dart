@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
+import 'package:topicdetectionweb/ui/views/uploadmeeting/uploadmeeting_view.dart';
+import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 
-import '../../widgets/common/button/button.dart';
-import 'uploadmeeting_viewmodel.dart';
+import 'home_page_show_viewmodel.dart';
 
-class UploadmeetingView extends StackedView<UploadmeetingViewModel> {
-  const UploadmeetingView({Key? key}) : super(key: key);
+class HomePageShowView extends StackedView<HomePageShowViewModel> {
+  const HomePageShowView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    UploadmeetingViewModel viewModel,
+    HomePageShowViewModel viewModel,
     Widget? child,
   ) {
     return Stack(
@@ -43,7 +44,6 @@ class UploadmeetingView extends StackedView<UploadmeetingViewModel> {
                 fit: BoxFit.cover,
               ),
             )),
-
         Positioned(
             left: 790,
             top: 100,
@@ -58,46 +58,17 @@ class UploadmeetingView extends StackedView<UploadmeetingViewModel> {
                     child: Column(
                       children: [
                         verticalSpaceMedium,
-                        const Text("Your file uploading"),
-                        verticalSpaceMedium,
-                        const Text(
-                          "39%",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                        verticalSpaceMedium,
-                        Center(
-                          child: Container(
-                            //color: Colors.amber,
-                            //height: 35,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey)),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.file_open,
-                                  size: 20,
-                                ),
-                                horizontalSpaceMedium,
-                                const Text(
-                                  "Meeting with laiba.mp3",
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                                horizontalSpaceMedium,
-                                Image(
-                                  image: AssetImage(cancelicon),
-                                  width: 15,
-                                  height: 15,
-                                )
-                              ],
-                            ),
-                          ),
+                        Image(
+                          image: AssetImage(filepic),
+                          width: 100,
+                          height: 100,
                         ),
                         verticalSpaceMedium,
                         Button(
                           title: "Upload  Meeting",
-                          onTap: () {},
+                          onTap: () {
+                            //viewModel.navigateTouploadMeeting();
+                          },
                         ),
                         verticalSpaceSmall,
                         const Text("or Drop a file")
@@ -108,8 +79,8 @@ class UploadmeetingView extends StackedView<UploadmeetingViewModel> {
   }
 
   @override
-  UploadmeetingViewModel viewModelBuilder(
+  HomePageShowViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      UploadmeetingViewModel();
+      HomePageShowViewModel();
 }

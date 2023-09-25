@@ -24,7 +24,7 @@ class AuthenticationService {
 
   Future logout() async {
     try {
-     SharedPreferences prefs = await SharedPreferences.getInstance();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.remove('userId');
       print("logout sucessfull");
     } catch (e) {
@@ -32,7 +32,6 @@ class AuthenticationService {
       print("Logout error: $e");
     }
   }
-  
 
   Future<User?> login(String email, String password) async {
     final UserCredential authResult =

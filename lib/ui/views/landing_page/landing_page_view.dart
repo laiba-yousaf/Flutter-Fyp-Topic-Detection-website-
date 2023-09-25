@@ -205,7 +205,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                           child: Column(
                             children: [
                               verticalSpaceMedium,
-                              Text(
+                              const Text(
                                 "Contact with us",
                                 style: TextStyle(color: Colors.white),
                               ),

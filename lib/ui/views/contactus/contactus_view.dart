@@ -19,7 +19,6 @@ class ContactusView extends StackedView<ContactusViewModel> {
     return Padding(
       padding: const EdgeInsets.only(top: 100),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      
         const Text(
           "Contact us",
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),

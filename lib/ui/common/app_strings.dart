@@ -29,4 +29,4 @@ String feature4 = 'assets/images/feature4.png';
 String working = 'assets/images/website working.png';
 String benifits = 'assets/images/benifit.png';
 String Tick = 'assets/images/tick.png';
-String arrow = 'assets/images/arrow.gif';
+String arrow = 'assets/images/arrow-purple-right.gif';

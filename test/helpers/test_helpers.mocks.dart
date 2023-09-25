@@ -12,7 +12,6 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i3;
 import 'package:topicdetectionweb/services/authentication_service.dart' as _i8;
 import 'package:topicdetectionweb/services/toastmessage_service.dart' as _i7;
-import 'package:topicdetectionweb/ui/views/signin/signin_viewmodel.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -674,19 +673,18 @@ class MockAuthenticationService extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i5.Future<void> logout() => (super.noSuchMethod(
+  _i5.Future<dynamic> logout() => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [],
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i5.Future<dynamic>.value(),
+        returnValueForMissingStub: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
   @override
-  _i5.Future<void> login(
+  _i5.Future<_i2.User?> login(
     String? email,
     String? password,
-    _i9.SigninViewModel? viewModel,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -694,10 +692,9 @@ class MockAuthenticationService extends _i1.Mock
           [
             email,
             password,
-            viewModel,
           ],
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i5.Future<_i2.User?>.value(),
+        returnValueForMissingStub: _i5.Future<_i2.User?>.value(),
+      ) as _i5.Future<_i2.User?>);
 }

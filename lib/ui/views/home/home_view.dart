@@ -4,6 +4,7 @@ import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
+import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart';
 import 'package:topicdetectionweb/ui/views/signin/signin_view.dart';
 import 'package:topicdetectionweb/ui/views/uploadmeeting/uploadmeeting_view.dart';
 import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/sidebarx_widget.dart';
@@ -31,10 +32,10 @@ class HomeView extends StackedView<HomeViewModel> {
               builder: (context, child) {
                 switch (viewModel.controller.selectedIndex) {
                   case 0:
-                    return UploadmeetingView();
+                    return HomePageShowView();
 
-                  case 1:
-                    return UploadmeetingView();
+                  // case 1:
+                  //   return UploadmeetingView();
                   case 2:
                     return AboutusView();
                   case 3:
@@ -43,7 +44,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     return HistorypageView();
                   case 5:
                     viewModel.authservice.logout();
-                    return viewModel.navigationSigninpage();
+                    return viewModel.navigationLandingPage();
                   // Additional code to navigate to the login page or perform other actions
 
                   default:

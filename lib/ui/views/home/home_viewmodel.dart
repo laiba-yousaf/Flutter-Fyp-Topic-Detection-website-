@@ -10,19 +10,13 @@ import '../../../services/authentication_service.dart';
 class HomeViewModel extends BaseViewModel {
   final navigationService = locator<NavigationService>();
   final authservice = locator<AuthenticationService>();
-  
+
   final controller = SidebarXController(selectedIndex: 0, extended: true);
-  final GlobalKey<ScaffoldState>key = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
   String currentPage = 'Home';
 
- navigationSigninpage() {
-    navigationService.navigateToSigninView();
+  navigationLandingPage() {
+    navigationService.navigateToLandingPageView();
   }
-
- 
-  
-
- 
- 
 }

@@ -17,7 +17,7 @@ Widget filedata(
       Text(data3),
       //horizontalSpaceMedium,.
       horizontalSpaceSmall,
-       horizontalSpaceSmall,
+      horizontalSpaceSmall,
       Card(
         color: Color.fromARGB(255, 225, 148, 235),
         child: Row(
