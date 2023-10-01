@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../common/app_colors.dart';
+import '../../common/app_strings.dart';
 import '../../common/ui_helpers.dart';
 import '../../widgets/common/button/button.dart';
 import '../../widgets/common/mytextfield/mytextfield.dart';
-import '../../widgets/common/mytextfield/mytextfield_model.dart';
 import '../../widgets/common/slider/slider.dart';
 import 'signup_viewmodel.dart';
 
@@ -21,7 +21,7 @@ class SignupView extends StackedView<SignupViewModel> {
     bool isDesktopView = screenWidth(context) >= 768;
     return Scaffold(
       body: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             flex: 1,
@@ -30,14 +30,25 @@ class SignupView extends StackedView<SignupViewModel> {
                 key: viewModel.formKey,
                 child: Column(
                   children: [
-                    verticalSpaceLarge,
-                    verticalSpaceLarge,
-                    verticalSpaceLarge,
-                    const Text(
-                      "Sign Up",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
+                      //verticalSpaceLarge,
+             Row(
+               children: [
+                 Image(image: AssetImage(logopic),width: 200,),
+               
+                   const Padding(
+                     padding: EdgeInsets.only(left: 70),
+                     child: Text(
+                        "Sign Up",
+                        style:
+                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                   ),
+               ],
+             ),
+                    //verticalSpaceLarge,
+                    // verticalSpaceLarge,
+                    // verticalSpaceLarge,
+                  
                     verticalSpaceLarge,
                     Mytextfield(
                       title: "Name",
@@ -60,7 +71,7 @@ class SignupView extends StackedView<SignupViewModel> {
                         return null; // Return null for no error
                       },
                     ),
-                     verticalSpaceSmall,
+                    verticalSpaceSmall,
                     Mytextfield(
                       title: "Phone",
                       ctrl: viewModel.emailctrl,
@@ -142,7 +153,7 @@ class SignupView extends StackedView<SignupViewModel> {
                             });
                           }
                         }),
-                    verticalSpaceLarge,
+                    verticalSpaceMedium,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

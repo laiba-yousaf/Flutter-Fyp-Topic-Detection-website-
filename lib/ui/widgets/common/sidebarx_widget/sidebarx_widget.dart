@@ -7,6 +7,7 @@ import 'sidebarx_widget_model.dart';
 class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
   const SidebarxWidget({super.key, required this.controller});
   final SidebarXController controller;
+
   @override
   Widget builder(
     BuildContext context,
@@ -15,9 +16,10 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
   ) {
     return SidebarX(
       controller: controller,
+      
       theme: const SidebarXTheme(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 179, 121, 245),
+            color: Color.fromARGB(255, 202, 161, 248),
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(15),
                 bottomRight: Radius.circular(15)),

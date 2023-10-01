@@ -7,7 +7,8 @@ Widget feature() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      verticalSpaceMassive,
+      //verticalSpaceMassive,
+      verticalSpaceLarge,
       const Text(
         "Features",
         style: TextStyle(
@@ -24,12 +25,13 @@ Widget feature() {
           "enhancing your productivity and understanding of the topics discussed during meetings or conversation"),
       verticalSpaceMedium,
       Row(
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           featurecard(feature1, "Seamless Audio Upload",
               "Our platform offers a user-friendly\nexperience where you can effortlessly\nupload your audio files."),
-          horizontalSpaceMedium,
-          featurecard(feature2, "Advanced NLP Extraction",
-              "Harness the power of cutting-edge\nNatural Language Processing (NLP)\ntechnology to automatically extract the\nmain topics from your uploaded audio."),
+          // horizontalSpaceMedium,
+          // featurecard(feature2, "Advanced NLP Extraction",
+          //     "Harness the power of cutting-edge\nNatural Language Processing (NLP)\ntechnology to automatically extract the\nmain topics from your uploaded audio."),
           horizontalSpaceMedium,
           featurecard(feature3, "Clear Topic Visualization",
               "Once your audio is processed, our\n website presents the extracted topics\nin a clear and organized manner\nmaking it easy for you to grasp the key\ndiscussion points."),

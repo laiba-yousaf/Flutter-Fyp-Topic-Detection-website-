@@ -1,12 +1,16 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:topicdetectionweb/app/app.router.dart';
 
 import '../../../app/app.locator.dart';
+import '../aboutus/aboutus_view.dart';
 
 class HomePageShowViewModel extends BaseViewModel {
+  bool check = false;
   final navigationService = locator<NavigationService>();
-  void navigateTouploadMeeting() {
-    navigationService.navigateToUploadmeetingView();
+
+
+  void updatevalue() {
+    check = true;
+    notifyListeners();
   }
 }

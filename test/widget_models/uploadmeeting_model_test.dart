@@ -4,7 +4,7 @@ import 'package:topicdetectionweb/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('UploadmeetingViewModel Tests -', () {
+  group('UploadmeetingModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });

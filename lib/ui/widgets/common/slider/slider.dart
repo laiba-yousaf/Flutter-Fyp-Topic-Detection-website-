@@ -16,32 +16,72 @@ class Sliderwidget extends StackedView<SliderModel> {
   ) {
     return Column(
       children: [
-        verticalSpaceMassive,
-        Stack(children: [
-          CarouselSlider(
-            items: [
-              Container(
-                  height: screenHeight(context),
-                  child: Image(
-                    image: AssetImage(image1),
-                  )),
-              Image(image: AssetImage(image2)),
-              Image(image: AssetImage(image3)),
-            ],
-            options: CarouselOptions(
-              aspectRatio: 16 / 9,
-              enlargeCenterPage: true,
-              autoPlay: true,
-              // Dots indicator upper show hoga
-              onPageChanged: (index, reason) {
-                viewModel.updateindex(index);
-              },
+       // verticalSpaceMassive,
+        Stack(
+          children: [
+          SizedBox(
+            height: screenHeight(context),
+            child: CarouselSlider(
+              items: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 30,top: 30,bottom: 30,right: 20),
+                  child: Container(
+                      width: double.infinity, // Fill the entire width
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage(image1),
+                          fit: BoxFit.cover, // Ensure the image covers the entire container
+                        ),
+                      ),
+                    ),
+                ),
+                  Padding(
+                     padding: const EdgeInsets.only(left: 30,top: 30,bottom: 30,right: 20),
+                    child: Container(
+                      width: double.infinity, // Fill the entire width
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage(image2),
+                          fit: BoxFit.cover, // Ensure the image covers the entire container
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                     padding: const EdgeInsets.only(left: 30,top: 30,bottom: 30,right: 20),
+                    child: Container(
+                      width: double.infinity, // Fill the entire width
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage(image3),
+                          fit: BoxFit.cover, // Ensure the image covers the entire container
+                        ),
+                      ),
+                    ),
+                  ),
+             
+                // Image(image: AssetImage(image2),height: screenHeight(context),),
+                // Image(image: AssetImage(image3)),
+              ],
+              options: CarouselOptions(
+                aspectRatio: 1,
+                viewportFraction: 1.0,                 //16 / 9,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                // Dots indicator upper show hoga
+                onPageChanged: (index, reason) {
+                  viewModel.updateindex(index);
+                },
+              ),
             ),
           ),
           verticalSpaceLarge,
           Positioned(
-            top: 350,
-            left: 200,
+            top: 540,
+            left: 100,
             //bottom: 50,
 
             child: Container(

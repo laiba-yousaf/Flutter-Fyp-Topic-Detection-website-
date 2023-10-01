@@ -10,7 +10,6 @@ import 'package:topicdetectionweb/ui/views/home/home_view.dart';
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
-import 'package:topicdetectionweb/ui/views/uploadmeeting/uploadmeeting_view.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import 'package:topicdetectionweb/services/authentication_service.dart';
 import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart';
@@ -26,7 +25,6 @@ import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.da
     MaterialRoute(page: HistorypageView),
     MaterialRoute(page: AboutusView),
     MaterialRoute(page: ContactusView),
-    MaterialRoute(page: UploadmeetingView),
     MaterialRoute(page: LandingPageView),
     MaterialRoute(page: HomePageShowView),
 // @stacked-route

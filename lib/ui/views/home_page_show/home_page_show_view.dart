@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-import 'package:topicdetectionweb/ui/views/uploadmeeting/uploadmeeting_view.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 
+import '../../widgets/common/uploadmeeting/uploadmeeting.dart';
 import 'home_page_show_viewmodel.dart';
 
 class HomePageShowView extends StackedView<HomePageShowViewModel> {
@@ -18,11 +18,13 @@ class HomePageShowView extends StackedView<HomePageShowViewModel> {
   ) {
     return Stack(
       children: [
-        Image(
-          image: AssetImage(backgroundimg),
-          width: screenWidth(context) * 0.8975,
-          height: screenHeight(context),
-          fit: BoxFit.cover,
+        Expanded(
+          child: Image(
+            image: AssetImage(backgroundimg),
+            width: screenWidth(context) * 0.8975,
+            height: screenHeight(context),
+            fit: BoxFit.cover,
+          ),
         ),
         const Positioned(
             left: 40,
@@ -50,7 +52,8 @@ class HomePageShowView extends StackedView<HomePageShowViewModel> {
             child: SizedBox(
                 height: 300,
                 width: 400,
-                child: Card(
+                child:viewModel.check? const Uploadmeeting():
+                 Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                           30.0), // Circle radius as per your requirement
@@ -67,6 +70,7 @@ class HomePageShowView extends StackedView<HomePageShowViewModel> {
                         Button(
                           title: "Upload  Meeting",
                           onTap: () {
+                            //viewModel.updatevalue();
                             //viewModel.navigateTouploadMeeting();
                           },
                         ),
