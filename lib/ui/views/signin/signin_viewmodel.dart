@@ -41,9 +41,9 @@ class SigninViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  login() {
+  login() async {
     try {
-      Future<User?> _user = authservices.login(emailctrl.text, passctrl.text);
+      User? _user = await authservices.login(emailctrl.text, passctrl.text);
       if (_user != null) {
         toastService.toastmessage("Login Successfully");
         navigationHome();

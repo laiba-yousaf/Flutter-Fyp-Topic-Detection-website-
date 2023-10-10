@@ -20,8 +20,9 @@ class ContactusView extends StackedView<ContactusViewModel> {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 100,left: 200),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          padding: const EdgeInsets.only(top: 100, left: 200),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             const Text(
               "Contact us",
               style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
@@ -63,7 +64,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 ),
                 verticalSpaceLarge,
                 Padding(
-                  padding: const EdgeInsets.only(left:100),
+                  padding: const EdgeInsets.only(left: 100),
                   child: Button(
                     title: "Submit",
                     onTap: () {},
@@ -72,21 +73,19 @@ class ContactusView extends StackedView<ContactusViewModel> {
               ],
             ),
             horizontalSpaceLarge,
-            
           ]),
         ),
-        
-    
         Padding(
-          padding: const EdgeInsets.only(top: 100,left:200),
+          padding: const EdgeInsets.only(top: 100, left: 200),
           child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image(image: AssetImage(Contact),width: 400,),
-                  
-                 
-                ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image(
+                image: AssetImage(Contact),
+                width: 400,
               ),
+            ],
+          ),
         ),
       ],
     );

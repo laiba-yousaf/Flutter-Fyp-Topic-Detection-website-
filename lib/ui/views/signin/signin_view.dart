@@ -46,6 +46,10 @@ class SigninView extends StackedView<SigninViewModel> {
                     verticalSpaceMedium,
                     Mytextfield(
                       title: "Email",
+                      prefix: Icon(
+                        Icons.email,
+                        size: 16,
+                      ),
                       ctrl: viewModel.emailctrl,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -57,6 +61,10 @@ class SigninView extends StackedView<SigninViewModel> {
                     verticalSpaceSmall,
                     Mytextfield(
                       title: "Password",
+                      prefix: Icon(
+                        Icons.password,
+                        size: 16,
+                      ),
                       ctrl: viewModel.passctrl,
                       suffix: GestureDetector(
                         onTap: () {

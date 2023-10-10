@@ -16,59 +16,64 @@ class Sliderwidget extends StackedView<SliderModel> {
   ) {
     return Column(
       children: [
-       // verticalSpaceMassive,
-        Stack(
-          children: [
+        // verticalSpaceMassive,
+        Stack(children: [
           SizedBox(
             height: screenHeight(context),
             child: CarouselSlider(
               items: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 30,top: 30,bottom: 30,right: 20),
+                  padding: const EdgeInsets.only(
+                      left: 30, top: 30, bottom: 30, right: 20),
                   child: Container(
-                      width: double.infinity, // Fill the entire width
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: AssetImage(image1),
-                          fit: BoxFit.cover, // Ensure the image covers the entire container
-                        ),
+                    width: double.infinity, // Fill the entire width
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: AssetImage(image1),
+                        fit: BoxFit
+                            .cover, // Ensure the image covers the entire container
                       ),
                     ),
+                  ),
                 ),
-                  Padding(
-                     padding: const EdgeInsets.only(left: 30,top: 30,bottom: 30,right: 20),
-                    child: Container(
-                      width: double.infinity, // Fill the entire width
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: AssetImage(image2),
-                          fit: BoxFit.cover, // Ensure the image covers the entire container
-                        ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 30, top: 30, bottom: 30, right: 20),
+                  child: Container(
+                    width: double.infinity, // Fill the entire width
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: AssetImage(image2),
+                        fit: BoxFit
+                            .cover, // Ensure the image covers the entire container
                       ),
                     ),
                   ),
-                  Padding(
-                     padding: const EdgeInsets.only(left: 30,top: 30,bottom: 30,right: 20),
-                    child: Container(
-                      width: double.infinity, // Fill the entire width
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: AssetImage(image3),
-                          fit: BoxFit.cover, // Ensure the image covers the entire container
-                        ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 30, top: 30, bottom: 30, right: 20),
+                  child: Container(
+                    width: double.infinity, // Fill the entire width
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: AssetImage(image3),
+                        fit: BoxFit
+                            .cover, // Ensure the image covers the entire container
                       ),
                     ),
                   ),
-             
+                ),
+
                 // Image(image: AssetImage(image2),height: screenHeight(context),),
                 // Image(image: AssetImage(image3)),
               ],
               options: CarouselOptions(
                 aspectRatio: 1,
-                viewportFraction: 1.0,                 //16 / 9,
+                viewportFraction: 1.0, //16 / 9,
                 enlargeCenterPage: true,
                 autoPlay: true,
                 // Dots indicator upper show hoga

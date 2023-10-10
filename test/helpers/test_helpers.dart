@@ -4,6 +4,7 @@ import 'package:topicdetectionweb/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import 'package:topicdetectionweb/services/authentication_service.dart';
+import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -14,6 +15,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ToastmessageService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SpeechToTextService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -22,6 +24,7 @@ void registerServices() {
   getAndRegisterDialogService();
   getAndRegisterToastmessageService();
   getAndRegisterAuthenticationService();
+  getAndRegisterSpeechToTextService();
 // @stacked-mock-register
 }
 
@@ -86,6 +89,13 @@ MockAuthenticationService getAndRegisterAuthenticationService() {
   _removeRegistrationIfExists<AuthenticationService>();
   final service = MockAuthenticationService();
   locator.registerSingleton<AuthenticationService>(service);
+  return service;
+}
+
+MockSpeechToTextService getAndRegisterSpeechToTextService() {
+  _removeRegistrationIfExists<SpeechToTextService>();
+  final service = MockSpeechToTextService();
+  locator.registerSingleton<SpeechToTextService>(service);
   return service;
 }
 // @stacked-mock-create

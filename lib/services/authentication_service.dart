@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../ui/views/signin/signin_viewmodel.dart';
 
 class AuthenticationService {
   final FirebaseAuth auth = FirebaseAuth.instance;

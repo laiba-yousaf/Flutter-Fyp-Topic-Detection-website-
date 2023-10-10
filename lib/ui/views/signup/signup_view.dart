@@ -30,29 +30,35 @@ class SignupView extends StackedView<SignupViewModel> {
                 key: viewModel.formKey,
                 child: Column(
                   children: [
-                      //verticalSpaceLarge,
-             Row(
-               children: [
-                 Image(image: AssetImage(logopic),width: 200,),
-               
-                   const Padding(
-                     padding: EdgeInsets.only(left: 70),
-                     child: Text(
-                        "Sign Up",
-                        style:
-                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                   ),
-               ],
-             ),
+                    //verticalSpaceLarge,
+                    Row(
+                      children: [
+                        Image(
+                          image: AssetImage(logopic),
+                          width: 200,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 70),
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
                     //verticalSpaceLarge,
                     // verticalSpaceLarge,
                     // verticalSpaceLarge,
-                  
+
                     verticalSpaceLarge,
                     Mytextfield(
                       title: "Name",
                       ctrl: viewModel.namectrl,
+                      prefix: Icon(
+                        Icons.person,
+                        size: 16,
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Name is required";
@@ -64,6 +70,10 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       title: "Email",
                       ctrl: viewModel.emailctrl,
+                      prefix: Icon(
+                        Icons.email,
+                        size: 16,
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Email is required";
@@ -75,6 +85,10 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       title: "Phone",
                       ctrl: viewModel.emailctrl,
+                      prefix: Icon(
+                        Icons.phone,
+                        size: 16,
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Phone is required";
@@ -98,6 +112,10 @@ class SignupView extends StackedView<SignupViewModel> {
                         ),
                       ),
                       obscureText: viewModel.obsecure,
+                      prefix: Icon(
+                        Icons.password,
+                        size: 16,
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Password is required";
@@ -109,6 +127,10 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       title: "Confirm Password",
                       ctrl: viewModel.conpassctrl,
+                      prefix: Icon(
+                        Icons.password,
+                        size: 16,
+                      ),
                       suffix: GestureDetector(
                         onTap: () {
                           viewModel.togglePasswordVisibility1();

@@ -28,10 +28,9 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
             image: AssetImage(logopic),
             //width: 150,
           ),
-        
           actions: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextButton(
                 onPressed: () {
                   viewModel.pagenavigate("home");
@@ -47,17 +46,16 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: TextButton(
                 onPressed: () {
                   viewModel.pagenavigate("Aboutus");
                 },
                 child: Text("About us",
                     style: TextStyle(
-                       fontSize: 17,
-                     
+                      fontSize: 17,
                       color: viewModel.name == "Aboutus"
-                          ? Color.fromARGB(255, 57, 2, 65)
+                          ? const Color.fromARGB(255, 57, 2, 65)
                           : Colors.white,
                     )),
               ),
@@ -69,12 +67,10 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                     viewModel.pagenavigate("contactus");
                   },
                   child: Text("Contact us",
-            
                       style: TextStyle(
-                         fontSize: 17,
-                     
+                        fontSize: 17,
                         color: viewModel.name == "contactus"
-                            ? Color.fromARGB(255, 57, 2, 65)
+                            ? const Color.fromARGB(255, 57, 2, 65)
                             : Colors.white,
                       ))),
             ),
@@ -83,19 +79,18 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
               child: TextButton(
                   onPressed: () {
                     viewModel.navigateTOSignin();
-                    viewModel.pagenavigate("login");
+                    //viewModel.pagenavigate("login");
                   },
                   child: Text("Login",
                       style: TextStyle(
-                         fontSize: 17,
-                      
+                        fontSize: 17,
                         color: viewModel.name == "login"
-                            ? Color.fromARGB(255, 57, 2, 65)
+                            ? const Color.fromARGB(255, 57, 2, 65)
                             : Colors.white,
                       ))),
             ),
             Padding(
-              padding: const EdgeInsets.only(right:200),
+              padding: const EdgeInsets.only(right: 200),
               child: TextButton(
                   onPressed: () {
                     viewModel.navigateSignup();
@@ -103,10 +98,9 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                   },
                   child: Text("Register",
                       style: TextStyle(
-                         fontSize: 17,
-                    
+                        fontSize: 17,
                         color: viewModel.name == "register"
-                            ? Color.fromARGB(255, 57, 2, 65)
+                            ? const Color.fromARGB(255, 57, 2, 65)
                             : Colors.white,
                       ))),
             ),
@@ -146,7 +140,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       verticalSpaceMedium,
                       Row(
                         children: [
-                        
                           // Padding(
                           //   padding: const EdgeInsets.only(left: 100, top: 60),
                           //   child: Container(
@@ -193,7 +186,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 250, top: 100),
+                        padding: const EdgeInsets.only(left: 250, top: 100),
                         child: Column(
                           children: [
                             const Text(
@@ -302,7 +295,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       verticalSpaceLarge,
                       Container(
                         height: 100,
-                        color: Color.fromARGB(255, 207, 173, 252),
+                        color: const Color.fromARGB(255, 207, 173, 252),
                         child: Column(
                           children: [
                             Center(

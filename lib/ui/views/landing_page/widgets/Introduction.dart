@@ -10,7 +10,6 @@ Widget intro() {
       Text(
         "Our project is centered on a meeting topic detection system that excels in identifying key discussion points from uploaded",
         style: TextStyle(fontSize: 16),
-        
         textAlign: TextAlign.justify,
       ),
       verticalSpaceSmall, //style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold,fontSize: 40),),

@@ -14,6 +14,7 @@ import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import 'package:topicdetectionweb/services/authentication_service.dart';
 import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart';
 import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart';
+import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -35,6 +36,7 @@ import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.da
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: ToastmessageService),
     LazySingleton(classType: AuthenticationService),
+    LazySingleton(classType: SpeechToTextService),
 // @stacked-service
   ],
   bottomsheets: [

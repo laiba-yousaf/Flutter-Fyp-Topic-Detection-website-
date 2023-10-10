@@ -11,6 +11,7 @@ class Mytextfield extends StackedView<MytextfieldModel> {
   final bool? obscureText;
   final int? maxlines;
   final bool? maxcond;
+  final Widget? prefix;
   final FormFieldValidator<String>? validator;
 
   const Mytextfield(
@@ -21,7 +22,8 @@ class Mytextfield extends StackedView<MytextfieldModel> {
       this.obscureText,
       this.maxcond,
       this.maxlines,
-      this.validator})
+      this.validator,
+      this.prefix})
       : super(key: key);
 
   @override
@@ -44,15 +46,15 @@ class Mytextfield extends StackedView<MytextfieldModel> {
 
         obscureText: obscureText ?? false,
         decoration: InputDecoration(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-          hintText: title,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          ),
-          hintStyle: TextStyle(fontSize: hintFontSize),
-          suffixIcon: suffix,
-        ),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+            hintText: title,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+            hintStyle: TextStyle(fontSize: hintFontSize),
+            suffixIcon: suffix,
+            prefixIcon: prefix),
         validator: validator,
       ),
     );

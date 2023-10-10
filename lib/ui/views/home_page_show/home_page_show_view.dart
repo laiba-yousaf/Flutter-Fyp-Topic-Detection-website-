@@ -52,32 +52,40 @@ class HomePageShowView extends StackedView<HomePageShowViewModel> {
             child: SizedBox(
                 height: 300,
                 width: 400,
-                child:viewModel.check? const Uploadmeeting():
-                 Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          30.0), // Circle radius as per your requirement
-                    ),
-                    child: Column(
-                      children: [
-                        verticalSpaceMedium,
-                        Image(
-                          image: AssetImage(filepic),
-                          width: 100,
-                          height: 100,
+                child: viewModel.check
+                    ? const Uploadmeeting()
+                    : Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              30.0), // Circle radius as per your requirement
                         ),
-                        verticalSpaceMedium,
-                        Button(
-                          title: "Upload  Meeting",
-                          onTap: () {
-                            //viewModel.updatevalue();
-                            //viewModel.navigateTouploadMeeting();
-                          },
-                        ),
-                        verticalSpaceSmall,
-                        const Text("or Drop a file")
-                      ],
-                    ))))
+                        child: Column(
+                          children: [
+                            verticalSpaceMedium,
+                            Image(
+                              image: AssetImage(filepic),
+                              width: 100,
+                              height: 100,
+                            ),
+                            verticalSpaceMedium,
+                            Button(
+                              title: "Upload  Meeting",
+                              onTap: () async {
+                                try {
+                                  await viewModel.speechtotextservice
+                                      .uploadAudioFile(context);
+                                } catch (e) {
+                                  print("Error uploading audio file: $e");
+                                  // Handle the error as needed, e.g., show an error message to the user
+                                }
+                                //viewModel.updatevalue();
+                                //viewModel.navigateTouploadMeeting();
+                              },
+                            ),
+                            verticalSpaceSmall,
+                            const Text("or Drop a file")
+                          ],
+                        ))))
       ],
     );
   }
