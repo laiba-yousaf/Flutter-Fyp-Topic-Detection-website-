@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
-import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart';
@@ -34,13 +32,13 @@ class HomeView extends StackedView<HomeViewModel> {
 
                   // case 1:
                   //   return UploadmeetingView();
+                  // case 1:
+                  //   return AboutusView();
+                  // case 2:
+                  //   return ContactusView();
                   case 1:
-                    return AboutusView();
-                  case 2:
-                    return ContactusView();
-                  case 3:
                     return HistorypageView();
-                  case 4:
+                  case 2:
                     viewModel.authservice.logout();
                     return viewModel.navigationLandingPage();
                   // Additional code to navigate to the login page or perform other actions

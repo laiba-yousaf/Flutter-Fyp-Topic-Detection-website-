@@ -34,3 +34,5 @@ String about = 'assets/images/about us.png';
 String arrow = 'assets/images/arrow-purple-right.gif';
 String Contact = 'assets/images/contactUs.png';
 String SignUp = 'assets/images/SignUp.png';
+String video = 'assets/images/videoIcon.png';
+

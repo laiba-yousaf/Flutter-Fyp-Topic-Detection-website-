@@ -6,7 +6,7 @@ Widget featurecard(String img, String title, String dec) {
     height: 230,
     width: 200,
     child: Card(
-      elevation: 5,
+      elevation: 10,
       color: Color.fromARGB(255, 230, 202, 235),
       child: Column(
         children: [

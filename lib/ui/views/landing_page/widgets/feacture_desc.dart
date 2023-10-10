@@ -29,9 +29,9 @@ Widget feature() {
         children: [
           featurecard(feature1, "Seamless Audio Upload",
               "Our platform offers a user-friendly\nexperience where you can effortlessly\nupload your audio files."),
-          // horizontalSpaceMedium,
-          // featurecard(feature2, "Advanced NLP Extraction",
-          //     "Harness the power of cutting-edge\nNatural Language Processing (NLP)\ntechnology to automatically extract the\nmain topics from your uploaded audio."),
+          horizontalSpaceMedium,
+          featurecard(video, "Seamless Video Upload",
+              "Discover our platform's seamless experience for effortlessly uploading\nyour video files."),
           horizontalSpaceMedium,
           featurecard(feature3, "Clear Topic Visualization",
               "Once your audio is processed, our\n website presents the extracted topics\nin a clear and organized manner\nmaking it easy for you to grasp the key\ndiscussion points."),

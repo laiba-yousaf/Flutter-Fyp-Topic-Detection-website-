@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_strings.dart';
+import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/customesidebar.dart';
 
 import 'sidebarx_widget_model.dart';
 
@@ -15,8 +17,17 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
     Widget? child,
   ) {
     return SidebarX(
+      headerBuilder: (context, extended) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Image(
+            image: AssetImage(logopic),
+            width: 50,
+            height: 50,
+          ),
+        );
+      },
       controller: controller,
-      
       theme: const SidebarXTheme(
           decoration: BoxDecoration(
             color: Color.fromARGB(255, 202, 161, 248),
@@ -26,13 +37,7 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
           ),
           iconTheme: IconThemeData(color: Colors.white)),
       items: const [
-        SidebarXItem(
-          icon: Icons.home,
-          label: "Home",
-        ),
-        // SidebarXItem(icon: Icons.upload_file, label: "Upload"),
-        SidebarXItem(icon: Icons.group, label: "About us"),
-        SidebarXItem(icon: Icons.contact_page, label: "Contact us"),
+        SidebarXItem(icon: Icons.upload_file, label: "Upload"),
         SidebarXItem(icon: Icons.history, label: "History"),
         SidebarXItem(icon: Icons.logout, label: "Logout"),
       ],

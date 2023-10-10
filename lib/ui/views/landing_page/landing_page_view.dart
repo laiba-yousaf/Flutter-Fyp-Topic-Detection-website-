@@ -22,66 +22,94 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 191, 152, 202),
-          leading: const Center(child: Text("Logo")),
+          leading: Image(
+            image: AssetImage(logopic),
+            //width: 150,
+          ),
+        
           actions: [
-            TextButton(
-              onPressed: () {
-                viewModel.pagenavigate("home");
-              },
-              child: Text("Home",
-                  style: TextStyle(
-                    color: viewModel.name == "home"
-                        ? Color.fromARGB(255, 57, 2, 65)
-                        : Colors.white,
-                  )),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:10),
+              child: TextButton(
+                onPressed: () {
+                  viewModel.pagenavigate("home");
+                },
+                child: Text("Home",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: viewModel.name == "home"
+                          ? Color.fromARGB(255, 57, 2, 65)
+                          : Colors.white,
+                    )),
+              ),
             ),
-            TextButton(
-              onPressed: () {
-                viewModel.pagenavigate("Aboutus");
-              },
-              child: Text("About us",
-                  style: TextStyle(
-                    color: viewModel.name == "Aboutus"
-                        ? Color.fromARGB(255, 57, 2, 65)
-                        : Colors.white,
-                  )),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:10),
+              child: TextButton(
+                onPressed: () {
+                  viewModel.pagenavigate("Aboutus");
+                },
+                child: Text("About us",
+                    style: TextStyle(
+                       fontSize: 17,
+                     
+                      color: viewModel.name == "Aboutus"
+                          ? Color.fromARGB(255, 57, 2, 65)
+                          : Colors.white,
+                    )),
+              ),
             ),
-            TextButton(
-                onPressed: () {
-                  viewModel.pagenavigate("contactus");
-                },
-                child: Text("Contact us",
-                    style: TextStyle(
-                      color: viewModel.name == "contactus"
-                          ? Color.fromARGB(255, 57, 2, 65)
-                          : Colors.white,
-                    ))),
-            TextButton(
-                onPressed: () {
-                  viewModel.navigateTOSignin();
-                  viewModel.pagenavigate("login");
-                },
-                child: Text("Login",
-                    style: TextStyle(
-                      color: viewModel.name == "login"
-                          ? Color.fromARGB(255, 57, 2, 65)
-                          : Colors.white,
-                    ))),
-            TextButton(
-                onPressed: () {
-                  viewModel.navigateSignup();
-                  viewModel.pagenavigate("register");
-                },
-                child: Text("Register",
-                    style: TextStyle(
-                      color: viewModel.name == "register"
-                          ? Color.fromARGB(255, 57, 2, 65)
-                          : Colors.white,
-                    ))),
-           
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextButton(
+                  onPressed: () {
+                    viewModel.pagenavigate("contactus");
+                  },
+                  child: Text("Contact us",
+            
+                      style: TextStyle(
+                         fontSize: 17,
+                     
+                        color: viewModel.name == "contactus"
+                            ? Color.fromARGB(255, 57, 2, 65)
+                            : Colors.white,
+                      ))),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextButton(
+                  onPressed: () {
+                    viewModel.navigateTOSignin();
+                    viewModel.pagenavigate("login");
+                  },
+                  child: Text("Login",
+                      style: TextStyle(
+                         fontSize: 17,
+                      
+                        color: viewModel.name == "login"
+                            ? Color.fromARGB(255, 57, 2, 65)
+                            : Colors.white,
+                      ))),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right:200),
+              child: TextButton(
+                  onPressed: () {
+                    viewModel.navigateSignup();
+                    viewModel.pagenavigate("register");
+                  },
+                  child: Text("Register",
+                      style: TextStyle(
+                         fontSize: 17,
+                    
+                        color: viewModel.name == "register"
+                            ? Color.fromARGB(255, 57, 2, 65)
+                            : Colors.white,
+                      ))),
+            ),
           ],
         ),
         body: (() {
@@ -99,10 +127,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                 child: Column(children: [
               Stack(
                 children: [
-                  Image(
-                    image: AssetImage(logopic),
-                    width: 150,
-                  ),
                   Align(
                       alignment: Alignment.topRight,
                       child: Image(
@@ -122,6 +146,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       verticalSpaceMedium,
                       Row(
                         children: [
+                        
                           // Padding(
                           //   padding: const EdgeInsets.only(left: 100, top: 60),
                           //   child: Container(
