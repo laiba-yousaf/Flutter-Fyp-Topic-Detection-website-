@@ -54,6 +54,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 Mytextfield(
                   title: "example@gmail.com",
                   ctrl: viewModel.mailctrl,
+                  value: 8.0,
                 ),
                 verticalSpaceSmall,
                 const Text("phone"),
@@ -61,6 +62,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 Mytextfield(
                   title: "12345678",
                   ctrl: viewModel.phonectrl,
+                   value: 8.0,
                 ),
                 verticalSpaceLarge,
                 Padding(

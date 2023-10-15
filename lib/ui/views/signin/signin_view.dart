@@ -46,6 +46,7 @@ class SigninView extends StackedView<SigninViewModel> {
                     verticalSpaceMedium,
                     Mytextfield(
                       title: "Email",
+                      value: 8.0,
                       prefix: Icon(
                         Icons.email,
                         size: 16,
@@ -61,6 +62,7 @@ class SigninView extends StackedView<SigninViewModel> {
                     verticalSpaceSmall,
                     Mytextfield(
                       title: "Password",
+                      value: 8.0,
                       prefix: Icon(
                         Icons.password,
                         size: 16,
