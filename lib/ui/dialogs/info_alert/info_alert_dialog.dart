@@ -27,96 +27,103 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
     Widget? child,
   ) {
     return AlertDialog(
-     
-      contentPadding: EdgeInsets.zero, // Dialog box ki width ko kam karne ke liye contentPadding set karein
+      contentPadding: EdgeInsets
+          .zero, // Dialog box ki width ko kam karne ke liye contentPadding set karein
       // title: Text(
       //   request.title!,
       //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
       // ),
       content:
-      
-      //  Row(
-      //    children: [
-           
-      //      const Padding(
-      //        padding: EdgeInsets.only(top: 120),
-      //        child: Column(
-      //         children: [
-      //           Mytextfield(title: "Enter project name",),
-      //           verticalSpaceMedium,
-      //           Mytextfield(title: "Enter file type audio/video",),
-    
-      //           verticalSpaceMassive,
-      //           Button(title: "Create",)
-      //         ],
-      //        ),
-      //      ),
-    
-           // horizontalSpacemassiveLarge,
-           SizedBox(
-               height: 350,
-               width: 400,
-               child: Card(
-                
-                 color: Color.fromARGB(255, 244, 231, 245),
-                 shape: RoundedRectangleBorder(
-                   borderRadius: BorderRadius.circular(
-                       5.0), // Circle radius as per your requirement
-                 ),
-                 child: Column(
-                   children: [
-                     verticalSpaceMedium,
+
+          //  Row(
+          //    children: [
+
+          //      const Padding(
+          //        padding: EdgeInsets.only(top: 120),
+          //        child: Column(
+          //         children: [
+          //           Mytextfield(title: "Enter project name",),
+          //           verticalSpaceMedium,
+          //           Mytextfield(title: "Enter file type audio/video",),
+
+          //           verticalSpaceMassive,
+          //           Button(title: "Create",)
+          //         ],
+          //        ),
+          //      ),
+
+          // horizontalSpacemassiveLarge,
+          SizedBox(
+              height: 350,
+              width: 400,
+              child: Card(
+                color: Color.fromARGB(255, 244, 231, 245),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      5.0), // Circle radius as per your requirement
+                ),
+                child: Column(
+                  children: [
+                    verticalSpaceMedium,
                     ClipOval(
-                     
-                       child: Image(
-                         image: AssetImage(filepic),
-                         width: 130,
-                         height: 130,
-                       ),
-                     ),
-               
-                     verticalSpaceMedium,
-                     const Padding(
-                       padding: EdgeInsets.only(left: 110,right: 110),
-                       child: Mytextfield(title: "Enter the ProjectName",value: 30,),
-                     ),
-                       verticalSpaceMedium,
-                     Button(
-                      
-                       title: "Upload  Meeting",
-                       onTap: () async {
-                         try {
-                           await viewModel.speechtotextservice
-                               .uploadAudioFile(context);
-                         } catch (e) {
-                           print("Error uploading audio file: $e");
-                           // Handle the error as needed, e.g., show an error message to the user
-                         }
-                         //viewModel.updatevalue();
-                         //viewModel.navigateTouploadMeeting();
-                       },
-                     ),
-                     verticalSpaceSmall,
-                   
-                     Padding(
-                       padding: const EdgeInsets.only(left:300),
-                       child: TextButton(onPressed: (){
-                         Navigator.pop(context, DialogResponse(confirmed: true));
-                       }, child: Text("Create",style: TextStyle(color: Color.fromARGB(255, 74, 7, 151)),)),
-                     ),
-                     verticalSpaceSmall,
+                      child: Image(
+                        image: AssetImage(filepic),
+                        width: 130,
+                        height: 130,
+                      ),
+                    ),
+
+                    verticalSpaceMedium,
+                    const Padding(
+                      padding: EdgeInsets.only(left: 110, right: 110),
+                      child: Mytextfield(
+                        title: "Enter the ProjectName",
+                        value: 30,
+                      ),
+                    ),
+                    verticalSpaceMedium,
+                    Button(
+                      title: "Upload  Meeting",
+                      onTap: () async {
+                        try {
+                          await viewModel.speechtotextservice
+                              .uploadAudioFile(context);
+                        } catch (e) {
+                          print("Error uploading audio file: $e");
+                          // Handle the error as needed, e.g., show an error message to the user
+                        }
+                        //viewModel.updatevalue();
+                        //viewModel.navigateTouploadMeeting();
+                      },
+                    ),
+                    verticalSpaceSmall,
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 300),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.pop(
+                                context, DialogResponse(confirmed: true));
+                          },
+                          child: Text(
+                            "Create",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 74, 7, 151)),
+                          )),
+                    ),
+                    verticalSpaceSmall,
                     // const Text("or Drop a file")
-               
-                     // Text(
-                     //   request.description!,
-                     //   style: TextStyle(fontSize: 14, color: kcMediumGrey),
-                     //   maxLines: 3,
-                     //   softWrap: true,
-                     // ),
-                   ],
-                 ),
-               )),
-       
+
+                    // Text(
+                    //   request.description!,
+                    //   style: TextStyle(fontSize: 14, color: kcMediumGrey),
+                    //   maxLines: 3,
+                    //   softWrap: true,
+                    // ),
+                  ],
+                ),
+              )),
+
       // ),
       // actions: [
       //   TextButton(

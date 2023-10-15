@@ -62,7 +62,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 Mytextfield(
                   title: "12345678",
                   ctrl: viewModel.phonectrl,
-                   value: 8.0,
+                  value: 8.0,
                 ),
                 verticalSpaceLarge,
                 Padding(

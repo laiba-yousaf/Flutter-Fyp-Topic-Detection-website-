@@ -10,20 +10,19 @@ import '../aboutus/aboutus_view.dart';
 class HomePageShowViewModel extends BaseViewModel {
   bool check = false;
   final navigationService = locator<NavigationService>();
-   final dialogService = locator<DialogService>();
-   final speechtotextservice = locator<SpeechToTextService>();
+  final dialogService = locator<DialogService>();
+  final speechtotextservice = locator<SpeechToTextService>();
 
   void updatevalue() {
     check = true;
     notifyListeners();
   }
 
-   void showDialog() {
+  void showDialog() {
     dialogService.showCustomDialog(
       variant: DialogType.infoAlert,
       title: 'Stacked Rocks!',
       description: 'Give stacked  stars on Github',
     );
   }
-
 }

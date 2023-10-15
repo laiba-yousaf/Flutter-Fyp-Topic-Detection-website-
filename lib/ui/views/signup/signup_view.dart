@@ -53,7 +53,7 @@ class SignupView extends StackedView<SignupViewModel> {
 
                     verticalSpaceLarge,
                     Mytextfield(
-                       value: 8.0,
+                      value: 8.0,
                       title: "Name",
                       ctrl: viewModel.namectrl,
                       prefix: Icon(
@@ -71,7 +71,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       title: "Email",
                       ctrl: viewModel.emailctrl,
-                       value: 8.0,
+                      value: 8.0,
                       prefix: Icon(
                         Icons.email,
                         size: 16,
@@ -85,7 +85,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     ),
                     verticalSpaceSmall,
                     Mytextfield(
-                       value: 8.0,
+                      value: 8.0,
                       title: "Phone",
                       ctrl: viewModel.emailctrl,
                       prefix: Icon(
@@ -101,7 +101,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     ),
                     verticalSpaceSmall,
                     Mytextfield(
-                       value: 8.0,
+                      value: 8.0,
                       title: "Password",
                       ctrl: viewModel.passctrl,
                       suffix: GestureDetector(
@@ -129,7 +129,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     ),
                     verticalSpaceSmall,
                     Mytextfield(
-                       value: 8.0,
+                      value: 8.0,
                       title: "Confirm Password",
                       ctrl: viewModel.conpassctrl,
                       prefix: const Icon(
