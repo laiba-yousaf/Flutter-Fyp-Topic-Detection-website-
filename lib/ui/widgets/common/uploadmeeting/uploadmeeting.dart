@@ -61,9 +61,9 @@ class Uploadmeeting extends StackedView<UploadmeetingModel> {
             ),
             verticalSpaceMedium,
             Button(
-                 textColor: kcVeryLightGrey,
+              textColor: kcVeryLightGrey,
               title: "Upload  Meeting",
-               Color:kcPrimaryColor,
+              Color: kcPrimaryColor,
               height: screenHeight(context) * 0.06,
               width: quarterScreenWidth(context) * 0.5,
               onTap: () {},

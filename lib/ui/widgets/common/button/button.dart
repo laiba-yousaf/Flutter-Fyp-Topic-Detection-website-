@@ -12,8 +12,8 @@ class Button extends StackedView<ButtonModel> {
   final double width;
   final double height;
   final Color;
-   final textColor;
-  const Button( {
+  final textColor;
+  const Button({
     super.key,
     this.title,
     this.onTap,
@@ -22,7 +22,6 @@ class Button extends StackedView<ButtonModel> {
     required this.Color,
     required this.width,
     required this.height,
-
   });
 
   @override
@@ -48,9 +47,10 @@ class Button extends StackedView<ButtonModel> {
                 )
               : Text(
                   title!,
-                  style:  TextStyle(
-                      fontSize: 14, color:textColor,
-                      ),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: textColor,
+                  ),
                 ),
         ),
       ),

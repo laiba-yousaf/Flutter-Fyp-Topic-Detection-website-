@@ -67,10 +67,10 @@ class InfoAlertDialogModel extends BaseViewModel {
                     ),
                     verticalSpaceLarge,
                     Button(
-                         textColor: kcVeryLightGrey,
-                       Color:kcPrimaryColor,
-                       height: screenHeight(context) * 0.06,
-              width: quarterScreenWidth(context) * 0.5,
+                      textColor: kcVeryLightGrey,
+                      Color: kcPrimaryColor,
+                      height: screenHeight(context) * 0.06,
+                      width: quarterScreenWidth(context) * 0.5,
                       title: "Upload  Meeting",
                       onTap: () async {
                         try {

@@ -32,9 +32,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 switch (viewModel.controller.selectedIndex) {
                   case 0:
                     print("checkvalue,${viewModel1.check}");
-                    return 
-                     
-                         CreateProject();
+                    return CreateProject();
 
                   // case 1:
                   //   return UploadmeetingView();

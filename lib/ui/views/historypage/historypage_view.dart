@@ -158,8 +158,8 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                       padding: const EdgeInsets.only(
                                           left: 400, bottom: 20),
                                       child: Button(
-                                           textColor: kcVeryLightGrey,
-                                         Color:kcPrimaryColor,
+                                        textColor: kcVeryLightGrey,
+                                        Color: kcPrimaryColor,
                                         height: screenHeight(context) * 0.06,
                                         width:
                                             quarterScreenWidth(context) * 0.5,

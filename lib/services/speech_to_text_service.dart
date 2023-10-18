@@ -1,14 +1,14 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
 
 class SpeechToTextService {
   Future<List<dynamic>> uploadAudioFile(
       List<int> fileBytes, String fileName) async {
     String apiUrl = "http://202.142.147.3:5008/ClE_ASR";
-     List<dynamic> uploadResult = [];
+    List<dynamic> uploadResult = [];
     // Create a multipart request
     var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
 
@@ -28,7 +28,7 @@ class SpeechToTextService {
     if (response.statusCode == 200) {
       var responseBody = await response.stream.bytesToString();
       var lines = responseBody.split('\n');
-       
+
       // Extract and concatenate Urdu text
       var urduText = '';
       for (var line in lines) {
@@ -39,20 +39,19 @@ class SpeechToTextService {
           }
         }
       }
-        uploadResult = [
+      uploadResult = [
         fileName,
         //fileBytes,
         urduText,
         FieldValue.serverTimestamp(), // Store the timestamp as a string
       ];
-     
+
       // Print the extracted Urdu text
       print(urduText);
-      
-    //  print("filename is ${uploadResult[2]}");
+
+      //  print("filename is ${uploadResult[2]}");
 
       // Store the extracted Urdu text and file name in Firebase Firestore
-
 
       // final firestore = FirebaseFirestore.instance;
       // DocumentReference docRef =
@@ -66,8 +65,6 @@ class SpeechToTextService {
       // String documentId = docRef.id;
       // await docRef.update({'id': documentId});
 
-
-
       // Write the extracted Urdu text to a file
       final blob = html.Blob([urduText]);
       final url = html.Url.createObjectUrlFromBlob(blob);
@@ -77,7 +74,7 @@ class SpeechToTextService {
         ..click();
 
       html.Url.revokeObjectUrl(url);
-     
+
       // You can return the extracted Urdu text or use it as needed
       //return urduText;
     } else {

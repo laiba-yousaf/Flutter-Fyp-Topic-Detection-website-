@@ -61,15 +61,15 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
             padding: EdgeInsets.only(top: 120),
             child: Column(
               children: [
-             Mytextfield(
+                Mytextfield(
                   title: "Enter project name",
-                    textfiledwidth: quarterScreenWidth(context),
+                  textfiledwidth: quarterScreenWidth(context),
                   value: 30,
                 ),
                 verticalSpaceMedium,
-                 Mytextfield(
+                Mytextfield(
                   title: "Enter file type audio/video",
-                    textfiledwidth: quarterScreenWidth(context),
+                  textfiledwidth: quarterScreenWidth(context),
                   value: 30,
                 ),
                 verticalSpaceMedium,
@@ -82,11 +82,11 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       style: TextStyle(color: Colors.purple),
                     )),
                 verticalSpaceMassive,
-           Button(
-            textColor: kcVeryLightGrey,
-             Color:kcPrimaryColor,
-                   height: screenHeight(context) * 0.06,
-              width: quarterScreenWidth(context) * 0.5,
+                Button(
+                  textColor: kcVeryLightGrey,
+                  Color: kcPrimaryColor,
+                  height: screenHeight(context) * 0.06,
+                  width: quarterScreenWidth(context) * 0.5,
                   title: "Create",
                 )
               ],

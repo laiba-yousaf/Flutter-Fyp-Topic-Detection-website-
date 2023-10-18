@@ -156,7 +156,7 @@ class SignupView extends StackedView<SignupViewModel> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Confirm password is required";
-                        }                        
+                        }
                         return null; // Return null for no error
                       },
                     ),

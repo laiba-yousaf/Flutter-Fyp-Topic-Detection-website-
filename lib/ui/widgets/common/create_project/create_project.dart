@@ -164,7 +164,6 @@ class CreateProject extends StackedView<CreateProjectModel> {
                               if (viewModel.formKey.currentState!.validate()) {
                                 //viewModel.setloadingvalue(true);
                                 viewModel.uploadFile(context);
-                              
                               }
                             },
                           ),

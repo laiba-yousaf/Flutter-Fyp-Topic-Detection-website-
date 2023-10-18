@@ -37,13 +37,11 @@ class Mytextfield extends StackedView<MytextfieldModel> {
     MytextfieldModel viewModel,
     Widget? child,
   ) {
-   
     return SizedBox(
       width: textfiledwidth,
       child: TextFormField(
-        
-      // maxcond != null && maxcond! ? maxlines : 1,
-      maxLines: maxcond != null && maxcond! ? maxlines: 1,                                                                
+        // maxcond != null && maxcond! ? maxlines : 1,
+        maxLines: maxcond != null && maxcond! ? maxlines : 1,
         controller: ctrl,
         // expands: false,
 

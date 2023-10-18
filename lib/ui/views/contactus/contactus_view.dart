@@ -71,8 +71,8 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 Padding(
                   padding: const EdgeInsets.only(left: 100),
                   child: Button(
-                       textColor: kcVeryLightGrey,
-                     Color:kcPrimaryColor,
+                    textColor: kcVeryLightGrey,
+                    Color: kcPrimaryColor,
                     height: screenHeight(context) * 0.06,
                     width: quarterScreenWidth(context) * 0.5,
                     title: "Submit",

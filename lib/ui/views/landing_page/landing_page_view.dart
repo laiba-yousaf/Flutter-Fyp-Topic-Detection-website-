@@ -174,10 +174,10 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                       height: 40,
                                     ),
                                     Button(
-                                         textColor: kcVeryLightGrey,
-                                       Color:kcPrimaryColor,
-                                       height: screenHeight(context) * 0.06,
-              width: quarterScreenWidth(context) * 0.5,
+                                      textColor: kcVeryLightGrey,
+                                      Color: kcPrimaryColor,
+                                      height: screenHeight(context) * 0.06,
+                                      width: quarterScreenWidth(context) * 0.5,
                                       title: "Get Started",
                                       onTap: () {
                                         viewModel.navigateTOSignin();

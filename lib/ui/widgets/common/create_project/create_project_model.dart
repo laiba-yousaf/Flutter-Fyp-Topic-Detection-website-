@@ -12,7 +12,7 @@ class CreateProjectModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final toastService = locator<ToastmessageService>();
   List<dynamic> ExtractedList = [];
-   
+
   List<String> fileTypes = [
     ".acc",
     "flac",
@@ -43,9 +43,8 @@ class CreateProjectModel extends BaseViewModel {
     loading = value;
     notifyListeners();
   }
- 
+
   Future<void> uploadFile(BuildContext context) async {
-    
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.any,
@@ -61,7 +60,7 @@ class CreateProjectModel extends BaseViewModel {
           fileName,
         );
         //print("filebytes ${ExtractedList[1]}");
-       
+
         //print(extractedText);
       } else {
         setloadingvalue(false);
