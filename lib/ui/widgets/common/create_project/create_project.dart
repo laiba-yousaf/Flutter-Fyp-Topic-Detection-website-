@@ -17,7 +17,7 @@ class CreateProject extends StackedView<CreateProjectModel> {
     Widget? child,
   ) {
     return Padding(
-      padding: EdgeInsets.only(left: 50, top: 100),
+      padding: const EdgeInsets.only(left: 50, top: 100),
       child: Form(
         key: viewModel.formKey,
         child: Column(
@@ -43,6 +43,7 @@ class CreateProject extends StackedView<CreateProjectModel> {
                         if (value!.isEmpty) {
                           return "Project title is required";
                         }
+                        return null;
                       },
                       value: 5,
                     ),
@@ -68,6 +69,7 @@ class CreateProject extends StackedView<CreateProjectModel> {
                           if (value == null || value.isEmpty) {
                             return "File Type is required";
                           }
+                          return null;
                         },
                         items: viewModel.fileTypes.map((fileType) {
                           return DropdownMenuItem<String>(

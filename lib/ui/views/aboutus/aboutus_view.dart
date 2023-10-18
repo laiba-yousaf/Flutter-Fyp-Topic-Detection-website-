@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/aboutus/cardwidget.dart';
-
 import 'aboutus_viewmodel.dart';
 
 class AboutusView extends StackedView<AboutusViewModel> {

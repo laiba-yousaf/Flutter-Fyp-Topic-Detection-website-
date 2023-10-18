@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 
@@ -55,11 +56,11 @@ class CreateProjectModel extends BaseViewModel {
         final fileBytes = platformFile.bytes!;
         final fileName = platformFile.name;
         setloadingvalue(true);
-        final ExtractedList = await speechtotextservice.uploadAudioFile(
+        final extractedList = await speechtotextservice.uploadAudioFile(
           fileBytes,
           fileName,
         );
-        //print("filebytes ${ExtractedList[1]}");
+        log("filebytes ${extractedList[1]}");
 
         //print(extractedText);
       } else {

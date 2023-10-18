@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 
@@ -21,7 +22,6 @@ Widget googleButton(BuildContext context, String iconPath, String title,
   double textFieldWidth = MediaQuery.of(context).size.width >= 768
       ? quarterScreenWidth(context)
       : halfScreenWidth(context) * 1.6;
-  String? userId;
   Future<void> handleGoogleSignIn() async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
@@ -39,6 +39,7 @@ Widget googleButton(BuildContext context, String iconPath, String title,
         final UserCredential authResult =
             await _auth.signInWithCredential(credential);
         final User user = authResult.user!;
+        log(user.toString());
         // //  final SharedPreferences prefs = await SharedPreferences.getInstance();
         // await prefs.setString('userid', userId!);
         viewModel1.toastService.toastmessage("Login Succsessfully");
