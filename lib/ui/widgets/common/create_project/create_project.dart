@@ -117,19 +117,20 @@ class CreateProject extends StackedView<CreateProjectModel> {
                           border: Border.all(
                             color: const Color.fromARGB(255, 163, 160, 160),
                           )),
-                      child: viewModel.ExtractedList.isNotEmpty
+                      child: viewModel.extractedList.isNotEmpty
                           ? ListView.builder(
-                              itemCount: viewModel.ExtractedList.length,
+                              itemCount: viewModel.extractedList.length,
                               itemBuilder: (context, index) {
                                 return ListTile(
                                   leading: Text((index + 1)
                                       .toString()), // Auto-incremented number
-                                  title: Text(viewModel.ExtractedList[index]
+                                  title: Text(viewModel.extractedList[index]
                                       [0]), // File name
-                                  subtitle: Text(
-                                      DateFormat('yyyy-MM-dd HH:mm:ss').format(
-                                          viewModel.ExtractedList[index][2]
-                                              .toDate())), // Timestamp
+                                  subtitle: Text(viewModel.extractedList[index][2].toString()
+                                      // DateFormat('yyyy-MM-dd HH:mm:ss').format(
+                                      //     viewModel.extractedList[index][2]
+                                      //         .toDate())
+                                              ), // Timestamp
                                 );
                               },
                             )
@@ -158,7 +159,7 @@ class CreateProject extends StackedView<CreateProjectModel> {
                           Button(
                             textColor: kcDarkGreyColor,
                             title: "Upload File",
-                            loading: viewModel.loading,
+                            loading: viewModel.isBusy,
                             height: screenHeight(context) * 0.04,
                             Color: kcVeryLightGrey,
                             width: quarterScreenWidth(context) * 0.3,

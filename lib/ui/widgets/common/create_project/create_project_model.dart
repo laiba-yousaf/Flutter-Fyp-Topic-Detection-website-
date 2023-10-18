@@ -12,7 +12,7 @@ class CreateProjectModel extends BaseViewModel {
   final speechtotextservice = locator<SpeechToTextService>();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final toastService = locator<ToastmessageService>();
-  List<dynamic> ExtractedList = [];
+  List<dynamic> extractedList = [];
 
   List<String> fileTypes = [
     ".acc",
@@ -38,13 +38,6 @@ class CreateProjectModel extends BaseViewModel {
     notifyListeners();
   }
 
-  bool loading = false;
-
-  setloadingvalue(bool value) {
-    loading = value;
-    notifyListeners();
-  }
-
   Future<void> uploadFile(BuildContext context) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -55,22 +48,21 @@ class CreateProjectModel extends BaseViewModel {
         final platformFile = result.files.first;
         final fileBytes = platformFile.bytes!;
         final fileName = platformFile.name;
-        setloadingvalue(true);
-        final extractedList = await speechtotextservice.uploadAudioFile(
+        setBusy(true);
+        extractedList.add(await speechtotextservice.uploadAudioFile(
           fileBytes,
           fileName,
-        );
+        ));
+        notifyListeners();
         log("filebytes ${extractedList[1]}");
-
         //print(extractedText);
       } else {
-        setloadingvalue(false);
+        setBusy(false);
         toastService.toastmessage("No .wav file selected.");
-        print("No .wav file selected.");
-        // Handle the case where no file is selected
+        log("No .wav file selected.");
       }
     } catch (e) {
-      setloadingvalue(false);
+      setBusy(false);
       toastService.toastmessage(" $e");
       print("Error: $e");
       // Handle the error as needed

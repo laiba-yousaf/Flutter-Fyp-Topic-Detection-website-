@@ -35,7 +35,7 @@ class SpeechToTextService {
         if (line.contains('spk')) {
           var parts = line.split(' ');
           if (parts.length >= 5) {
-            urduText += parts.sublist(5).join(' ') + '\n';
+            urduText += '${parts.sublist(5).join(' ')}\n';
           }
         }
       }
