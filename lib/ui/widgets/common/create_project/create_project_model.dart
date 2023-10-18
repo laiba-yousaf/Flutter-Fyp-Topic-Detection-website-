@@ -48,14 +48,14 @@ class CreateProjectModel extends BaseViewModel {
         final platformFile = result.files.first;
         final fileBytes = platformFile.bytes!;
         final fileName = platformFile.name;
+        int sizeInBytes = result.files.length;
+        double sizeInMb = sizeInBytes / (1024 * 1024);
         setBusy(true);
-        extractedList.add(await speechtotextservice.uploadAudioFile(
-          fileBytes,
-          fileName,
-        ));
+        extractedList.add(
+          await speechtotextservice.uploadAudioFile(
+              fileBytes, fileName, sizeInMb),
+        );
         notifyListeners();
-        log("filebytes ${extractedList[1]}");
-        //print(extractedText);
       } else {
         setBusy(false);
         toastService.toastmessage("No .wav file selected.");

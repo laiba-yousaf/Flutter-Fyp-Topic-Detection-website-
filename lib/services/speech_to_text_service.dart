@@ -2,16 +2,14 @@
 import 'dart:html' as html;
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SpeechToTextService {
-  Future<List<dynamic>> uploadAudioFile(
-      List<int> fileBytes, String fileName) async {
+  Future<Map> uploadAudioFile(
+      List<int> fileBytes, String fileName, double size) async {
     String apiUrl = "http://202.142.147.3:5008/ClE_ASR";
-    List<dynamic> uploadResult = [];
+    Map uploadResult = {};
     // Create a multipart request
     var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
-
     // Attach the audio file to the request
     request.files.add(
       http.MultipartFile.fromBytes(
@@ -39,12 +37,11 @@ class SpeechToTextService {
           }
         }
       }
-      uploadResult = [
-        fileName,
-        //fileBytes,
-        urduText,
-        FieldValue.serverTimestamp(), // Store the timestamp as a string
-      ];
+      uploadResult = {
+        "fileName": fileName,
+        "size" : size,
+        "urduText": urduText,
+      };
 
       // Print the extracted Urdu text
       print(urduText);

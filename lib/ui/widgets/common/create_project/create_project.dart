@@ -125,8 +125,8 @@ class CreateProject extends StackedView<CreateProjectModel> {
                                   leading: Text((index + 1)
                                       .toString()), // Auto-incremented number
                                   title: Text(viewModel.extractedList[index]
-                                      [0]), // File name
-                                  subtitle: Text(viewModel.extractedList[index][2].toString()
+                                      ["fileName"]), // File name
+                                  subtitle: Text(viewModel.extractedList[index]["size"].toString()
                                       // DateFormat('yyyy-MM-dd HH:mm:ss').format(
                                       //     viewModel.extractedList[index][2]
                                       //         .toDate())
