@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
+import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 import 'package:topicdetectionweb/ui/widgets/common/mytextfield/mytextfield.dart';
 import '../../../common/app_colors.dart';
-import 'create_project_model.dart';
 
-class CreateProject extends StackedView<CreateProjectModel> {
+class CreateProject extends ViewModelWidget<HomeViewModel> {
   const CreateProject({super.key});
 
   @override
-  Widget builder(
+  Widget build(
     BuildContext context,
-    CreateProjectModel viewModel,
-    Widget? child,
+    HomeViewModel viewModel,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 50, top: 100),
@@ -126,11 +124,13 @@ class CreateProject extends StackedView<CreateProjectModel> {
                                       .toString()), // Auto-incremented number
                                   title: Text(viewModel.extractedList[index]
                                       ["fileName"]), // File name
-                                  subtitle: Text(viewModel.extractedList[index]["size"].toString()
+                                  subtitle: Text(viewModel.extractedList[index]
+                                              ["size"]
+                                          .toString()
                                       // DateFormat('yyyy-MM-dd HH:mm:ss').format(
                                       //     viewModel.extractedList[index][2]
                                       //         .toDate())
-                                              ), // Timestamp
+                                      ), // Timestamp
                                 );
                               },
                             )
@@ -177,6 +177,7 @@ class CreateProject extends StackedView<CreateProjectModel> {
                             width: quarterScreenWidth(context) * 0.3,
                             Color: kcVeryLightGrey,
                             textColor: kcDarkGreyColor,
+                            onTap: viewModel.onProceed,
                           ),
                         ],
                       ),
@@ -191,10 +192,4 @@ class CreateProject extends StackedView<CreateProjectModel> {
       ),
     );
   }
-
-  @override
-  CreateProjectModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      CreateProjectModel();
 }

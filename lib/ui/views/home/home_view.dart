@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
+import 'package:topicdetectionweb/ui/views/home/widgets/create_project.dart';
 import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_viewmodel.dart';
-import 'package:topicdetectionweb/ui/widgets/common/create_project/create_project.dart';
 import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/sidebarx_widget.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -28,7 +28,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 switch (viewModel.controller.selectedIndex) {
                   case 0:
                     print("checkvalue,${viewModel1.check}");
-                    return CreateProject();
+                    return const CreateProject();
 
                   // case 1:
                   //   return UploadmeetingView();
@@ -37,7 +37,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   // case 2:
                   //   return ContactusView();
                   case 1:
-                    return HistorypageView();
+                    return const HistorypageView();
                   case 2:
                     viewModel.authservice.logout();
                     return viewModel.navigationLandingPage();
