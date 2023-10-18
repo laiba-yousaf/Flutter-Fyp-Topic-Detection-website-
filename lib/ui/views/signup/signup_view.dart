@@ -56,7 +56,8 @@ class SignupView extends StackedView<SignupViewModel> {
                       value: 8.0,
                       title: "Name",
                       ctrl: viewModel.namectrl,
-                      prefix: Icon(
+                      textfiledwidth: quarterScreenWidth(context),
+                      prefix: const Icon(
                         Icons.person,
                         size: 16,
                       ),
@@ -71,8 +72,9 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       title: "Email",
                       ctrl: viewModel.emailctrl,
+                      textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
-                      prefix: Icon(
+                      prefix: const Icon(
                         Icons.email,
                         size: 16,
                       ),
@@ -85,10 +87,11 @@ class SignupView extends StackedView<SignupViewModel> {
                     ),
                     verticalSpaceSmall,
                     Mytextfield(
+                      textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
                       title: "Phone",
                       ctrl: viewModel.emailctrl,
-                      prefix: Icon(
+                      prefix: const Icon(
                         Icons.phone,
                         size: 16,
                       ),
@@ -104,6 +107,7 @@ class SignupView extends StackedView<SignupViewModel> {
                       value: 8.0,
                       title: "Password",
                       ctrl: viewModel.passctrl,
+                      textfiledwidth: quarterScreenWidth(context),
                       suffix: GestureDetector(
                         onTap: () {
                           viewModel.togglePasswordVisibility();
@@ -116,7 +120,7 @@ class SignupView extends StackedView<SignupViewModel> {
                         ),
                       ),
                       obscureText: viewModel.obsecure,
-                      prefix: Icon(
+                      prefix: const Icon(
                         Icons.password,
                         size: 16,
                       ),
@@ -131,6 +135,7 @@ class SignupView extends StackedView<SignupViewModel> {
                     Mytextfield(
                       value: 8.0,
                       title: "Confirm Password",
+                      textfiledwidth: quarterScreenWidth(context),
                       ctrl: viewModel.conpassctrl,
                       prefix: const Icon(
                         Icons.password,
@@ -151,14 +156,18 @@ class SignupView extends StackedView<SignupViewModel> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Confirm password is required";
-                        }
+                        }                        
                         return null; // Return null for no error
                       },
                     ),
                     verticalSpaceLarge,
                     Button(
+                        textColor: kcVeryLightGrey,
                         title: "Sign up",
+                        Color: kcPrimaryColor,
                         loading: viewModel.loading,
+                        height: screenHeight(context) * 0.06,
+                        width: quarterScreenWidth(context) * 0.5,
                         onTap: () {
                           //viewModel.navigateTOSignin();
                           if (viewModel.formKey.currentState!.validate()) {

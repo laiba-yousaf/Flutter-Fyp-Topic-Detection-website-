@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
-import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/customesidebar.dart';
-
 import 'sidebarx_widget_model.dart';
 
 class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
@@ -37,7 +35,10 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
           ),
           iconTheme: IconThemeData(color: Colors.white)),
       items: const [
-        SidebarXItem(icon: Icons.upload_file, label: "Projects"),
+        SidebarXItem(
+          label: "Projects",
+          icon: Icons.upload_file,
+        ),
         SidebarXItem(icon: Icons.history, label: "History"),
         SidebarXItem(icon: Icons.logout, label: "Logout"),
       ],

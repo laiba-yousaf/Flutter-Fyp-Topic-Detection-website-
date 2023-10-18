@@ -46,6 +46,7 @@ class SigninView extends StackedView<SigninViewModel> {
                     verticalSpaceMedium,
                     Mytextfield(
                       title: "Email",
+                        textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
                       prefix: Icon(
                         Icons.email,
@@ -62,6 +63,7 @@ class SigninView extends StackedView<SigninViewModel> {
                     verticalSpaceSmall,
                     Mytextfield(
                       title: "Password",
+                        textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
                       prefix: Icon(
                         Icons.password,
@@ -108,7 +110,12 @@ class SigninView extends StackedView<SigninViewModel> {
                     ),
                     verticalSpaceLarge,
                     Button(
+                         textColor: kcVeryLightGrey,
+                         loading: viewModel.loading1,
                         title: "Login",
+                         Color:kcPrimaryColor,
+                         height: screenHeight(context) * 0.06,
+              width: quarterScreenWidth(context) * 0.5,
                         onTap: () {
                           if (viewModel.formKey.currentState!.validate()) {
                             viewModel.setloading(true);

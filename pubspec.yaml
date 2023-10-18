@@ -24,6 +24,7 @@ dependencies:
   http: ^1.1.0
   file_picker: ^5.5.0
   dio: ^5.3.3
+  intl: ^0.18.1
   ffmpeg_wasm: ^1.0.1
   path: ^1.8.3
 

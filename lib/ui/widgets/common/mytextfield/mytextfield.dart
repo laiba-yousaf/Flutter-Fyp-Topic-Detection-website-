@@ -13,6 +13,8 @@ class Mytextfield extends StackedView<MytextfieldModel> {
   final bool? maxcond;
   final Widget? prefix;
   final double? value;
+  final double textfiledwidth;
+
   final FormFieldValidator<String>? validator;
 
   const Mytextfield(
@@ -25,6 +27,7 @@ class Mytextfield extends StackedView<MytextfieldModel> {
       this.maxlines,
       this.validator,
       this.value,
+      required this.textfiledwidth,
       this.prefix})
       : super(key: key);
 
@@ -34,15 +37,13 @@ class Mytextfield extends StackedView<MytextfieldModel> {
     MytextfieldModel viewModel,
     Widget? child,
   ) {
-    double hintFontSize =
-        MediaQuery.of(context).size.width >= 768 ? 14.0 : 12.0;
-    double textFieldWidth = MediaQuery.of(context).size.width >= 768
-        ? quarterScreenWidth(context)
-        : halfScreenWidth(context) * 1.6;
+   
     return SizedBox(
-      width: textFieldWidth,
+      width: textfiledwidth,
       child: TextFormField(
-        maxLines: maxcond != null && maxcond! ? maxlines : 1,
+        
+      // maxcond != null && maxcond! ? maxlines : 1,
+      maxLines: maxcond != null && maxcond! ? maxlines: 1,                                                                
         controller: ctrl,
         // expands: false,
 
@@ -54,7 +55,7 @@ class Mytextfield extends StackedView<MytextfieldModel> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(value!)),
             ),
-            hintStyle: TextStyle(fontSize: hintFontSize),
+            hintStyle: TextStyle(fontSize: 14),
             suffixIcon: suffix,
             prefixIcon: prefix),
         validator: validator,

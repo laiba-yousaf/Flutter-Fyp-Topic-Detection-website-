@@ -9,7 +9,21 @@ class Button extends StackedView<ButtonModel> {
   final String? title;
   final VoidCallback? onTap;
   final bool loading;
-  const Button({super.key, this.title, this.onTap, this.loading = false});
+  final double width;
+  final double height;
+  final Color;
+   final textColor;
+  const Button( {
+    super.key,
+    this.title,
+    this.onTap,
+    this.loading = false,
+    required this.textColor,
+    required this.Color,
+    required this.width,
+    required this.height,
+
+  });
 
   @override
   Widget builder(
@@ -17,17 +31,14 @@ class Button extends StackedView<ButtonModel> {
     ButtonModel viewModel,
     Widget? child,
   ) {
-    double textFieldWidth = screenWidth(context) >= 768
-        ? quarterScreenWidth(context) * 0.5
-        : halfScreenWidth(context) * 1.6;
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: screenHeight(context) * 0.06,
-        width: textFieldWidth,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25.0),
-          color: kcPrimaryColor,
+          color: Color,
         ),
         child: Center(
           child: loading
@@ -37,8 +48,9 @@ class Button extends StackedView<ButtonModel> {
                 )
               : Text(
                   title!,
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 253, 251, 251)),
+                  style:  TextStyle(
+                      fontSize: 14, color:textColor,
+                      ),
                 ),
         ),
       ),

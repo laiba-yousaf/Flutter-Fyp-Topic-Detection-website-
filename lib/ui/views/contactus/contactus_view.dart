@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactwidget.dart';
@@ -54,6 +55,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 Mytextfield(
                   title: "example@gmail.com",
                   ctrl: viewModel.mailctrl,
+                  textfiledwidth: quarterScreenWidth(context),
                   value: 8.0,
                 ),
                 verticalSpaceSmall,
@@ -61,6 +63,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 verticalSpaceSmall,
                 Mytextfield(
                   title: "12345678",
+                  textfiledwidth: quarterScreenWidth(context),
                   ctrl: viewModel.phonectrl,
                   value: 8.0,
                 ),
@@ -68,6 +71,10 @@ class ContactusView extends StackedView<ContactusViewModel> {
                 Padding(
                   padding: const EdgeInsets.only(left: 100),
                   child: Button(
+                       textColor: kcVeryLightGrey,
+                     Color:kcPrimaryColor,
+                    height: screenHeight(context) * 0.06,
+                    width: quarterScreenWidth(context) * 0.5,
                     title: "Submit",
                     onTap: () {},
                   ),

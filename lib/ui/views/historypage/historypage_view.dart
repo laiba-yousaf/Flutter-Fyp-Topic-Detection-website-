@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/historypage/filewidget.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
@@ -157,6 +158,11 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                       padding: const EdgeInsets.only(
                                           left: 400, bottom: 20),
                                       child: Button(
+                                           textColor: kcVeryLightGrey,
+                                         Color:kcPrimaryColor,
+                                        height: screenHeight(context) * 0.06,
+                                        width:
+                                            quarterScreenWidth(context) * 0.5,
                                         title: "Export",
                                         onTap: () {},
                                       ),

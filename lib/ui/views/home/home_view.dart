@@ -3,6 +3,8 @@ import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart';
+import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_viewmodel.dart';
+import 'package:topicdetectionweb/ui/widgets/common/create_project/create_project.dart';
 import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/sidebarx_widget.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -15,6 +17,7 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Builder(builder: (context) {
+      HomePageShowViewModel viewModel1 = HomePageShowViewModel();
       return Scaffold(
         key: viewModel.key,
 
@@ -28,7 +31,10 @@ class HomeView extends StackedView<HomeViewModel> {
               builder: (context, child) {
                 switch (viewModel.controller.selectedIndex) {
                   case 0:
-                    return HomePageShowView();
+                    print("checkvalue,${viewModel1.check}");
+                    return 
+                     
+                         CreateProject();
 
                   // case 1:
                   //   return UploadmeetingView();

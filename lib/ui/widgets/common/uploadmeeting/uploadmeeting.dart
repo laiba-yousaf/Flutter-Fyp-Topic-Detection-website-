@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../../common/app_colors.dart';
 import '../../../common/app_strings.dart';
 import '../../../common/ui_helpers.dart';
 import '../button/button.dart';
@@ -60,7 +61,11 @@ class Uploadmeeting extends StackedView<UploadmeetingModel> {
             ),
             verticalSpaceMedium,
             Button(
+                 textColor: kcVeryLightGrey,
               title: "Upload  Meeting",
+               Color:kcPrimaryColor,
+              height: screenHeight(context) * 0.06,
+              width: quarterScreenWidth(context) * 0.5,
               onTap: () {},
             ),
             verticalSpaceSmall,

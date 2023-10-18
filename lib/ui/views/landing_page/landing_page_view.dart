@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
@@ -173,6 +174,10 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                       height: 40,
                                     ),
                                     Button(
+                                         textColor: kcVeryLightGrey,
+                                       Color:kcPrimaryColor,
+                                       height: screenHeight(context) * 0.06,
+              width: quarterScreenWidth(context) * 0.5,
                                       title: "Get Started",
                                       onTap: () {
                                         viewModel.navigateTOSignin();
