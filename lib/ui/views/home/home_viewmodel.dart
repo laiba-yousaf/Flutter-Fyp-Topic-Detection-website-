@@ -29,6 +29,11 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  setPage(val) {
+    controller.selectIndex(val);
+    notifyListeners();
+  }
+
   navigationLandingPage() {
     _navigationService.navigateToLandingPageView();
   }

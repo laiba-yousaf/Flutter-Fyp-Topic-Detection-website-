@@ -7,7 +7,8 @@ import 'package:topicdetectionweb/ui/widgets/common/mytextfield/mytextfield.dart
 import '../../../common/app_colors.dart';
 
 class CreateProject extends ViewModelWidget<HomeViewModel> {
-  const CreateProject({super.key});
+  final HomeViewModel homeViewModel;
+  const CreateProject({required this.homeViewModel, super.key});
 
   @override
   Widget build(
@@ -23,12 +24,11 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
           children: [
             const Text("Create Project",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-
             verticalSpaceLarge,
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text("Title of Project",
                         style: TextStyle(
@@ -46,29 +46,21 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                       },
                       value: 5,
                     ),
-                  ],
-                ),
-                horizontalSpaceMedium,
-              ],
-            ),
-            // 2nd row
-            verticalSpaceMedium,
-
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Description",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold)),
-                    verticalSpaceSmall,
-                    Mytextfield(
-                        maxlines: 10,
-                        value: 5,
-                        maxcond: true,
-                        title: "Enter Project Description(optional)",
-                        textfiledwidth: thirdScreenWidth(context)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Description",
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold)),
+                        verticalSpaceSmall,
+                        Mytextfield(
+                            maxlines: 10,
+                            value: 5,
+                            maxcond: true,
+                            title: "Enter Project Description(optional)",
+                            textfiledwidth: thirdScreenWidth(context)),
+                      ],
+                    ),
                   ],
                 ),
                 horizontalSpaceMedium,
@@ -79,7 +71,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                     verticalSpaceSmall,
                     Container(
                       width: thirdScreenWidth(context),
-                      height: 150,
+                      height: quarterScreenWidth(context),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2),
                           border: Border.all(
@@ -146,7 +138,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ],

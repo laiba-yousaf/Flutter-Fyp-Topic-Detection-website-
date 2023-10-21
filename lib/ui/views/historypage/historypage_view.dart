@@ -1,16 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-import 'package:topicdetectionweb/ui/views/historypage/widget/filewidget.dart';
+import 'package:topicdetectionweb/ui/views/historypage/project_card.dart';
 import 'package:topicdetectionweb/ui/views/historypage/widget/ProjectDetails.dart';
-import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
-
+import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'historypage_viewmodel.dart';
 
 class HistorypageView extends StackedView<HistorypageViewModel> {
-  const HistorypageView({Key? key}) : super(key: key);
+  final HomeViewModel homeViewModel;
+
+  const HistorypageView({Key? key, required this.homeViewModel})
+      : super(key: key);
   @override
   void onViewModelReady(HistorypageViewModel viewModel) {
     super.onViewModelReady(viewModel);
@@ -26,7 +26,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.all(40.0),
+          padding: const EdgeInsets.all(40.0),
           child: SizedBox(
             height: screenHeight(context),
             width: screenWidth(context) * 0.82,
@@ -36,30 +36,20 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                 padding: const EdgeInsets.only(left: 20, top: 20),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 450),
-                          child: Text(
-                            "History",
-                            style: TextStyle(
-                                fontSize: 19, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        const Spacer(),
-                        Button(
-                            title: "Edit",
-                            height: screenHeight(context) * 0.04,
-                            width: quarterScreenWidth(context) * 0.3,
-                            Color: kcsliderColor,
-                            textColor: kcDarkGreyColor,
-                            onTap: () {}),
-                      ],
+                    const Text(
+                      "History",
+                      style:
+                          TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                     ),
                     const Divider(),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              homeViewModel.setPage(0);
+                            },
+                            child: Text("ok")),
                         Expanded(
                             child: Padding(
                           padding: const EdgeInsets.only(top: 30),
@@ -93,38 +83,9 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                 itemCount: viewModel.firestoreData.length,
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
-                                  final data = viewModel.firestoreData[index];
-                                  print(data);
-                                  final number = index + 1;
-                                  final projectName = data['title'];
-
-                                  final timestamp = data['timestamp'];
-                                  final date =
-                                      (timestamp as Timestamp).toDate();
-
-                                  return GestureDetector(
-                                    onTap: () {
-                                      viewModel.setindex(index);
-                                    },
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 100),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: viewModel
-                                                        .selectedProjectIndex ==
-                                                    index
-                                                ? kcsliderColor
-                                                : Colors.transparent,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: filedata(number.toString(),
-                                              projectName, date.toString()),
-                                        ),
-                                      ),
-                                    ),
+                                  return ProjectCardHistory(
+                                    projectData: viewModel.firestoreData[index],
+                                    index: index,
                                   );
                                 },
                               )
@@ -134,8 +95,9 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                         const Expanded(
                           flex: 1,
                           child: Padding(
-                              padding: EdgeInsets.only(top: 25, right: 20),
-                              child: ProjectDetails()),
+                            padding: EdgeInsets.only(top: 25, right: 20),
+                            child: ProjectDetails(),
+                          ),
                         )
                       ],
                     ),

@@ -8,13 +8,14 @@
 import 'package:flutter/material.dart' as _i11;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i13;
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart' as _i7;
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart'
     as _i8;
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart'
     as _i6;
 import 'package:topicdetectionweb/ui/views/home/home_view.dart' as _i5;
+import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart' as _i12;
 import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart'
     as _i10;
 import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart'
@@ -121,8 +122,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i6.HistorypageView: (data) {
+      final args = data.getArgs<HistorypageViewArguments>(nullOk: false);
       return _i11.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i6.HistorypageView(),
+        builder: (context) => _i6.HistorypageView(
+            key: args.key, homeViewModel: args.homeViewModel),
         settings: data,
       );
     },
@@ -154,11 +157,39 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   List<_i1.RouteDef> get routes => _routes;
+
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+class HistorypageViewArguments {
+  const HistorypageViewArguments({
+    this.key,
+    required this.homeViewModel,
+  });
+
+  final _i11.Key? key;
+
+  final _i12.HomeViewModel homeViewModel;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "homeViewModel": "$homeViewModel"}';
+  }
+
+  @override
+  bool operator ==(covariant HistorypageViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.homeViewModel == homeViewModel;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ homeViewModel.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i13.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -215,14 +246,18 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToHistorypageView([
+  Future<dynamic> navigateToHistorypageView({
+    _i11.Key? key,
+    required _i12.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.historypageView,
+        arguments:
+            HistorypageViewArguments(key: key, homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -341,14 +376,18 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHistorypageView([
+  Future<dynamic> replaceWithHistorypageView({
+    _i11.Key? key,
+    required _i12.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.historypageView,
+        arguments:
+            HistorypageViewArguments(key: key, homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
