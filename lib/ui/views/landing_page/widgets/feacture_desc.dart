@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/landing_page/widgets/feature.dart';
@@ -7,25 +8,21 @@ Widget feature() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      //verticalSpaceMassive,
       verticalSpaceLarge,
       const Text(
         "Features",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 25,
-          color: Colors.purple,
+          color: kcpurpleColor,
         ),
       ),
       verticalSpaceMedium,
-      const Text(
-          "With these features,our website empowers you to efficiently analyze and manage the content of your audio files,"),
+      Text(halfFeatureHeading),
       verticalSpaceSmall,
-      const Text(
-          "enhancing your productivity and understanding of the topics discussed during meetings or conversation"),
+      Text(fullFeatureHeading),
       verticalSpaceMedium,
       Row(
-        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           featurecard(feature1, "Seamless Audio Upload",
               "Our platform offers a user-friendly\nexperience where you can effortlessly\nupload your audio files."),

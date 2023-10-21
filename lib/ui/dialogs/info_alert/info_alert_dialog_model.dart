@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/app/app.locator.dart';
@@ -13,7 +12,6 @@ class InfoAlertDialogModel extends BaseViewModel {
   double previousScale = 1.0;
 
   void copyToClipboard(String text) {
-    // Use the Clipboard class to copy text to the clipboard
     Clipboard.setData(ClipboardData(text: text));
   }
 
@@ -35,12 +33,12 @@ class InfoAlertDialogModel extends BaseViewModel {
 
   void setscale(double detailscale) {
     scale = previousScale * detailscale;
-              if (scale < 1.0) {
-                scale = 1.0;
-              }
-              if (scale > 3.0) {
-                scale = 3.0;
-              }
+    if (scale < 1.0) {
+      scale = 1.0;
+    }
+    if (scale > 3.0) {
+      scale = 3.0;
+    }
     notifyListeners();
   }
 }

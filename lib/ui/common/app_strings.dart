@@ -1,6 +1,4 @@
-const String ksHomeBottomSheetTitle = 'Build Great Apps!';
-const String ksHomeBottomSheetDescription =
-    'Stacked is built to help you build better apps. Give us a chance and we\'ll prove it to you. Check out stacked.filledstacks.com to learn more';
+// assets
 
 String image1 = 'assets/images/nlp slider.jpg';
 String image2 = 'assets/images/nlp slider2.jpg';
@@ -35,3 +33,23 @@ String arrow = 'assets/images/arrow-purple-right.gif';
 String Contact = 'assets/images/contactUs.png';
 String SignUp = 'assets/images/SignUp.png';
 String video = 'assets/images/videoIcon.png';
+
+// strings
+
+String halfBeneifitHeading =
+    "Unlock a world of convenience and efficiency with our audio topic extraction tool.With ";
+String fullBeneifitHeading =
+    "With these benefits, you'll make more informed decisions and streamline your workflow.";
+
+String benefit1 = "Time-Saving Analysis";
+
+String benefit2 = "Enhanced Understanding";
+
+String benefit3 = "Efficient Data management";
+
+String benefit4 = "Improved Decision-Making";
+
+String halfFeatureHeading =
+    "With these features,our website empowers you to efficiently analyze and manage the content of your audio files,";
+String fullFeatureHeading =
+    "enhancing your productivity and understanding of the topics discussed during meetings or conversation";

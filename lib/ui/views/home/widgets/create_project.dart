@@ -30,10 +30,10 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //verticalSpaceLarge,
                     const Text("Title of Project",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold)),
+                    verticalSpaceSmall,
                     Mytextfield(
                       title: "Enter the name of your Project",
                       textfiledwidth: thirdScreenWidth(context),
@@ -49,39 +49,6 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                   ],
                 ),
                 horizontalSpaceMedium,
-                //     Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       children: [
-                //         const Text("File Type",
-                //             style: TextStyle(
-                //                 fontSize: 14, fontWeight: FontWeight.bold)),
-                //         Mytextfield(
-                //           title: "Select file type",
-                //           suffix: DropdownButtonFormField<String>(
-                //             value: viewModel
-                //                 .selectedFileType, // This should be a property in your view model to track the selected value
-                //             onChanged: (newValue) {
-                //               viewModel.setSelectedFileType(
-                //                   newValue); // Update the selected value in the view model
-                //             },
-                //             validator: (value) {
-                //               if (value == null || value.isEmpty) {
-                //                 return "File Type is required";
-                //               }
-                //               return null;
-                //             },
-                //             items: viewModel.fileTypes.map((fileType) {
-                //               return DropdownMenuItem<String>(
-                //                 value: fileType,
-                //                 child: Text(fileType),
-                //               );
-                //             }).toList(),
-                //           ),
-                //           textfiledwidth: thirdScreenWidth(context),
-                //           value: 5,
-                //         ),
-                //       ],
-                //     ),
               ],
             ),
             // 2nd row
@@ -95,6 +62,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                     const Text("Description",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold)),
+                    verticalSpaceSmall,
                     Mytextfield(
                         maxlines: 10,
                         value: 5,
@@ -108,30 +76,26 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     verticalSpaceSmall,
+                    verticalSpaceSmall,
                     Container(
                       width: thirdScreenWidth(context),
                       height: 150,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2),
                           border: Border.all(
-                            color: const Color.fromARGB(255, 163, 160, 160),
+                            color: kcLightGrey,
                           )),
                       child: viewModel.extractedList.isNotEmpty
                           ? ListView.builder(
                               itemCount: viewModel.extractedList.length,
                               itemBuilder: (context, index) {
                                 return ListTile(
-                                  leading: Text((index + 1)
-                                      .toString()), // Auto-incremented number
+                                  leading: Text((index + 1).toString()),
                                   title: Text(viewModel.extractedList[index]
-                                      ["fileName"]), // File name
+                                      ["fileName"]),
                                   subtitle: Text(viewModel.extractedList[index]
-                                              ["size"]
-                                          .toString()
-                                      // DateFormat('yyyy-MM-dd HH:mm:ss').format(
-                                      //     viewModel.extractedList[index][2]
-                                      //         .toDate())
-                                      ), // Timestamp
+                                          ["size"]
+                                      .toString()),
                                 );
                               },
                             )
@@ -139,34 +103,30 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                               child: Text(
                                 "No File Uploaded So Far",
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 163, 160, 160),
+                                  color: kcLightGrey,
                                 ),
                               ),
                             ),
-                      //color: Colors.amber,
                     ),
                     Container(
                       width: thirdScreenWidth(context),
                       height: 50,
                       decoration: BoxDecoration(
-                          //borderRadius: BorderRadius.circular(2),
                           border: Border.all(
-                        color: const Color.fromARGB(255, 163, 160, 160),
+                        color: kcLightGrey,
                       )),
-
                       child: Row(
                         children: [
                           const Spacer(),
                           Button(
-                            textColor: kcDarkGreyColor,
+                            textColor: kcVeryLightGrey,
                             title: "Upload File",
                             loading: viewModel.isBusy,
                             height: screenHeight(context) * 0.04,
-                            Color: kcVeryLightGrey,
+                            Color: kcsliderColor,
                             width: quarterScreenWidth(context) * 0.3,
                             onTap: () {
                               if (viewModel.formKey.currentState!.validate()) {
-                                //viewModel.setloadingvalue(true);
                                 viewModel.uploadFile(context);
                               }
                             },
@@ -177,15 +137,13 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                               loading: viewModel.loading,
                               height: screenHeight(context) * 0.04,
                               width: quarterScreenWidth(context) * 0.3,
-                              Color: kcVeryLightGrey,
-                              textColor: kcDarkGreyColor,
+                              Color: kcsliderColor,
+                              textColor: kcVeryLightGrey,
                               onTap: () {
                                 viewModel.onProceed();
-                                
                               }),
                         ],
                       ),
-                      //color: Colors.amber,
                     ),
                   ],
                 )

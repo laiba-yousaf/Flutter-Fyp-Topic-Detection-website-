@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.dialogs.dart';
@@ -9,16 +8,9 @@ import '../../../services/toastmessage_service.dart';
 
 class HistorypageViewModel extends BaseViewModel {
   int selectedProjectIndex = 0;
-  int selectedFileIndex =0;
+  int selectedFileIndex = 0;
   final toastService = locator<ToastmessageService>();
   final dialogService = locator<DialogService>();
- 
-  // List data = [
-  //   'Design data',
-  //   'Error analysis',
-  //   'Project management',
-  //   'Technical Writing'
-  // ];
 
   List<Map<String, dynamic>> firestoreData = [];
 
@@ -40,7 +32,7 @@ class HistorypageViewModel extends BaseViewModel {
 
   Future<void> fetchData() async {
     await fetchDatafromfirestore();
-    notifyListeners(); // Notify listeners after data is fetched
+    notifyListeners();
   }
 
   void setindex(int index) {
@@ -49,14 +41,14 @@ class HistorypageViewModel extends BaseViewModel {
   }
 
   void setFileIndex(int index) {
-    selectedFileIndex  = index;
+    selectedFileIndex = index;
     notifyListeners();
   }
 
-  void showDialog(String urdutext,String filename) {
+  void showDialog(String urdutext, String filename) {
     dialogService.showCustomDialog(
       variant: DialogType.infoAlert,
-      title:filename ,
+      title: filename,
       description: urdutext,
     );
   }

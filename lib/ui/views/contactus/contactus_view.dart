@@ -11,7 +11,6 @@ import 'contactus_viewmodel.dart';
 
 class ContactusView extends StackedView<ContactusViewModel> {
   const ContactusView({Key? key}) : super(key: key);
-
   @override
   Widget builder(
     BuildContext context,
@@ -31,7 +30,6 @@ class ContactusView extends StackedView<ContactusViewModel> {
             verticalSpaceSmall,
             const Text(
               "Get in touch with us",
-              //style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
             verticalSpaceLarge,
             Row(
@@ -45,13 +43,10 @@ class ContactusView extends StackedView<ContactusViewModel> {
               ],
             ),
             verticalSpaceLarge,
-            // horizontalSpacemassiveLarge,
-            // horizontalSpaceLarge,
-            // horizontalSpaceLarge,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Email"),
+                const Text("Email"),
                 Mytextfield(
                   title: "example@gmail.com",
                   ctrl: viewModel.mailctrl,

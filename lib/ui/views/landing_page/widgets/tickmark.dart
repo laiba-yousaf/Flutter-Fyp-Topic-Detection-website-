@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 
-Widget Tickmark() {
+Widget tickMark() {
   return Container(
     height: 25,
     width: 25,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(50),
-      color: Color.fromARGB(255, 161, 69, 247),
-      //image: DecorationImage(image: AssetImage(Tick))),
+      color: kcPrimaryColor,
     ),
     child: Image(image: AssetImage(Tick)),
   );
@@ -20,11 +20,11 @@ Widget benifit(String title1, String title2, String title3, String title4) {
     children: [
       Row(
         children: [
-          Tickmark(),
+          tickMark(),
           horizontalSpaceSmall,
           Text(title1),
           horizontalSpaceLarge,
-          Tickmark(),
+          tickMark(),
           horizontalSpaceSmall,
           Text(title2),
         ],
@@ -34,12 +34,12 @@ Widget benifit(String title1, String title2, String title3, String title4) {
         children: [
           horizontalSpaceTiny,
           horizontalSpaceTiny,
-          Tickmark(),
+          tickMark(),
           horizontalSpaceSmall,
           Text(title3),
           horizontalSpaceSmall,
           horizontalSpaceTiny,
-          Tickmark(),
+          tickMark(),
           horizontalSpaceSmall,
           Text(title4),
         ],

@@ -11,7 +11,13 @@ class Googlebutton extends ViewModelWidget<SigninViewModel> {
   final String title;
   final double height;
   final VoidCallback onTap;
-  const Googlebutton({Key? key,required this.title,required this.height,required this.iconPath,required this.onTap}) : super(key: key);
+  const Googlebutton(
+      {Key? key,
+      required this.title,
+      required this.height,
+      required this.iconPath,
+      required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(
@@ -19,31 +25,30 @@ class Googlebutton extends ViewModelWidget<SigninViewModel> {
     SigninViewModel viewModel,
   ) {
     return InkWell(
-    onTap:viewModel.handleGoogleSignIn,
-    child: Container(
-      height: height,
-      width: quarterScreenWidth(context),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(color: kcMediumGrey),
+      onTap: viewModel.handleGoogleSignIn,
+      child: Container(
+        height: height,
+        width: quarterScreenWidth(context),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(color: kcMediumGrey),
+        ),
+        child: Row(
+          children: [
+            horizontalSpaceLarge,
+            SvgPicture.asset(
+              iconPath,
+              width: 20.0,
+              height: 20.0,
+            ),
+            horizontalSpaceLarge,
+            Text(
+              title,
+              style: const TextStyle(color: kcDarkGreyColor),
+            ),
+          ],
+        ),
       ),
-      child: Row(
-        children: [
-          horizontalSpaceLarge,
-          SvgPicture.asset(
-            iconPath,
-            width: 20.0,
-            height: 20.0,
-          ),
-          horizontalSpaceLarge,
-          Text(
-            title,
-            style: const TextStyle(color: kcDarkGreyColor),
-          ),
-        ],
-      ),
-    ),
-  );
-    
+    );
   }
 }

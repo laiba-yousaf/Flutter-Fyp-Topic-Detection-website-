@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-import 'package:topicdetectionweb/ui/views/aboutus/cardwidget.dart';
+import 'package:topicdetectionweb/ui/views/aboutus/widget/card.dart';
 import 'aboutus_viewmodel.dart';
 
 class AboutusView extends StackedView<AboutusViewModel> {
@@ -22,10 +22,7 @@ class AboutusView extends StackedView<AboutusViewModel> {
             "About us",
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
           ),
-          //horizontalSpaceMedium,
-          //Image(image: AssetImage(about),width: 400,),
           verticalSpaceMedium,
-
           Text(
             "We're a dedicated team working on Topic Detection from Urdu Meetings.Our mission extract",
             textAlign: TextAlign.justify,
@@ -49,19 +46,18 @@ class AboutusView extends StackedView<AboutusViewModel> {
             textAlign: TextAlign.justify,
             style: TextStyle(fontSize: 16),
           ),
-
           verticalSpaceLarge,
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CardWidget(
+              Cardwidget(
                   pic: "pic", name: "Najm", description: "I am from RANA TOWN"),
               horizontalSpaceSmall,
-              CardWidget(
+              Cardwidget(
                   pic: "pic", name: "Kashif", description: "I am from PASROOR"),
               horizontalSpaceSmall,
-              CardWidget(
+              Cardwidget(
                   pic: "pic", name: "Laiba", description: "I am from LAHORE"),
             ],
           )

@@ -6,13 +6,12 @@ Widget intro() {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       verticalSpaceMedium,
-
       Text(
         "Our project is centered on a meeting topic detection system that excels in identifying key discussion points from uploaded",
         style: TextStyle(fontSize: 16),
         textAlign: TextAlign.justify,
       ),
-      verticalSpaceSmall, //style: TextStyle(color: Colors.purple,fontWeight: FontWeight.bold,fontSize: 40),),
+      verticalSpaceSmall,
       Text(
           "files.Our primary objective is to provide users with an effortless platform for uploading meeting materials where our system,",
           style: TextStyle(fontSize: 16),

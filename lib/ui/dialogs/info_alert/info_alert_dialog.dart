@@ -3,7 +3,6 @@ import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:topicdetectionweb/ui/dialogs/widget/Zoom_In_Zoom_out.dart';
 import 'info_alert_dialog_model.dart';
 
 class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
@@ -33,15 +32,13 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
             child: Column(
               children: [
                 Column(children: [
-                 // verticalSpaceLarge,
-                  //ZoomIN(text:formattedText),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 50),
                         child: IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.remove,
                             color: kcsliderColor,
                           ),
@@ -64,12 +61,13 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       TextButton(
                         onPressed: () {
                           viewModel.copyToClipboard(formattedText);
-                          viewModel.toastService.toastmessage("copy sucessfull");
+                          viewModel.toastService
+                              .toastmessage("copy sucessfull");
                         },
                         child: const Icon(Icons.copy, color: kcsliderColor),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left:350),
+                        padding: const EdgeInsets.only(left: 350),
                         child: Text(
                           request.title!,
                           style: const TextStyle(
@@ -109,7 +107,6 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                     ),
                   ),
-                 
                   Text(
                     formattedText,
                     style: const TextStyle(fontFamily: 'NotoNastaliqUrdu'),

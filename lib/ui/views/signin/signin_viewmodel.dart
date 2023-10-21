@@ -22,7 +22,7 @@ class SigninViewModel extends BaseViewModel {
 
   final bool isLoggedIn = true;
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn(
       scopes: ['email', 'profile'],
       clientId:
@@ -48,14 +48,15 @@ class SigninViewModel extends BaseViewModel {
 
   login() async {
     try {
-      User? _user = await authservices.login(emailctrl.text, passctrl.text);
-      if (_user != null) {
+      User? user = await authservices.login(emailctrl.text, passctrl.text);
+      if (user != null) {
         toastService.toastmessage("Login Successfully");
         navigationHome();
       } else {
         toastService.toastmessage("Login not Successfully");
       }
     } catch (e) {
+      setBusy(false);
       toastService.toastmessage(e.toString());
     }
   }

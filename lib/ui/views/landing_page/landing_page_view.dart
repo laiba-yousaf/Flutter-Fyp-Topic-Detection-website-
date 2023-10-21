@@ -41,8 +41,8 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                       color: viewModel.name == "home"
-                          ? Color.fromARGB(255, 57, 2, 65)
-                          : Colors.white,
+                          ? kcsliderColor
+                          : kcVeryLightGrey,
                     )),
               ),
             ),
@@ -56,8 +56,8 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                     style: TextStyle(
                       fontSize: 17,
                       color: viewModel.name == "Aboutus"
-                          ? const Color.fromARGB(255, 57, 2, 65)
-                          : Colors.white,
+                          ? kcsliderColor
+                          : kcVeryLightGrey,
                     )),
               ),
             ),
@@ -71,8 +71,8 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "contactus"
-                            ? const Color.fromARGB(255, 57, 2, 65)
-                            : Colors.white,
+                            ? kcsliderColor
+                            : kcVeryLightGrey,
                       ))),
             ),
             Padding(
@@ -80,14 +80,13 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
               child: TextButton(
                   onPressed: () {
                     viewModel.navigateTOSignin();
-                    //viewModel.pagenavigate("login");
                   },
                   child: Text("Login",
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "login"
-                            ? const Color.fromARGB(255, 57, 2, 65)
-                            : Colors.white,
+                            ? kcsliderColor
+                            : kcVeryLightGrey,
                       ))),
             ),
             Padding(
@@ -101,8 +100,8 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "register"
-                            ? const Color.fromARGB(255, 57, 2, 65)
-                            : Colors.white,
+                            ? kcsliderColor
+                            : kcVeryLightGrey,
                       ))),
             ),
           ],
@@ -141,16 +140,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       verticalSpaceMedium,
                       Row(
                         children: [
-                          // Padding(
-                          //   padding: const EdgeInsets.only(left: 100, top: 60),
-                          //   child: Container(
-                          //     height: 300,
-                          //     width: 40,
-                          //     decoration: BoxDecoration(
-                          //         borderRadius: BorderRadius.circular(20),
-                          //         color: const Color.fromARGB(255, 230, 216, 247)),
-                          //   ),
-                          // ),
                           Padding(
                             padding: const EdgeInsets.only(left: 100, top: 170),
                             child: Column(
@@ -206,21 +195,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                           ],
                         ),
                       ),
-                      //verticalSpaceMedium,
-                      // Column(
-                      //   crossAxisAlignment: CrossAxisAlignment.center,
-                      //   children: [
-                      //     const Text(
-                      //       "Our Offer",
-                      //       textAlign: TextAlign.center,
-                      //       style: TextStyle(
-                      //           color: Colors.purple,
-                      //           fontWeight: FontWeight.bold,
-                      //           fontSize: 30),
-                      //     ),
-                      //     offer(),
-                      //   ],
-                      // ),
                       Stack(
                         children: [
                           Align(
@@ -229,7 +203,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                 image: AssetImage(backimg2),
                                 width: 800,
                               )),
-                          //verticalSpaceMedium,
                           Padding(
                             padding: const EdgeInsets.only(left: 240),
                             child: Column(
@@ -237,19 +210,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                               children: [
                                 feature(),
                                 verticalSpaceLarge,
-                                // const Text(
-                                //   "How our System Works",
-                                //   style: TextStyle(
-                                //     fontWeight: FontWeight.bold,
-                                //     fontSize: 25,
-                                //     color: Colors.purple,
-                                //   ),
-                                // ),
-                                // // verticalSpaceSmall,
-                                // Padding(
-                                //   padding: const EdgeInsets.only(left: 100),
-                                //   child: Image(image: AssetImage(working)),
-                                // ),
                                 verticalSpaceLarge,
                                 Row(
                                   children: [
@@ -273,20 +233,15 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                             ),
                                           ),
                                           verticalSpaceMedium,
-                                          const Text(
-                                              "Unlock a world of convenience and efficiency with our audio topic extraction tool.With "),
+                                          Text(halfBeneifitHeading),
                                           verticalSpaceSmall,
-                                          const Text(
-                                              "With these benefits, you'll make more informed decisions and streamline your workflow."),
+                                          Text(fullBeneifitHeading),
                                           verticalSpaceSmall,
                                           const Text(
                                               "all at your fingertips.."),
                                           verticalSpaceMedium,
-                                          benifit(
-                                              "Time-Saving Analysis",
-                                              "Enhanced Understanding",
-                                              "Efficient Data management",
-                                              "Improved Decision-Making"),
+                                          benifit(benefit1, benefit2, benefit3,
+                                              benefit4),
                                         ],
                                       ),
                                     )
@@ -300,7 +255,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       verticalSpaceLarge,
                       Container(
                         height: 100,
-                        color: const Color.fromARGB(255, 207, 173, 252),
+                        color: kcsliderColor,
                         child: Column(
                           children: [
                             Center(
@@ -338,8 +293,6 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                             color: Colors.white),
                                       ],
                                     ),
-
-                                    // Yahan aap apne footer links, contact information, ya kuch aur add kar sakte hain.
                                   ],
                                 ),
                               ),

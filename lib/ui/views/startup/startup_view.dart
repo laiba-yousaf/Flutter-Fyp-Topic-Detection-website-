@@ -12,6 +12,7 @@ class StartupView extends StackedView<StartupViewModel> {
     viewModel.isLogin();
   }
 
+  @override
   Widget builder(
     BuildContext context,
     StartupViewModel viewModel,
@@ -29,8 +30,4 @@ class StartupView extends StackedView<StartupViewModel> {
     BuildContext context,
   ) =>
       StartupViewModel();
-
-  // @override
-  // void onViewModelReady(StartupViewModel viewModel) => SchedulerBinding.instance
-  //     .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
 }

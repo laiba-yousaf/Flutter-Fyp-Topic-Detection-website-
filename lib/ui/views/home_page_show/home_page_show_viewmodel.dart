@@ -13,7 +13,6 @@ class HomePageShowViewModel extends BaseViewModel {
 
   void updatevalue() {
     check = !check;
-    print("check value is $check");
     notifyListeners();
   }
 }

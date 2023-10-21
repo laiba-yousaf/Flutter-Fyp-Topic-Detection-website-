@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 
 Widget featurecard(String img, String title, String dec) {
@@ -7,7 +8,7 @@ Widget featurecard(String img, String title, String dec) {
     width: 200,
     child: Card(
       elevation: 10,
-      color: Color.fromARGB(255, 230, 202, 235),
+      color: kcfeatureColor,
       child: Column(
         children: [
           verticalSpaceSmall,
@@ -18,14 +19,14 @@ Widget featurecard(String img, String title, String dec) {
           ),
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           verticalSpaceSmall,
           Padding(
             padding: const EdgeInsets.only(left: 5, right: 5),
             child: Text(
               dec,
-              style: TextStyle(fontSize: 10),
+              style: const TextStyle(fontSize: 10),
             ),
           )
         ],

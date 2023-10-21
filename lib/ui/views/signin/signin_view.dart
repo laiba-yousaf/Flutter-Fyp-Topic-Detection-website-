@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/signin/widgets/Google.dart';
+import 'package:topicdetectionweb/ui/widgets/common/slider/slider.dart';
 import '../../common/app_colors.dart';
 import '../../widgets/common/button/button.dart';
 import '../../widgets/common/mytextfield/mytextfield.dart';
@@ -103,19 +104,22 @@ class SigninView extends StackedView<SigninViewModel> {
                                   .toastmessage(error.toString());
                             });
                           },
-                          child: const Text("Forgot Password?")),
+                          child: const Text(
+                            "Forgot Password?",
+                            style: TextStyle(color: kcPrimaryColor),
+                          )),
                     ),
                     verticalSpaceLarge,
                     Button(
                         textColor: kcVeryLightGrey,
-                        loading: viewModel.loading1,
+                        loading: viewModel.isBusy,
                         title: "Login",
                         Color: kcPrimaryColor,
                         height: screenHeight(context) * 0.06,
-                        width: quarterScreenWidth(context) * 0.5,
+                        width: thirdScreenWidth(context) * 0.7,
                         onTap: () {
                           if (viewModel.formKey.currentState!.validate()) {
-                            viewModel.setloading(true);
+                            viewModel.setBusy(true);
                             viewModel.login();
                           }
                         }),
@@ -124,12 +128,15 @@ class SigninView extends StackedView<SigninViewModel> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Don't have an account?"),
+                        const Text(
+                          "Don't have an account?",
+                        ),
                         TextButton(
                           onPressed: () {
                             viewModel.navigation();
                           },
-                          child: const Text("Create one"),
+                          child: const Text("Create one",
+                              style: TextStyle(color: kcPrimaryColor)),
                         ),
                       ],
                     ),
@@ -138,6 +145,7 @@ class SigninView extends StackedView<SigninViewModel> {
               ),
             ),
           ),
+          const Sliderwidget()
         ],
       ),
     );

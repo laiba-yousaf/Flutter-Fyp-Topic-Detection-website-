@@ -14,8 +14,6 @@ class StartupViewModel extends BaseViewModel {
 
   final authservice = locator<AuthenticationService>();
 
-// Check if the user is logged in
-
   navigation() {
     _navigationService.navigateToSigninView();
   }
@@ -25,27 +23,16 @@ class StartupViewModel extends BaseViewModel {
   }
 
   Future<void> isLogin() async {
-    //final userid =await authservice.loadUserId();
-    // Load the user ID from SharedPreferences
-    print("user id from auth services are ${authservice.userId}");
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final userId = prefs.getString('userid');
 
-    if (authservice.userId != null) {
-    } else {
-      print("your user id not store in shared preference");
-    }
-
-    //final String? userid = prefs.getString('userId');
-
-    print("________in startup model user id is $userId");
     if (userId != null) {
       Timer(const Duration(seconds: 3), () {
-        navigationHome(); // User is logged in, navigate to the home view
+        navigationHome();
       });
     } else {
       Timer(const Duration(seconds: 3), () {
-        navigation(); // User is not logged in, navigate to the sign-in view
+        navigation();
       });
     }
   }

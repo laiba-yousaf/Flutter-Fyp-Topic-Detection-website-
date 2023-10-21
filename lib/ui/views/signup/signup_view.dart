@@ -6,6 +6,7 @@ import '../../common/app_strings.dart';
 import '../../common/ui_helpers.dart';
 import '../../widgets/common/button/button.dart';
 import '../../widgets/common/mytextfield/mytextfield.dart';
+import '../../widgets/common/slider/slider.dart';
 import 'signup_viewmodel.dart';
 
 class SignupView extends StackedView<SignupViewModel> {
@@ -159,9 +160,8 @@ class SignupView extends StackedView<SignupViewModel> {
                         Color: kcPrimaryColor,
                         loading: viewModel.loading,
                         height: screenHeight(context) * 0.06,
-                        width: quarterScreenWidth(context) * 0.5,
+                        width: thirdScreenWidth(context) * 0.7,
                         onTap: () {
-                          //viewModel.navigateTOSignin();
                           if (viewModel.formKey.currentState!.validate()) {
                             viewModel.setBusy(true);
                             viewModel.auth
@@ -170,12 +170,12 @@ class SignupView extends StackedView<SignupViewModel> {
                                     password:
                                         viewModel.passctrl.text.toString())
                                 .then((value) {
-                               viewModel.setBusy(false);
+                              viewModel.setBusy(false);
                               viewModel.toastService
                                   .toastmessage("Registered Sucsessfully");
                               viewModel.navigateTOSignin();
                             }).onError((error, stackTrace) {
-                             viewModel.setBusy(false);
+                              viewModel.setBusy(false);
                               viewModel.toastService
                                   .toastmessage(error.toString());
                             });
@@ -190,7 +190,8 @@ class SignupView extends StackedView<SignupViewModel> {
                           onPressed: () {
                             viewModel.navigateTOSignin();
                           },
-                          child: const Text("Sign in"),
+                          child: const Text("Sign in",
+                              style: TextStyle(color: kcPrimaryColor)),
                         ),
                       ],
                     ),
@@ -199,6 +200,7 @@ class SignupView extends StackedView<SignupViewModel> {
               ),
             ),
           ),
+          const Sliderwidget()
         ],
       ),
     );
