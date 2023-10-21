@@ -19,6 +19,12 @@ class SigninViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final authservices = locator<AuthenticationService>();
+   int currentCarouselIndex = 0;
+
+  void updateindex(index) {
+    currentCarouselIndex = index;
+    notifyListeners();
+  }
 
   final bool isLoggedIn = true;
 
@@ -75,6 +81,7 @@ class SigninViewModel extends BaseViewModel {
         );
         final UserCredential authResult =
             await _auth.signInWithCredential(credential);
+        // ignore: unused_local_variable
         final User user = authResult.user!;
         toastService.toastmessage("Login Succsessfully");
         navigationHome();

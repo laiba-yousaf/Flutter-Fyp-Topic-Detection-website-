@@ -43,6 +43,7 @@ class SpeechToTextService {
 
       final blob = html.Blob([urduText]);
       final url = html.Url.createObjectUrlFromBlob(blob);
+      // ignore: unused_local_variable
       final anchor = html.AnchorElement(href: url)
         ..target = 'web'
         ..download = 'urdu_text.txt'
@@ -50,6 +51,7 @@ class SpeechToTextService {
 
       html.Url.revokeObjectUrl(url);
     } else {
+      // ignore: avoid_print
       print("API call failed with status code: ${response.statusCode}");
     }
     return uploadResult;

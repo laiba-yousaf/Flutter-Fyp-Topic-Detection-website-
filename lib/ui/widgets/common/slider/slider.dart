@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import '../../../common/app_strings.dart';
 import 'slider_model.dart';
@@ -93,7 +94,7 @@ class Sliderwidget extends StackedView<SliderModel> {
               width: 80,
               height: 25,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 41, 40, 40).withOpacity(0.5),
+                color: kcDarkGreyColor.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -107,9 +108,8 @@ class Sliderwidget extends StackedView<SliderModel> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: viewModel.currentCarouselIndex == i
-                            ? const Color.fromARGB(
-                                255, 172, 116, 245) // Set the active dot color
-                            : const Color.fromARGB(255, 241, 236, 236),
+                            ? kcpurpleColor // Set the active dot color
+                            : kcVeryLightGrey,
                       ),
                     ),
                 ],

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:topicdetectionweb/ui/widgets/common/slider/slider.dart';
 import '../../common/app_colors.dart';
 import '../../common/app_strings.dart';
 import '../../common/ui_helpers.dart';
 import '../../widgets/common/button/button.dart';
 import '../../widgets/common/mytextfield/mytextfield.dart';
-import '../../widgets/common/slider/slider.dart';
 import 'signup_viewmodel.dart';
 
 class SignupView extends StackedView<SignupViewModel> {

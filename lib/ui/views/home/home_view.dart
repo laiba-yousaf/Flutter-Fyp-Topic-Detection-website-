@@ -26,7 +26,6 @@ class HomeView extends StackedView<HomeViewModel> {
                 switch (viewModel.controller.selectedIndex) {
                   case 0:
                     return const CreateProject();
-
                   case 1:
                     return const HistorypageView();
                   case 2:
