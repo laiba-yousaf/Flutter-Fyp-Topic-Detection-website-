@@ -19,7 +19,7 @@ class SigninViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final authservices = locator<AuthenticationService>();
-   int currentCarouselIndex = 0;
+  int currentCarouselIndex = 0;
 
   void updateindex(index) {
     currentCarouselIndex = index;
