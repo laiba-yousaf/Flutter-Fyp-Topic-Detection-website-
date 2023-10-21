@@ -3,39 +3,22 @@ import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 
 Widget filedata(
-  String data1,
-  String data2,
-  String data3,
+  String number,
+  String projectName,
+  String date,
 ) {
   return Row(
-    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(data1),
-      horizontalSpaceLarge,
-      Text(data2),
-      horizontalSpaceLarge,
-      Text(data3),
-      //horizontalSpaceMedium,.
-      horizontalSpaceSmall,
-      horizontalSpaceSmall,
-      Card(
-        color: Color.fromARGB(255, 225, 148, 235),
-        child: Row(
-          children: [
-            Image(
-              image: AssetImage(
-                delte,
-              ),
-              width: 10,
-              height: 10,
-            ),
-            Text(
-              "Delete",
-              style: TextStyle(fontSize: 10),
-            )
-          ],
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+         Text(number),
+         horizontalSpaceLarge,
+        Text(projectName),
+       
+        Padding(
+          padding: const EdgeInsets.only(left:75),
+          child: Text(date,),
         ),
-      )
-    ],
-  );
+        //horizontalSpaceMedium,.
+        
+      ]);
 }

@@ -12,6 +12,7 @@ class SignupViewModel extends BaseViewModel {
   TextEditingController emailctrl = TextEditingController();
   TextEditingController passctrl = TextEditingController();
   TextEditingController conpassctrl = TextEditingController();
+  TextEditingController phonectrl = TextEditingController();
 
   bool obsecure = true;
   bool obsecure1 = true;
@@ -37,8 +38,8 @@ class SignupViewModel extends BaseViewModel {
     _navigationService.navigateToSigninView();
   }
 
-  setloadingvalue(bool value) {
-    loading = value;
-    notifyListeners();
-  }
+  // setloadingvalue(bool value) {
+  //   loading = value;
+  //   notifyListeners();
+  // }
 }

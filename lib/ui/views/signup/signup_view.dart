@@ -6,7 +6,6 @@ import '../../common/app_strings.dart';
 import '../../common/ui_helpers.dart';
 import '../../widgets/common/button/button.dart';
 import '../../widgets/common/mytextfield/mytextfield.dart';
-import '../../widgets/common/slider/slider.dart';
 import 'signup_viewmodel.dart';
 
 class SignupView extends StackedView<SignupViewModel> {
@@ -18,10 +17,8 @@ class SignupView extends StackedView<SignupViewModel> {
     SignupViewModel viewModel,
     Widget? child,
   ) {
-    bool isDesktopView = screenWidth(context) >= 768;
     return Scaffold(
       body: Row(
-        //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             flex: 1,
@@ -30,7 +27,6 @@ class SignupView extends StackedView<SignupViewModel> {
                 key: viewModel.formKey,
                 child: Column(
                   children: [
-                    //verticalSpaceLarge,
                     Row(
                       children: [
                         Image(
@@ -47,10 +43,6 @@ class SignupView extends StackedView<SignupViewModel> {
                         ),
                       ],
                     ),
-                    //verticalSpaceLarge,
-                    // verticalSpaceLarge,
-                    // verticalSpaceLarge,
-
                     verticalSpaceLarge,
                     Mytextfield(
                       value: 8.0,
@@ -90,7 +82,7 @@ class SignupView extends StackedView<SignupViewModel> {
                       textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
                       title: "Phone",
-                      ctrl: viewModel.emailctrl,
+                      ctrl: viewModel.phonectrl,
                       prefix: const Icon(
                         Icons.phone,
                         size: 16,
@@ -99,7 +91,7 @@ class SignupView extends StackedView<SignupViewModel> {
                         if (value!.isEmpty) {
                           return "Phone is required";
                         }
-                        return null; // Return null for no error
+                        return null;
                       },
                     ),
                     verticalSpaceSmall,
@@ -157,7 +149,7 @@ class SignupView extends StackedView<SignupViewModel> {
                         if (value!.isEmpty) {
                           return "Confirm password is required";
                         }
-                        return null; // Return null for no error
+                        return null;
                       },
                     ),
                     verticalSpaceLarge,
@@ -171,19 +163,19 @@ class SignupView extends StackedView<SignupViewModel> {
                         onTap: () {
                           //viewModel.navigateTOSignin();
                           if (viewModel.formKey.currentState!.validate()) {
-                            viewModel.setloadingvalue(true);
+                            viewModel.setBusy(true);
                             viewModel.auth
                                 .createUserWithEmailAndPassword(
                                     email: viewModel.emailctrl.text.toString(),
                                     password:
                                         viewModel.passctrl.text.toString())
                                 .then((value) {
-                              viewModel.setloadingvalue(false);
+                               viewModel.setBusy(false);
                               viewModel.toastService
                                   .toastmessage("Registered Sucsessfully");
                               viewModel.navigateTOSignin();
                             }).onError((error, stackTrace) {
-                              viewModel.setloadingvalue(false);
+                             viewModel.setBusy(false);
                               viewModel.toastService
                                   .toastmessage(error.toString());
                             });
@@ -207,15 +199,6 @@ class SignupView extends StackedView<SignupViewModel> {
               ),
             ),
           ),
-          if (isDesktopView) // Show the slider only for desktop views
-            const Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  Sliderwidget(),
-                ],
-              ),
-            ),
         ],
       ),
     );

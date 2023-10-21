@@ -37,6 +37,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                     Mytextfield(
                       title: "Enter the name of your Project",
                       textfiledwidth: thirdScreenWidth(context),
+                      ctrl: viewModel.projectctrl,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Project title is required";
@@ -48,39 +49,39 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                   ],
                 ),
                 horizontalSpaceMedium,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("File Type",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold)),
-                    Mytextfield(
-                      title: "Select file type",
-                      suffix: DropdownButtonFormField<String>(
-                        value: viewModel
-                            .selectedFileType, // This should be a property in your view model to track the selected value
-                        onChanged: (newValue) {
-                          viewModel.setSelectedFileType(
-                              newValue); // Update the selected value in the view model
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "File Type is required";
-                          }
-                          return null;
-                        },
-                        items: viewModel.fileTypes.map((fileType) {
-                          return DropdownMenuItem<String>(
-                            value: fileType,
-                            child: Text(fileType),
-                          );
-                        }).toList(),
-                      ),
-                      textfiledwidth: thirdScreenWidth(context),
-                      value: 5,
-                    ),
-                  ],
-                ),
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         const Text("File Type",
+                //             style: TextStyle(
+                //                 fontSize: 14, fontWeight: FontWeight.bold)),
+                //         Mytextfield(
+                //           title: "Select file type",
+                //           suffix: DropdownButtonFormField<String>(
+                //             value: viewModel
+                //                 .selectedFileType, // This should be a property in your view model to track the selected value
+                //             onChanged: (newValue) {
+                //               viewModel.setSelectedFileType(
+                //                   newValue); // Update the selected value in the view model
+                //             },
+                //             validator: (value) {
+                //               if (value == null || value.isEmpty) {
+                //                 return "File Type is required";
+                //               }
+                //               return null;
+                //             },
+                //             items: viewModel.fileTypes.map((fileType) {
+                //               return DropdownMenuItem<String>(
+                //                 value: fileType,
+                //                 child: Text(fileType),
+                //               );
+                //             }).toList(),
+                //           ),
+                //           textfiledwidth: thirdScreenWidth(context),
+                //           value: 5,
+                //         ),
+                //       ],
+                //     ),
               ],
             ),
             // 2nd row
@@ -172,13 +173,16 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                           ),
                           horizontalSpaceSmall,
                           Button(
-                            title: "Proceed",
-                            height: screenHeight(context) * 0.04,
-                            width: quarterScreenWidth(context) * 0.3,
-                            Color: kcVeryLightGrey,
-                            textColor: kcDarkGreyColor,
-                            onTap: viewModel.onProceed,
-                          ),
+                              title: "Proceed",
+                              loading: viewModel.loading,
+                              height: screenHeight(context) * 0.04,
+                              width: quarterScreenWidth(context) * 0.3,
+                              Color: kcVeryLightGrey,
+                              textColor: kcDarkGreyColor,
+                              onTap: () {
+                                viewModel.onProceed();
+                                
+                              }),
                         ],
                       ),
                       //color: Colors.amber,

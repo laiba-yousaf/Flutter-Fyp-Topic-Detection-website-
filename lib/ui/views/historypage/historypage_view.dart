@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
@@ -9,6 +10,11 @@ import 'historypage_viewmodel.dart';
 
 class HistorypageView extends StackedView<HistorypageViewModel> {
   const HistorypageView({Key? key}) : super(key: key);
+  @override
+  void onViewModelReady(HistorypageViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+    viewModel.fetchData();
+  }
 
   @override
   Widget builder(
@@ -19,42 +25,38 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(40.0),
+          padding: EdgeInsets.all(40.0),
           child: SizedBox(
             height: screenHeight(context),
             width: screenWidth(context) * 0.82,
             child: Card(
               elevation: 5,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, top: 20),
+                padding: EdgeInsets.only(left: 20, top: 20),
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      //mainAxisAlignment: MainAxisAlignment.center,
+
                       children: [
-                        const Text(
-                          "History",
-                          style: TextStyle(
-                              fontSize: 19, fontWeight: FontWeight.bold),
-                        ),
-                        horizontalSpacemassiveLarge,
-                        SizedBox(
-                          width: 200,
-                          height: 30,
-                          child: TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: "Search by filename",
-                              hintStyle: TextStyle(fontSize: 10),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(15.0),
-                                ),
-                              ),
-                              prefixIcon: Icon(Icons.search),
-                            ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 450),
+                          child: Text(
+                            "History",
+                            style: TextStyle(
+                                fontSize: 19, fontWeight: FontWeight.bold),
                           ),
                         ),
+                        const Spacer(),
+                        Button(
+                            title: "Edit",
+                            height: screenHeight(context) * 0.04,
+                            width: quarterScreenWidth(context) * 0.3,
+                            Color: kcsliderColor,
+                            textColor: kcDarkGreyColor,
+                            onTap: () {
+
+                            }),
                       ],
                     ),
                     Divider(),
@@ -63,7 +65,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                       children: [
                         Expanded(
                             child: Padding(
-                          padding: const EdgeInsets.only(top: 30),
+                          padding: EdgeInsets.only(top: 30),
                           child: Column(
                             children: [
                               const Row(
@@ -75,42 +77,68 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                   ),
                                   horizontalSpaceLarge,
                                   Text(
-                                    "Filename",
+                                    "ProjectName",
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
-                                  horizontalSpaceLarge,
-                                  Text(
-                                    "Size",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  horizontalSpaceMedium,
-                                  Text(
-                                    "Action",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 90),
+                                    child: Text(
+                                      "Date",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ],
                               ),
-                              verticalSpaceLarge,
-                              filedata(
-                                "1",
-                                "meeting1",
-                                "25MB",
-                              ),
                               verticalSpaceMedium,
-                              filedata(
-                                "2",
-                                "meeting2",
-                                "50MB",
+                              ListView.builder(
+                                itemCount: viewModel.firestoreData.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  final data = viewModel.firestoreData[index];
+                                  print(data);
+                                  final number =
+                                      index + 1; // Auto-incremented number
+                                  final projectName = data['title'];
+                                  // Replace with the actual field name
+                                  final timestamp = data['timestamp'];
+                                  final date =
+                                      (timestamp as Timestamp).toDate();
+                                  // Replace with the actual field name
+
+                                  return GestureDetector(
+                                    onTap: () {
+                                      viewModel.setindex(index);
+                                    },
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 100),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: viewModel
+                                                        .selectedProjectIndex ==
+                                                    index
+                                                ? kcsliderColor
+                                                : Colors.transparent,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: filedata(number.toString(),
+                                              projectName, date.toString()),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
                               )
                             ],
                           ),
                         )),
-                        Spacer(),
+                        //Spacer(),
                         Expanded(
-                          flex: 2,
+                          flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 25, right: 20),
                             child: SizedBox(
@@ -125,48 +153,154 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                       padding:
                                           EdgeInsets.only(top: 20, left: 10),
                                       child: Text(
-                                        "Detected Topics",
+                                        "Projects Details",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                     const Divider(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 20, top: 30),
-                                      child: ListView.builder(
-                                          itemCount: viewModel.data.length,
-                                          shrinkWrap: true,
-                                          itemBuilder: (context, index) {
-                                            return Row(
-                                              children: [
-                                                Text(index.toString()),
-                                                Text(":"),
-                                                horizontalSpaceSmall,
-                                                Text(viewModel.data[index]),
-                                                verticalSpaceMedium
-                                              ],
-                                            );
-                                          }),
-                                    ),
-                                    verticalSpaceLarge,
-                                    verticalSpaceMedium,
-                                    verticalSpaceSmall,
-                                    Divider(),
-                                    Spacer(),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 400, bottom: 20),
-                                      child: Button(
-                                        textColor: kcVeryLightGrey,
-                                        Color: kcPrimaryColor,
-                                        height: screenHeight(context) * 0.06,
-                                        width:
-                                            quarterScreenWidth(context) * 0.5,
-                                        title: "Export",
-                                        onTap: () {},
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            "No",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          horizontalSpaceLarge,
+                                          Text(
+                                            "FileName",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 90),
+                                            child: Text(
+                                              "Size",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
+                                    viewModel.selectedProjectIndex >= 0 &&
+                                            viewModel.selectedProjectIndex <
+                                                viewModel.firestoreData.length
+                                        ? ListView.builder(
+                                            itemCount: viewModel
+                                                .firestoreData[viewModel
+                                                        .selectedProjectIndex]
+                                                    ['mettinges']
+                                                .length,
+                                            shrinkWrap: true,
+                                            itemBuilder: (context, index) {
+                                              final meetings = viewModel
+                                                          .firestoreData[
+                                                      viewModel
+                                                          .selectedProjectIndex]
+                                                  ['mettinges'][index];
+
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  viewModel.setFileIndex(index);
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: viewModel
+                                                                  .selectedFileIndex ==
+                                                              index
+                                                          ? kcsliderColor
+                                                          : Colors.transparent,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Row(
+                                                      children: [
+                                                        Text((index + 1)
+                                                            .toString()),
+                                                        Text(":"),
+                                                        horizontalSpaceLarge,
+                                                        Text(meetings[
+                                                            "fileName"]),
+                                                        horizontalSpaceLarge,
+                                                        Text(meetings["size"]
+                                                            .toString()),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            })
+                                        : Text("no data available"),
+                                    verticalSpaceLarge,
+                                    Divider(),
+
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 200, bottom: 10, top: 10),
+                                      child: Row(
+                                        children: [
+                                          Button(
+                                              title: "Topic Detected",
+                                              //loading: viewModel.loading,
+                                              height:
+                                                  screenHeight(context) * 0.05,
+                                              width:
+                                                  quarterScreenWidth(context) *
+                                                      0.4,
+                                              Color: kcsliderColor,
+                                              textColor: kcDarkGreyColor,
+                                              onTap: () {
+                                                //viewModel.onProceed();
+                                              }),
+                                          horizontalSpaceSmall,
+                                          Button(
+                                              title: "Urdu Transcript",
+                                              //loading: viewModel.loading,
+                                              height:
+                                                  screenHeight(context) * 0.05,
+                                              width:
+                                                  quarterScreenWidth(context) *
+                                                      0.4,
+                                              Color: kcsliderColor,
+                                              textColor: kcDarkGreyColor,
+                                              onTap: () {
+                                                final meetings = viewModel
+                                                                .firestoreData[
+                                                            viewModel
+                                                                .selectedProjectIndex]
+                                                        ['mettinges'][
+                                                    viewModel
+                                                        .selectedFileIndex];
+
+                                                //viewModel.onProceed();
+                                                viewModel.showDialog(
+                                                    meetings['urduText'],
+                                                    meetings['fileName']);
+                                              }),
+                                        ],
+                                      ),
+                                    )
+                                    //Spacer(),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(
+                                    //       left: 400, bottom: 20),
+                                    //   child: Button(
+                                    //     textColor: kcVeryLightGrey,
+                                    //     Color: kcPrimaryColor,
+                                    //     height: screenHeight(context) * 0.06,
+                                    //     width:
+                                    //         quarterScreenWidth(context) * 0.5,
+                                    //     title: "Export",
+                                    //     onTap: () {},
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ),

@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-import 'package:topicdetectionweb/ui/widgets/common/slider/slider.dart';
-
+import 'package:topicdetectionweb/ui/views/signin/widgets/Google.dart';
 import '../../common/app_colors.dart';
 import '../../widgets/common/button/button.dart';
 import '../../widgets/common/mytextfield/mytextfield.dart';
-import 'widgets/googleButton.dart';
 import 'signin_viewmodel.dart';
 
 class SigninView extends StackedView<SigninViewModel> {
@@ -19,10 +17,8 @@ class SigninView extends StackedView<SigninViewModel> {
     SigninViewModel viewModel,
     Widget? child,
   ) {
-    bool isDesktopView = screenWidth(context) >= 768;
     return Scaffold(
       body: Row(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             flex: 1,
@@ -32,15 +28,17 @@ class SigninView extends StackedView<SigninViewModel> {
                 child: Column(
                   children: [
                     verticalSpaceLarge,
-
                     const Text(
                       "Login",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     verticalSpaceLarge,
-                    googleButton(context, googleicon, "Continue with Google",
-                        screenHeight(context) * 0.06, () {}),
+                    Googlebutton(
+                        title: "Continue with Google",
+                        height: screenHeight(context) * 0.06,
+                        iconPath: googleicon,
+                        onTap: () {}),
                     verticalSpaceMedium,
                     const Text("or"),
                     verticalSpaceMedium,
@@ -48,7 +46,7 @@ class SigninView extends StackedView<SigninViewModel> {
                       title: "Email",
                       textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
-                      prefix: Icon(
+                      prefix: const Icon(
                         Icons.email,
                         size: 16,
                       ),
@@ -65,7 +63,7 @@ class SigninView extends StackedView<SigninViewModel> {
                       title: "Password",
                       textfiledwidth: quarterScreenWidth(context),
                       value: 8.0,
-                      prefix: Icon(
+                      prefix: const Icon(
                         Icons.password,
                         size: 16,
                       ),
@@ -90,7 +88,6 @@ class SigninView extends StackedView<SigninViewModel> {
                       },
                     ),
                     verticalSpaceSmall,
-                    //Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(left: 190.0),
                       child: TextButton(
@@ -122,7 +119,6 @@ class SigninView extends StackedView<SigninViewModel> {
                             viewModel.login();
                           }
                         }),
-
                     verticalSpaceSmall,
                     verticalSpaceMedium,
                     Row(
@@ -142,15 +138,6 @@ class SigninView extends StackedView<SigninViewModel> {
               ),
             ),
           ),
-          if (isDesktopView) // Show the slider only for desktop views
-            const Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  Sliderwidget(),
-                ],
-              ),
-            ),
         ],
       ),
     );

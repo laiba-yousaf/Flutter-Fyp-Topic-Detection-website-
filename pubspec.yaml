@@ -26,6 +26,7 @@ dependencies:
   dio: ^5.3.3
   intl: ^0.18.1
   ffmpeg_wasm: ^1.0.1
+  google_fonts: ^6.1.0
   path: ^1.8.3
 
 dev_dependencies:
@@ -42,4 +43,9 @@ flutter:
   assets:
   - assets/
   - assets/images/
-
+ 
+  fonts:
+  - family: NotoNastaliqUrdu
+    fonts:
+      - asset: assets/fonts/NotoNastaliqUrdu-Regular.ttf
+ 

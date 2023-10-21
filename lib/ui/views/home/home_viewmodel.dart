@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -14,11 +15,21 @@ import 'package:topicdetectionweb/services/toastmessage_service.dart';
 class HomeViewModel extends BaseViewModel {
   final navigationService = locator<NavigationService>();
   final authservice = locator<AuthenticationService>();
+  TextEditingController projectctrl = TextEditingController();
+
+  TextEditingController passctrl = TextEditingController();
 
   final controller = SidebarXController(selectedIndex: 0, extended: true);
-  final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
+  final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+ 
   String currentPage = 'Home';
+  bool loading = false;
+
+  setloadingvalue(bool value) {
+    loading = value;
+    notifyListeners();
+  }
 
   navigationLandingPage() {
     navigationService.navigateToLandingPageView();
@@ -28,30 +39,30 @@ class HomeViewModel extends BaseViewModel {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final toastService = locator<ToastmessageService>();
   List<dynamic> extractedList = [];
-  Map selectedMeating = {};
-  List<String> fileTypes = [
-    ".acc",
-    "flac",
-    "mp4",
-    "wav",
-    "aiff",
-    "mp3",
-    "m4a",
-    "flv",
-    "mkv",
-    "mov",
-    "webm",
-    "m4v",
-    "mpeg",
-    "mpg",
-    "HEVC", /* Add other file types here */
-  ];
-  String? selectedFileType;
+  // Map selectedMeating = {};
+  // List<String> fileTypes = [
+  //   ".acc",
+  //   "flac",
+  //   "mp4",
+  //   "wav",
+  //   "aiff",
+  //   "mp3",
+  //   "m4a",
+  //   "flv",
+  //   "mkv",
+  //   "mov",
+  //   "webm",
+  //   "m4v",
+  //   "mpeg",
+  //   "mpg",
+  //   "HEVC", /* Add other file types here */
+  // ];
+  // String? selectedFileType;
 
-  void setSelectedFileType(String? fileType) {
-    selectedFileType = fileType;
-    notifyListeners();
-  }
+  // void setSelectedFileType(String? fileType) {
+  //   selectedFileType = fileType;
+  //   notifyListeners();
+  // }
 
   Future<void> uploadFile(BuildContext context) async {
     try {
@@ -70,6 +81,7 @@ class HomeViewModel extends BaseViewModel {
           await speechtotextservice.uploadAudioFile(
               fileBytes, fileName, sizeInMb),
         );
+        setBusy(false);
         notifyListeners();
       } else {
         setBusy(false);
@@ -84,7 +96,46 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
+  Future<void> saveDataToFirestore(Map<String, dynamic> uploadData) async {
+    try {
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      setloadingvalue(true);
+      // Get a Firestore DocumentReference with an auto-generated ID
+       if (uploadData['mettinges'] != null && uploadData['mettinges'].length > 0){
+      DocumentReference documentReference =
+          firestore.collection('your_collection_name').doc();
+
+      // Set the data with the server timestamp and the auto-generated document ID
+     
+        await documentReference.set({
+        'title': uploadData['title'],
+        'mettinges': uploadData['mettinges'],
+        'timestamp': FieldValue.serverTimestamp(),
+        'id': DateTime.now().millisecondsSinceEpoch.toString()
+      });
+      toastService.toastmessage("Data saved to Firestore successfully.");
+       setloadingvalue(false);
+      }
+      else{
+         toastService.toastmessage("You don't have any file for upload");
+         setloadingvalue(false);
+      }
+    
+      //print('Data saved to Firestore successfully.');
+     
+    } catch (e) {
+      setBusy(false);
+        toastService.toastmessage("Error saving data to Firestore: $e");
+      //print('Error saving data to Firestore: $e');
+    }
+  }
+
   onProceed() {
-    // Map uploadData = {"title": "title", "des": "title", "date": "title","mettinges":extractedList};
+    Map<String, dynamic> uploadData = {
+      "title": projectctrl.text,
+      "mettinges": extractedList
+    };
+    saveDataToFirestore(uploadData);
+    
   }
 }
