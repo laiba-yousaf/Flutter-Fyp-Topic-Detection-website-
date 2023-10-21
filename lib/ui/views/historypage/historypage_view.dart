@@ -45,11 +45,6 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              homeViewModel.setPage(0);
-                            },
-                            child: Text("ok")),
                         Expanded(
                             child: Padding(
                           padding: const EdgeInsets.only(top: 30),
@@ -92,11 +87,13 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                             ],
                           ),
                         )),
-                        const Expanded(
+                        Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: EdgeInsets.only(top: 25, right: 20),
-                            child: ProjectDetails(),
+                            padding: const EdgeInsets.only(top: 25, right: 20),
+                            child: ProjectDetails(
+                              homeViewModel: homeViewModel,
+                            ),
                           ),
                         )
                       ],

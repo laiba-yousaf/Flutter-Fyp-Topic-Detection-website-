@@ -20,7 +20,6 @@ class HomeViewModel extends BaseViewModel {
   final controller = SidebarXController(selectedIndex: 0, extended: true);
 
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
-
   String currentPage = 'Home';
   bool loading = false;
 
@@ -29,8 +28,11 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  setPage(val) {
+  setPage(val, Map data) {
     controller.selectIndex(val);
+    projectctrl.text = data["title"];
+    // passctrl.text = data["title"];
+    extractedList = data["mettinges"];
     notifyListeners();
   }
 

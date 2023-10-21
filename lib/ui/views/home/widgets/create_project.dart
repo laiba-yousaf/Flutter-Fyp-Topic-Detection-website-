@@ -7,8 +7,7 @@ import 'package:topicdetectionweb/ui/widgets/common/mytextfield/mytextfield.dart
 import '../../../common/app_colors.dart';
 
 class CreateProject extends ViewModelWidget<HomeViewModel> {
-  final HomeViewModel homeViewModel;
-  const CreateProject({required this.homeViewModel, super.key});
+  const CreateProject({super.key});
 
   @override
   Widget build(

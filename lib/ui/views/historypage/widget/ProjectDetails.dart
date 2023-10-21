@@ -3,10 +3,14 @@ import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/historypage/historypage_viewmodel.dart';
+import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 
 class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
-  const ProjectDetails({Key? key}) : super(key: key);
+  final HomeViewModel homeViewModel;
+
+  const ProjectDetails({Key? key, required this.homeViewModel})
+      : super(key: key);
 
   @override
   Widget build(
@@ -21,11 +25,23 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 10),
-              child: Text(
-                "Projects Details",
-                style: TextStyle(fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 10),
+              child: Row(
+                children: [
+                  const Text(
+                    "Projects Details",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        homeViewModel.setPage(
+                            0,
+                            viewModel
+                                .firestoreData[viewModel.selectedProjectIndex]);
+                      },
+                      child: const Text("ok")),
+                ],
               ),
             ),
             const Divider(),
