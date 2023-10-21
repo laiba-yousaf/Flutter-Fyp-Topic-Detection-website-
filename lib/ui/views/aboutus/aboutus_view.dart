@@ -13,7 +13,7 @@ class AboutusView extends StackedView<AboutusViewModel> {
     AboutusViewModel viewModel,
     Widget? child,
   ) {
-    return const Padding(
+    return  const Padding(
       padding: EdgeInsets.only(top: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,13 +52,13 @@ class AboutusView extends StackedView<AboutusViewModel> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Cardwidget(
-                  pic: "pic", name: "Najm", description: "I am from RANA TOWN"),
+                  pic: "pic", name: "Najm", description: "I am from RANA TOWN",),
               horizontalSpaceSmall,
               Cardwidget(
-                  pic: "pic", name: "Kashif", description: "I am from PASROOR"),
+                  pic: "pic", name: "Kashif", description: "I am from PASROOR",),
               horizontalSpaceSmall,
               Cardwidget(
-                  pic: "pic", name: "Laiba", description: "I am from LAHORE"),
+                  pic: "pic", name: "Laiba", description: "I am from LAHORE",),
             ],
           )
         ],

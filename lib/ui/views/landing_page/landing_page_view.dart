@@ -41,7 +41,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                       color: viewModel.name == "home"
-                          ? kcsliderColor
+                          ? kcpurpleColor
                           : kcVeryLightGrey,
                     )),
               ),
@@ -56,7 +56,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                     style: TextStyle(
                       fontSize: 17,
                       color: viewModel.name == "Aboutus"
-                          ? kcsliderColor
+                          ? kcpurpleColor
                           : kcVeryLightGrey,
                     )),
               ),
@@ -71,7 +71,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "contactus"
-                            ? kcsliderColor
+                            ? kcpurpleColor
                             : kcVeryLightGrey,
                       ))),
             ),
@@ -85,7 +85,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "login"
-                            ? kcsliderColor
+                            ? kcpurpleColor
                             : kcVeryLightGrey,
                       ))),
             ),
@@ -100,7 +100,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "register"
-                            ? kcsliderColor
+                            ? kcpurpleColor
                             : kcVeryLightGrey,
                       ))),
             ),
