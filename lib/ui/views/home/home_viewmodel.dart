@@ -11,8 +11,8 @@ import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final navigationService = locator<NavigationService>();
-  final authservice = locator<AuthenticationService>();
+  final _navigationService = locator<NavigationService>();
+  final _authservice = locator<AuthenticationService>();
   TextEditingController projectctrl = TextEditingController();
 
   TextEditingController passctrl = TextEditingController();
@@ -30,7 +30,12 @@ class HomeViewModel extends BaseViewModel {
   }
 
   navigationLandingPage() {
-    navigationService.navigateToLandingPageView();
+    _navigationService.navigateToLandingPageView();
+  }
+
+  logout() async {
+    await _authservice.logout();
+    _navigationService.navigateToLandingPageView();
   }
 
   final speechtotextservice = locator<SpeechToTextService>();

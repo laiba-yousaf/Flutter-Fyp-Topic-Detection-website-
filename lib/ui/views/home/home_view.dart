@@ -29,9 +29,8 @@ class HomeView extends StackedView<HomeViewModel> {
                   case 1:
                     return const HistorypageView();
                   case 2:
-                    viewModel.authservice.logout();
-                    return viewModel.navigationLandingPage();
-
+                    viewModel.logout();
+                    return Container();
                   default:
                     return Container();
                 }
