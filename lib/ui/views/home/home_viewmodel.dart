@@ -28,10 +28,11 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  String? eidtProjectId;
   setPage(val, Map data) {
     controller.selectIndex(val);
     projectctrl.text = data["title"];
-    // passctrl.text = data["title"];
+    eidtProjectId = data["id"];
     extractedList = data["mettinges"];
     notifyListeners();
   }
@@ -83,17 +84,18 @@ class HomeViewModel extends BaseViewModel {
     try {
       FirebaseFirestore firestore = FirebaseFirestore.instance;
       setloadingvalue(true);
-
+      String _key =
+          eidtProjectId ?? DateTime.now().millisecondsSinceEpoch.toString();
       if (uploadData['mettinges'] != null &&
           uploadData['mettinges'].length > 0) {
         DocumentReference documentReference =
-            firestore.collection('your_collection_name').doc();
+            firestore.collection('your_collection_name').doc(_key);
 
         await documentReference.set({
           'title': uploadData['title'],
           'mettinges': uploadData['mettinges'],
           'timestamp': FieldValue.serverTimestamp(),
-          'id': DateTime.now().millisecondsSinceEpoch.toString()
+          'id': _key
         });
         toastService.toastmessage("Data saved to Firestore successfully.");
         setloadingvalue(false);
