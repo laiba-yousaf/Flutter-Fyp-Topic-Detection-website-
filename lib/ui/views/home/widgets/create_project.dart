@@ -8,7 +8,7 @@ import '../../../common/app_colors.dart';
 
 class CreateProject extends ViewModelWidget<HomeViewModel> {
   final String heading;
-  const CreateProject({super.key,required this.heading});
+  const CreateProject({super.key, required this.heading});
 
   @override
   Widget build(
@@ -22,7 +22,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Text(heading,
+            Text(heading,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             verticalSpaceLarge,
             Row(
@@ -140,8 +140,10 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                                             padding:
                                                 const EdgeInsets.only(left: 60),
                                             child: Text(viewModel
-                                                .extractedList[index]["size"]
-                                                .toStringAsFixed(2)+ " Mb"),
+                                                    .extractedList[index]
+                                                        ["size"]
+                                                    .toStringAsFixed(2) +
+                                                " Mb"),
                                           ),
                                           Padding(
                                               padding: const EdgeInsets.only(

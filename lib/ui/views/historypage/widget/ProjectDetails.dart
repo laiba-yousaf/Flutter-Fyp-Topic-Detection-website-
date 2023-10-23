@@ -108,7 +108,8 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
                                     horizontalSpaceLarge,
                                     Text(meetings["fileName"]),
                                     horizontalSpaceLarge,
-                                    Text(meetings["size"].toStringAsFixed(2)+ " Mb"),
+                                    Text(meetings["size"].toStringAsFixed(2) +
+                                        " Mb"),
                                   ],
                                 ),
                               ),
@@ -117,9 +118,9 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
                         }),
                   )
                 : const SizedBox(
-                  height: 200,
-                  child: Center(child: Text("no data available")),
-                ),
+                    height: 200,
+                    child: Center(child: Text("no data available")),
+                  ),
             const Divider(),
             Padding(
               padding: const EdgeInsets.only(left: 230, bottom: 5),

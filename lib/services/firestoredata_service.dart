@@ -18,13 +18,12 @@ class FirestoredataService {
         await documentReference.set({
           'title': uploadData['title'],
           'mettinges': uploadData['mettinges'],
-          'Description':uploadData['Description'],
+          'Description': uploadData['Description'],
           'timestamp': FieldValue.serverTimestamp(),
           'id': key
         });
 
         return "Data saved to Firestore successfully";
-
       } else {
         return "You don't have any file for upload";
       }

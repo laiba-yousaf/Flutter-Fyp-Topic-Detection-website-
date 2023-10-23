@@ -4,14 +4,14 @@ import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
-import 'package:topicdetectionweb/ui/views/landing_page/widgets/Introduction.dart';
-import 'package:topicdetectionweb/ui/views/landing_page/widgets/feacture_desc.dart';
-import 'package:topicdetectionweb/ui/views/landing_page/widgets/tickmark.dart';
+import 'package:topicdetectionweb/ui/views/landing_page/widgets/FeatureDescription.dart';
 import 'package:topicdetectionweb/ui/views/signin/signin_view.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 
 import '../../common/app_strings.dart';
 import 'landing_page_viewmodel.dart';
+import 'widgets/Benefit.dart';
+import 'widgets/Introduct.dart';
 
 class LandingPageView extends StackedView<LandingPageViewModel> {
   const LandingPageView({Key? key}) : super(key: key);
@@ -179,11 +179,11 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 250, top: 100),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 250, top: 100),
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               "Introduction",
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -191,7 +191,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30),
                             ),
-                            intro(),
+                            Introduction(),
                           ],
                         ),
                       ),
@@ -208,7 +208,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                feature(),
+                                FeatureDescription(),
                                 verticalSpaceLarge,
                                 verticalSpaceLarge,
                                 Row(
@@ -240,8 +240,11 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                           const Text(
                                               "all at your fingertips.."),
                                           verticalSpaceMedium,
-                                          benifit(benefit1, benefit2, benefit3,
-                                              benefit4),
+                                          Benefit(
+                                              benefit1: benefit1,
+                                              benefit2: benefit2,
+                                              benefit3: benefit3,
+                                              benefit4: benefit4),
                                         ],
                                       ),
                                     )
