@@ -148,8 +148,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i10.HomePageShowView: (data) {
+      final args = data.getArgs<HomePageShowViewArguments>(nullOk: false);
       return _i11.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i10.HomePageShowView(),
+        builder: (context) => _i10.HomePageShowView(
+            key: args.key, homeViewModel: args.homeViewModel),
         settings: data,
       );
     },
@@ -179,6 +181,33 @@ class HistorypageViewArguments {
 
   @override
   bool operator ==(covariant HistorypageViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.homeViewModel == homeViewModel;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ homeViewModel.hashCode;
+  }
+}
+
+class HomePageShowViewArguments {
+  const HomePageShowViewArguments({
+    this.key,
+    required this.homeViewModel,
+  });
+
+  final _i11.Key? key;
+
+  final _i12.HomeViewModel homeViewModel;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "homeViewModel": "$homeViewModel"}';
+  }
+
+  @override
+  bool operator ==(covariant HomePageShowViewArguments other) {
     if (identical(this, other)) return true;
     return other.key == key && other.homeViewModel == homeViewModel;
   }
@@ -306,14 +335,18 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToHomePageShowView([
+  Future<dynamic> navigateToHomePageShowView({
+    _i11.Key? key,
+    required _i12.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.homePageShowView,
+        arguments:
+            HomePageShowViewArguments(key: key, homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -436,14 +469,18 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomePageShowView([
+  Future<dynamic> replaceWithHomePageShowView({
+    _i11.Key? key,
+    required _i12.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.homePageShowView,
+        arguments:
+            HomePageShowViewArguments(key: key, homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

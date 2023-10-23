@@ -5,6 +5,8 @@ import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/views/home/widgets/create_project.dart';
 import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/sidebarx_widget.dart';
 
+import '../home_page_show/home_page_show_view.dart';
+
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
@@ -25,12 +27,22 @@ class HomeView extends StackedView<HomeViewModel> {
               builder: (context, child) {
                 switch (viewModel.controller.selectedIndex) {
                   case 0:
-                    return  const CreateProject();
+                    //return const CreateProject();
+                    return HomePageShowView(homeViewModel: viewModel);
                   case 1:
                     return HistorypageView(homeViewModel: viewModel);
                   case 2:
                     viewModel.logout();
                     return Container();
+                  case 3:
+                    return const CreateProject(
+                      heading: "Edit Project",
+                    );
+                  case 4:
+                    return const CreateProject(
+                      heading: "Create Project",
+                    );
+
                   default:
                     return Container();
                 }

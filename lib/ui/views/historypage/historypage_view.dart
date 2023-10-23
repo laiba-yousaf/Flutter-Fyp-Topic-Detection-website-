@@ -37,7 +37,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                 child: Column(
                   children: [
                     const Text(
-                      "History",
+                      "View Projects",
                       style:
                           TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                     ),

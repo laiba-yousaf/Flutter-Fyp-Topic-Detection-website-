@@ -30,17 +30,22 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
               child: Row(
                 children: [
                   const Text(
-                    "Projects Details",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    "Project Details",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  ElevatedButton(
-                      onPressed: () {
+                  Spacer(),
+                  Button(
+                      title: "Edit",
+                      height: screenHeight(context) * 0.04,
+                      width: quarterScreenWidth(context) * 0.2,
+                      Color: kcsliderColor,
+                      textColor: kcVeryLightGrey,
+                      onTap: () {
                         homeViewModel.setPage(
-                            0,
+                            3,
                             viewModel
                                 .firestoreData[viewModel.selectedProjectIndex]);
-                      },
-                      child: const Text("ok")),
+                      }),
                 ],
               ),
             ),
@@ -71,48 +76,53 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
             viewModel.selectedProjectIndex >= 0 &&
                     viewModel.selectedProjectIndex <
                         viewModel.firestoreData.length
-                ? ListView.builder(
-                    itemCount: viewModel
-                        .firestoreData[viewModel.selectedProjectIndex]
-                            ['mettinges']
-                        .length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final meetings = viewModel
-                              .firestoreData[viewModel.selectedProjectIndex]
-                          ['mettinges'][index];
+                ? SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                        itemCount: viewModel
+                            .firestoreData[viewModel.selectedProjectIndex]
+                                ['mettinges']
+                            .length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final meetings = viewModel
+                                  .firestoreData[viewModel.selectedProjectIndex]
+                              ['mettinges'][index];
 
-                      return GestureDetector(
-                        onTap: () {
-                          viewModel.setFileIndex(index);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: viewModel.selectedFileIndex == index
-                                  ? kcsliderColor
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Text((index + 1).toString()),
-                                const Text(":"),
-                                horizontalSpaceLarge,
-                                Text(meetings["fileName"]),
-                                horizontalSpaceLarge,
-                                Text(meetings["size"].toString()),
-                              ],
+                          return GestureDetector(
+                            onTap: () {
+                              viewModel.setFileIndex(index);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: viewModel.selectedFileIndex == index
+                                      ? kcsliderColor
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Text((index + 1).toString()),
+                                    const Text(":"),
+                                    horizontalSpaceLarge,
+                                    Text(meetings["fileName"]),
+                                    horizontalSpaceLarge,
+                                    Text(meetings["size"].toStringAsFixed(2)+ " Mb"),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      );
-                    })
-                : const Text("no data available"),
-            verticalSpaceLarge,
+                          );
+                        }),
+                  )
+                : const SizedBox(
+                  height: 200,
+                  child: Center(child: Text("no data available")),
+                ),
             const Divider(),
             Padding(
-              padding: const EdgeInsets.only(left: 200, bottom: 10, top: 10),
+              padding: const EdgeInsets.only(left: 230, bottom: 5),
               child: Row(
                 children: [
                   Button(

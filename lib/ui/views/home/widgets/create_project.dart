@@ -7,7 +7,8 @@ import 'package:topicdetectionweb/ui/widgets/common/mytextfield/mytextfield.dart
 import '../../../common/app_colors.dart';
 
 class CreateProject extends ViewModelWidget<HomeViewModel> {
-  const CreateProject({super.key});
+  final String heading;
+  const CreateProject({super.key,required this.heading});
 
   @override
   Widget build(
@@ -21,13 +22,14 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Create Project",
+             Text(heading,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             verticalSpaceLarge,
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text("Title of Project",
                         style: TextStyle(
@@ -45,6 +47,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                       },
                       value: 5,
                     ),
+                    verticalSpaceMedium,
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -54,6 +57,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                         verticalSpaceSmall,
                         Mytextfield(
                             maxlines: 10,
+                            ctrl: viewModel.descriptionctrl,
                             value: 5,
                             maxcond: true,
                             title: "Enter Project Description(optional)",
@@ -62,45 +66,116 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                     ),
                   ],
                 ),
-                horizontalSpaceMedium,
+                horizontalSpaceLarge,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    verticalSpaceSmall,
-                    verticalSpaceSmall,
+                    verticalSpaceMedium,
                     Container(
-                      width: thirdScreenWidth(context),
-                      height: quarterScreenWidth(context),
+                      width: thirdScreenWidth(context) * 1.2,
+                      height: thirdScreenWidth(context) * 0.55,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2),
                           border: Border.all(
                             color: kcLightGrey,
                           )),
-                      child: viewModel.extractedList.isNotEmpty
-                          ? ListView.builder(
-                              itemCount: viewModel.extractedList.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  leading: Text((index + 1).toString()),
-                                  title: Text(viewModel.extractedList[index]
-                                      ["fileName"]),
-                                  subtitle: Text(viewModel.extractedList[index]
-                                          ["size"]
-                                      .toString()),
-                                );
-                              },
-                            )
-                          : const Center(
-                              child: Text(
-                                "No File Uploaded So Far",
-                                style: TextStyle(
-                                  color: kcLightGrey,
+                      child: Column(
+                        children: [
+                          verticalSpaceMedium,
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "No",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                              ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 90),
+                                  child: Text(
+                                    "FileName",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 100),
+                                  child: Text(
+                                    "Size",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 100),
+                                  child: Text(
+                                    "Action",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
                             ),
+                          ),
+                          Divider(),
+                          viewModel.extractedList.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount: viewModel.extractedList.length,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(left: 20),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            (index + 1).toString(),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 90),
+                                            child: Text(
+                                                viewModel.extractedList[index]
+                                                    ["fileName"]),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 60),
+                                            child: Text(viewModel
+                                                .extractedList[index]["size"]
+                                                .toStringAsFixed(2)+ " Mb"),
+                                          ),
+                                          Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 60),
+                                              child: GestureDetector(
+                                                  onTap: () {
+                                                    viewModel.deleteFile(index);
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.delete,
+                                                    color: kcPrimaryColor,
+                                                    size: 20,
+                                                  ))),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )
+                              : SizedBox(
+                                  height: thirdScreenWidth(context) * 0.4,
+                                  child: const Center(
+                                    child: Text(
+                                      "No File Uploaded So Far",
+                                      style: TextStyle(
+                                        color: kcLightGrey,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                        ],
+                      ),
                     ),
                     Container(
-                      width: thirdScreenWidth(context),
+                      width: thirdScreenWidth(context) * 1.2,
                       height: 50,
                       decoration: BoxDecoration(
                           border: Border.all(

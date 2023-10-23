@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -10,17 +9,18 @@ import 'package:topicdetectionweb/services/authentication_service.dart';
 import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 
+import '../../../services/firestoredata_service.dart';
+
 class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _authservice = locator<AuthenticationService>();
   TextEditingController projectctrl = TextEditingController();
-
-  TextEditingController passctrl = TextEditingController();
+  final FirestoredataService firestoreService = FirestoredataService();
+  TextEditingController descriptionctrl = TextEditingController();
 
   final controller = SidebarXController(selectedIndex: 0, extended: true);
 
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
-  String currentPage = 'Home';
   bool loading = false;
 
   setloadingvalue(bool value) {
@@ -28,12 +28,21 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  String? eidtProjectId;
   setPage(val, Map data) {
     controller.selectIndex(val);
-    projectctrl.text = data["title"];
-    eidtProjectId = data["id"];
+
+    if (data.containsKey("title")) {
+      projectctrl.text = data["title"];
+    }
+
+    if (data.containsKey("Description")) {
+      descriptionctrl.text = data['Description'];
+    }
+
     extractedList = data["mettinges"];
+
+    firestoreService.eidtProjectId = data["id"];
+
     notifyListeners();
   }
 
@@ -61,12 +70,15 @@ class HomeViewModel extends BaseViewModel {
         final platformFile = result.files.first;
         final fileBytes = platformFile.bytes!;
         final fileName = platformFile.name;
-        int sizeInBytes = result.files.length;
+        int sizeInBytes = fileBytes.lengthInBytes;
         double sizeInMb = sizeInBytes / (1024 * 1024);
         setBusy(true);
         extractedList.add(
           await speechtotextservice.uploadAudioFile(
-              fileBytes, fileName, sizeInMb),
+            fileBytes,
+            fileName,
+            sizeInMb,
+          ),
         );
         setBusy(false);
         notifyListeners();
@@ -82,38 +94,37 @@ class HomeViewModel extends BaseViewModel {
 
   Future<void> saveDataToFirestore(Map<String, dynamic> uploadData) async {
     try {
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
       setloadingvalue(true);
-      String _key =
-          eidtProjectId ?? DateTime.now().millisecondsSinceEpoch.toString();
-      if (uploadData['mettinges'] != null &&
-          uploadData['mettinges'].length > 0) {
-        DocumentReference documentReference =
-            firestore.collection('your_collection_name').doc(_key);
-
-        await documentReference.set({
-          'title': uploadData['title'],
-          'mettinges': uploadData['mettinges'],
-          'timestamp': FieldValue.serverTimestamp(),
-          'id': _key
-        });
-        toastService.toastmessage("Data saved to Firestore successfully.");
-        setloadingvalue(false);
-      } else {
-        toastService.toastmessage("You don't have any file for upload");
-        setloadingvalue(false);
-      }
+      String result = await firestoreService.saveData(uploadData);
+      toastService.toastmessage(result);
+      setloadingvalue(false);
+      projectctrl.clear();
+      descriptionctrl.clear();
+      extractedList = [];
     } catch (e) {
       setBusy(false);
-      toastService.toastmessage("Error saving data to Firestore: $e");
+      toastService.toastmessage(e.toString());
     }
   }
 
   onProceed() {
     Map<String, dynamic> uploadData = {
       "title": projectctrl.text,
-      "mettinges": extractedList
+      "mettinges": extractedList,
+      "Description": descriptionctrl.text,
     };
     saveDataToFirestore(uploadData);
+  }
+
+  void deleteFile(int index) {
+    if (index >= 0 && index < extractedList.length) {
+      extractedList.removeAt(index);
+    }
+    notifyListeners();
+  }
+
+  setcreate(val) {
+    controller.selectIndex(val);
+    notifyListeners();
   }
 }

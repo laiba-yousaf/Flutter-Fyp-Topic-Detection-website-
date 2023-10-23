@@ -11,6 +11,7 @@ import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i3;
 import 'package:topicdetectionweb/services/authentication_service.dart' as _i8;
+import 'package:topicdetectionweb/services/firestoredata_service.dart' as _i10;
 import 'package:topicdetectionweb/services/speech_to_text_service.dart' as _i9;
 import 'package:topicdetectionweb/services/toastmessage_service.dart' as _i7;
 
@@ -752,4 +753,30 @@ class MockSpeechToTextService extends _i1.Mock
         returnValueForMissingStub:
             _i5.Future<Map<dynamic, dynamic>>.value(<dynamic, dynamic>{}),
       ) as _i5.Future<Map<dynamic, dynamic>>);
+}
+
+/// A class which mocks [FirestoredataService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirestoredataService extends _i1.Mock
+    implements _i10.FirestoredataService {
+  @override
+  set eidtProjectId(String? _eidtProjectId) => super.noSuchMethod(
+        Invocation.setter(
+          #eidtProjectId,
+          _eidtProjectId,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i5.Future<String> saveData(Map<String, dynamic>? uploadData) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveData,
+          [uploadData],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
 }

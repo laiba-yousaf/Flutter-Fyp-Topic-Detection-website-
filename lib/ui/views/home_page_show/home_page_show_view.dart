@@ -3,11 +3,15 @@ import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
+import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 import 'home_page_show_viewmodel.dart';
 
 class HomePageShowView extends StackedView<HomePageShowViewModel> {
-  const HomePageShowView({Key? key}) : super(key: key);
+  final HomeViewModel homeViewModel;
+
+  const HomePageShowView({Key? key, required this.homeViewModel})
+      : super(key: key);
 
   @override
   Widget builder(
@@ -53,7 +57,7 @@ class HomePageShowView extends StackedView<HomePageShowViewModel> {
             width: quarterScreenWidth(context) * 0.5,
             title: "Create Project",
             onTap: () {
-              viewModel.updatevalue();
+              homeViewModel.setcreate(4);
             },
           ),
         )

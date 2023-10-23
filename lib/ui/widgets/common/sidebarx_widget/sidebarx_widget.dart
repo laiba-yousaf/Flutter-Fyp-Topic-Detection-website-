@@ -39,7 +39,7 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
           label: "Projects",
           icon: Icons.upload_file,
         ),
-        SidebarXItem(icon: Icons.history, label: "History"),
+        SidebarXItem(icon: Icons.history, label: "View Projects"),
         SidebarXItem(icon: Icons.logout, label: "Logout"),
       ],
       extendedTheme: const SidebarXTheme(width: 140),

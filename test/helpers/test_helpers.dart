@@ -5,6 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import 'package:topicdetectionweb/services/authentication_service.dart';
 import 'package:topicdetectionweb/services/speech_to_text_service.dart';
+import 'package:topicdetectionweb/services/firestoredata_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -16,6 +17,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<ToastmessageService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SpeechToTextService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<FirestoredataService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -25,6 +27,7 @@ void registerServices() {
   getAndRegisterToastmessageService();
   getAndRegisterAuthenticationService();
   getAndRegisterSpeechToTextService();
+  getAndRegisterFirestoredataService();
 // @stacked-mock-register
 }
 
@@ -96,6 +99,13 @@ MockSpeechToTextService getAndRegisterSpeechToTextService() {
   _removeRegistrationIfExists<SpeechToTextService>();
   final service = MockSpeechToTextService();
   locator.registerSingleton<SpeechToTextService>(service);
+  return service;
+}
+
+MockFirestoredataService getAndRegisterFirestoredataService() {
+  _removeRegistrationIfExists<FirestoredataService>();
+  final service = MockFirestoredataService();
+  locator.registerSingleton<FirestoredataService>(service);
   return service;
 }
 // @stacked-mock-create
