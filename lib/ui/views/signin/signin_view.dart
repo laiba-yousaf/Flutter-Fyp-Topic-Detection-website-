@@ -53,7 +53,7 @@ class SigninView extends StackedView<SigninViewModel> {
                       ),
                       ctrl: viewModel.emailctrl,
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (viewModel.showEmailValidation && value!.isEmpty) {
                           return "Email is required";
                         }
                         return null;
@@ -82,7 +82,8 @@ class SigninView extends StackedView<SigninViewModel> {
                       ),
                       obscureText: viewModel.obsecure,
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (viewModel.showPasswordValidation &&
+                            value!.isEmpty) {
                           return "Password is required";
                         }
                         return null;
@@ -93,16 +94,24 @@ class SigninView extends StackedView<SigninViewModel> {
                       padding: const EdgeInsets.only(left: 190.0),
                       child: TextButton(
                           onPressed: () {
-                            viewModel.auth
-                                .sendPasswordResetEmail(
-                                    email: viewModel.emailctrl.text.toString())
-                                .then((value) {
-                              viewModel.toastService.toastmessage(
-                                  "we have send you email to recover password,please check email");
-                            }).onError((error, stackTrace) {
-                              viewModel.toastService
-                                  .toastmessage(error.toString());
-                            });
+                          viewModel.showEmailValidation = true; // Show email validation, hide password validation
+                          viewModel.showPasswordValidation = false;
+                            if (viewModel.formKey.currentState!.validate()) {
+
+                              viewModel.setBusy(true);
+
+                              viewModel.auth
+                                  .sendPasswordResetEmail(
+                                      email:
+                                          viewModel.emailctrl.text.toString())
+                                  .then((value) {
+                                viewModel.toastService.toastmessage(
+                                    "we have send you email to recover password,please check email");
+                              }).onError((error, stackTrace) {
+                                viewModel.toastService
+                                    .toastmessage(error.toString());
+                              });
+                            }
                           },
                           child: const Text(
                             "Forgot Password?",

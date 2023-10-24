@@ -197,18 +197,22 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       ),
                       Stack(
                         children: [
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Image(
-                                image: AssetImage(backimg2),
-                                width: 800,
-                              )),
+                          Container(
+                            //color: Colors.red,
+                            height: 800,
+                            child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Image(
+                                  image: AssetImage(backimg2),
+                                  //width: 800,
+                                )),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(left: 240),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FeatureDescription(),
+                                const FeatureDescription(),
                                 verticalSpaceLarge,
                                 verticalSpaceLarge,
                                 Row(

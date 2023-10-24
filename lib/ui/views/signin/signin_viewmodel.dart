@@ -17,6 +17,8 @@ class SigninViewModel extends BaseViewModel {
   bool loading1 = false;
   final toastService = locator<ToastmessageService>();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool showEmailValidation = true;
+  bool showPasswordValidation = true;
 
   final authservices = locator<AuthenticationService>();
   int currentCarouselIndex = 0;

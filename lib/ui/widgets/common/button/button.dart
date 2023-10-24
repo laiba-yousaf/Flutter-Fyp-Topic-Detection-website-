@@ -1,4 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:stacked/stacked.dart';
 import 'button_model.dart';
 
@@ -38,9 +42,9 @@ class Button extends StackedView<ButtonModel> {
         ),
         child: Center(
           child: loading
-              ? const CircularProgressIndicator(
-                  strokeWidth: 3,
+              ? const SpinKitFadingCircle( // Use the SpinKitWave spinner
                   color: Colors.white,
+                  size: 30.0,
                 )
               : Text(
                   title!,

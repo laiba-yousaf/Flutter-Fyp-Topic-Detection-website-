@@ -56,7 +56,7 @@ class Cardwidget extends ViewModelWidget<AboutusViewModel> {
               height: 300,
               child: Card(
                 color: isHovered
-                    ? Color.fromARGB(255, 241, 240, 240)
+                    ? const Color.fromARGB(255, 241, 240, 240)
                     : Colors.white,
                 elevation: 3,
                 child: Column(
@@ -85,20 +85,20 @@ class Cardwidget extends ViewModelWidget<AboutusViewModel> {
                       children: [
                         Image(
                           image: AssetImage(twitter),
-                          width: 20,
-                          height: 20,
+                          width: 40,
+                          height: 40,
                         ),
                         horizontalSpaceSmall,
                         Image(
                           image: AssetImage(linkdinicon),
-                          width: 20,
-                          height: 20,
+                          width: 50,
+                          height: 50,
                         ),
                         horizontalSpaceSmall,
                         Image(
                           image: AssetImage(githubicon),
-                          width: 20,
-                          height: 20,
+                          width: 25,
+                          height: 25,
                         ),
                       ],
                     )

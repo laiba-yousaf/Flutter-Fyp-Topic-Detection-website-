@@ -27,21 +27,14 @@ class SignupView extends StackedView<SignupViewModel> {
                 key: viewModel.formKey,
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Image(
-                          image: AssetImage(logopic),
-                          width: 200,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 70),
-                          child: Text(
-                            "Sign Up",
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+                    verticalSpaceMedium,
+                    const Padding(
+                      padding: EdgeInsets.only(left:50),
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     verticalSpaceLarge,
                     Mytextfield(

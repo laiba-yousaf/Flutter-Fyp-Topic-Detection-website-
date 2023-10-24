@@ -107,10 +107,6 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       ),
                     ),
                   ),
-                  Text(
-                    formattedText,
-                    style: const TextStyle(fontFamily: 'NotoNastaliqUrdu'),
-                  ),
                 ]),
               ],
             ),
