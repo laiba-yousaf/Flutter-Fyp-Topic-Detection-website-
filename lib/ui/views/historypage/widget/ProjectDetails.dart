@@ -58,10 +58,13 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
                     "No",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  horizontalSpaceLarge,
-                  Text(
-                    "FileName",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  //horizontalSpaceLarge,
+                  Padding(
+                    padding: EdgeInsets.only(left: 90),
+                    child: Text(
+                      "FileName",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 90),

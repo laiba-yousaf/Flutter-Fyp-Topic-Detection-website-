@@ -23,7 +23,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(heading,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             verticalSpaceLarge,
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +131,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                                             (index + 1).toString(),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.only(left: 90),
+                                            padding: const EdgeInsets.only(left: 90),
                                             child: Text(
                                                 viewModel.extractedList[index]
                                                     ["fileName"]),

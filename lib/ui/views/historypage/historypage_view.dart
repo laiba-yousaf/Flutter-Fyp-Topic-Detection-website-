@@ -57,11 +57,14 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
-                                  horizontalSpaceLarge,
-                                  Text(
-                                    "ProjectName",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                 // horizontalSpaceLarge,
+                                  Padding(
+                                    padding: EdgeInsets.only(left:100),
+                                    child: Text(
+                                      "ProjectName",
+                                      style:
+                                          TextStyle(fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(left: 90),

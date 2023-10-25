@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import '../../../common/app_strings.dart';
@@ -89,10 +90,11 @@ class Cardwidget extends ViewModelWidget<AboutusViewModel> {
                           height: 40,
                         ),
                         horizontalSpaceSmall,
-                        Image(
-                          image: AssetImage(linkdinicon),
-                          width: 50,
-                          height: 50,
+                        SvgPicture.asset(
+                          linkdinicon,
+                          width: 30,
+                          height: 30, // Replace with the path to your SVG file
+                          //color: Colors.blue, // Customize the color
                         ),
                         horizontalSpaceSmall,
                         Image(
