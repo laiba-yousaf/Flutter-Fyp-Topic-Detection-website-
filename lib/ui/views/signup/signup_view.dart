@@ -29,7 +29,7 @@ class SignupView extends StackedView<SignupViewModel> {
                   children: [
                     verticalSpaceMedium,
                     const Padding(
-                      padding: EdgeInsets.only(left:50),
+                      padding: EdgeInsets.only(left: 50),
                       child: Text(
                         "Sign Up",
                         style: TextStyle(

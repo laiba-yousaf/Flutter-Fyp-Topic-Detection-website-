@@ -120,13 +120,13 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
                           );
                         }),
                   )
-                :  SizedBox(
-                    height: screenHeight(context)*0.2,
+                : SizedBox(
+                    height: screenHeight(context) * 0.2,
                     child: const Center(child: Text("no data available")),
                   ),
             const Divider(),
             SizedBox(
-              height: screenHeight(context)*0.06,                      
+              height: screenHeight(context) * 0.06,
               child: Padding(
                 padding: const EdgeInsets.only(left: 230, bottom: 5),
                 child: Row(
@@ -149,7 +149,7 @@ class ProjectDetails extends ViewModelWidget<HistorypageViewModel> {
                           final meetings = viewModel
                                   .firestoreData[viewModel.selectedProjectIndex]
                               ['mettinges'][viewModel.selectedFileIndex];
-            
+
                           viewModel.showDialog(
                               meetings['urduText'], meetings['fileName']);
                         }),

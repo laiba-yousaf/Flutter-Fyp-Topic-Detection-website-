@@ -36,8 +36,8 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
           iconTheme: IconThemeData(color: Colors.white)),
       items: const [
         SidebarXItem(
-          label: "Projects",
-          icon: Icons.upload_file,
+          label: "DashBoard",
+          icon: Icons.home,
         ),
         SidebarXItem(icon: Icons.history, label: "View Projects"),
         SidebarXItem(icon: Icons.logout, label: "Logout"),

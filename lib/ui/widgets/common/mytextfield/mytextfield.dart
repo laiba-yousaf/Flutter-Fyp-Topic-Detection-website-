@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'mytextfield_model.dart';
 
 class Mytextfield extends StackedView<MytextfieldModel> {
@@ -51,7 +52,7 @@ class Mytextfield extends StackedView<MytextfieldModel> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(value!)),
             ),
-            hintStyle: const TextStyle(fontSize: 14),
+            hintStyle: const TextStyle(fontSize: 12, color: kcsliderColor),
             suffixIcon: suffix,
             prefixIcon: prefix),
         validator: validator,

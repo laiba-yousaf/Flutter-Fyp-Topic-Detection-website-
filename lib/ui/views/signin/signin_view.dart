@@ -94,10 +94,10 @@ class SigninView extends StackedView<SigninViewModel> {
                       padding: const EdgeInsets.only(left: 190.0),
                       child: TextButton(
                           onPressed: () {
-                          viewModel.showEmailValidation = true; // Show email validation, hide password validation
-                          viewModel.showPasswordValidation = false;
+                            viewModel.showEmailValidation =
+                                true; // Show email validation, hide password validation
+                            viewModel.showPasswordValidation = false;
                             if (viewModel.formKey.currentState!.validate()) {
-
                               viewModel.setBusy(true);
 
                               viewModel.auth

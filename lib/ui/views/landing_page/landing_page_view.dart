@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
@@ -280,24 +281,27 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Image(
-                                          image: AssetImage(linkdinicon),
-                                          width: 20,
-                                          height: 20,
-                                          color: Colors.white,
+                                        SvgPicture.asset(
+                                          linkdinicon, // Replace with the path to your SVG file
+                                          width: 30,
+                                          height: 30,
+
+                                          // Customize the color
                                         ),
                                         horizontalSpaceMedium,
                                         Image(
-                                            image: AssetImage(githubicon),
-                                            width: 20,
-                                            height: 20,
-                                            color: Colors.white),
+                                          image: AssetImage(githubicon),
+                                          width: 20,
+                                          height: 20,
+                                          //color: Colors.white
+                                        ),
                                         horizontalSpaceMedium,
                                         Image(
-                                            image: AssetImage(twitter),
-                                            width: 20,
-                                            height: 20,
-                                            color: Colors.white),
+                                          image: AssetImage(twitter),
+                                          width: 20,
+                                          height: 20,
+                                          //color: Colors.white
+                                        ),
                                       ],
                                     ),
                                   ],

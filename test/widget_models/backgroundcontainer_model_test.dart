@@ -4,7 +4,7 @@ import 'package:topicdetectionweb/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('HomePageShowViewModel Tests -', () {
+  group('BackgroundcontainerModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });

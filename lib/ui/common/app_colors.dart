@@ -8,5 +8,7 @@ const Color kcLightGrey = Color.fromARGB(255, 187, 187, 187);
 const Color kcVeryLightGrey = Color.fromARGB(255, 255, 254, 254);
 const Color kcBackgroundColor = kcDarkGreyColor;
 const Color kcsliderColor = Color.fromARGB(255, 172, 116, 245);
+const Color hoverColor = Color.fromARGB(255, 224, 207, 247);
+const Color hoverColor1 = Color.fromARGB(255, 224, 207, 247);
 const Color kcpurpleColor = Colors.purple;
 const Color kcfeatureColor = Color.fromARGB(255, 248, 237, 250);

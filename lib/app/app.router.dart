@@ -12,12 +12,12 @@ import 'package:stacked_services/stacked_services.dart' as _i13;
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart' as _i7;
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart'
     as _i8;
+import 'package:topicdetectionweb/ui/views/dashborad/dashborad_view.dart'
+    as _i10;
 import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart'
     as _i6;
 import 'package:topicdetectionweb/ui/views/home/home_view.dart' as _i5;
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart' as _i12;
-import 'package:topicdetectionweb/ui/views/home_page_show/home_page_show_view.dart'
-    as _i10;
 import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart'
     as _i9;
 import 'package:topicdetectionweb/ui/views/signin/signin_view.dart' as _i4;
@@ -41,7 +41,7 @@ class Routes {
 
   static const landingPageView = '/landing-page-view';
 
-  static const homePageShowView = '/home-page-show-view';
+  static const dashboradView = '/dashborad-view';
 
   static const all = <String>{
     startupView,
@@ -52,7 +52,7 @@ class Routes {
     aboutusView,
     contactusView,
     landingPageView,
-    homePageShowView,
+    dashboradView,
   };
 }
 
@@ -91,8 +91,8 @@ class StackedRouter extends _i1.RouterBase {
       page: _i9.LandingPageView,
     ),
     _i1.RouteDef(
-      Routes.homePageShowView,
-      page: _i10.HomePageShowView,
+      Routes.dashboradView,
+      page: _i10.DashboradView,
     ),
   ];
 
@@ -147,10 +147,10 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i10.HomePageShowView: (data) {
-      final args = data.getArgs<HomePageShowViewArguments>(nullOk: false);
+    _i10.DashboradView: (data) {
+      final args = data.getArgs<DashboradViewArguments>(nullOk: false);
       return _i11.MaterialPageRoute<dynamic>(
-        builder: (context) => _i10.HomePageShowView(
+        builder: (context) => _i10.DashboradView(
             key: args.key, homeViewModel: args.homeViewModel),
         settings: data,
       );
@@ -191,8 +191,8 @@ class HistorypageViewArguments {
   }
 }
 
-class HomePageShowViewArguments {
-  const HomePageShowViewArguments({
+class DashboradViewArguments {
+  const DashboradViewArguments({
     this.key,
     required this.homeViewModel,
   });
@@ -207,7 +207,7 @@ class HomePageShowViewArguments {
   }
 
   @override
-  bool operator ==(covariant HomePageShowViewArguments other) {
+  bool operator ==(covariant DashboradViewArguments other) {
     if (identical(this, other)) return true;
     return other.key == key && other.homeViewModel == homeViewModel;
   }
@@ -335,7 +335,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToHomePageShowView({
+  Future<dynamic> navigateToDashboradView({
     _i11.Key? key,
     required _i12.HomeViewModel homeViewModel,
     int? routerId,
@@ -344,9 +344,9 @@ extension NavigatorStateExtension on _i13.NavigationService {
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   }) async {
-    return navigateTo<dynamic>(Routes.homePageShowView,
+    return navigateTo<dynamic>(Routes.dashboradView,
         arguments:
-            HomePageShowViewArguments(key: key, homeViewModel: homeViewModel),
+            DashboradViewArguments(key: key, homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -469,7 +469,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomePageShowView({
+  Future<dynamic> replaceWithDashboradView({
     _i11.Key? key,
     required _i12.HomeViewModel homeViewModel,
     int? routerId,
@@ -478,9 +478,9 @@ extension NavigatorStateExtension on _i13.NavigationService {
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   }) async {
-    return replaceWith<dynamic>(Routes.homePageShowView,
+    return replaceWith<dynamic>(Routes.dashboradView,
         arguments:
-            HomePageShowViewArguments(key: key, homeViewModel: homeViewModel),
+            DashboradViewArguments(key: key, homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

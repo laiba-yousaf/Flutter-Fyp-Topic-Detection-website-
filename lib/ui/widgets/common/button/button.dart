@@ -42,7 +42,8 @@ class Button extends StackedView<ButtonModel> {
         ),
         child: Center(
           child: loading
-              ? const SpinKitFadingCircle( // Use the SpinKitWave spinner
+              ? const SpinKitFadingCircle(
+                  // Use the SpinKitWave spinner
                   color: Colors.white,
                   size: 30.0,
                 )

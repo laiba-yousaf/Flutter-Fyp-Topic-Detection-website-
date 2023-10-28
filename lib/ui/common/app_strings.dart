@@ -33,6 +33,9 @@ String arrow = 'assets/images/arrow-purple-right.gif';
 String Contact = 'assets/images/contactUs.png';
 String SignUp = 'assets/images/SignUp.png';
 String video = 'assets/images/videoIcon.png';
+String newbackground = 'assets/images/newbackground.png';
+String createProject = 'assets/images/create Project.svg';
+String viewProject = 'assets/images/view Project.svg';
 
 // strings
 
