@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoredataService {
-  String? eidtProjectId;
-
-  Future<String> saveData(Map<String, dynamic> uploadData) async {
+  Future<String> saveData(
+      Map<String, dynamic> uploadData, {String? eidtProjectId}) async {
     try {
       FirebaseFirestore firestore = FirebaseFirestore.instance;
 

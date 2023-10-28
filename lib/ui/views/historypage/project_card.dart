@@ -45,9 +45,8 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
               children: [
                 GestureDetector(
                     onTap: () {
-                      homeViewModel.setPage(3, viewModel.firestoreData[index]);
-                       homeViewModel.setProjectindex(index);
-
+                      homeViewModel.setPage(3, projectData);
+                      homeViewModel.setProjectindex(index);
                     },
                     child: const Icon(Icons.edit_document)),
               ],

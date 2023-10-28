@@ -7,7 +7,6 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.locator.dart';
 import 'package:topicdetectionweb/app/app.router.dart';
 import 'package:topicdetectionweb/services/authentication_service.dart';
-import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import '../../../app/app.dialogs.dart';
 import '../../../services/fetchdata_service.dart';
@@ -26,6 +25,7 @@ class HomeViewModel extends BaseViewModel {
   Uint8List? fileBytes;
   String? fileName;
   double? sizeInMb;
+  String? eidtProjectId;
   final controller = SidebarXController(selectedIndex: 0, extended: true);
 
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
@@ -44,19 +44,14 @@ class HomeViewModel extends BaseViewModel {
 
   setPage(val, Map data) {
     controller.selectIndex(val);
-
     if (data.containsKey("title")) {
       projectctrl.text = data["title"];
     }
-
     if (data.containsKey("Description")) {
       descriptionctrl.text = data['Description'];
     }
-
     extractedList = data["mettinges"];
-
-    firestoreService.eidtProjectId = data["id"];
-
+    eidtProjectId = data["id"];
     notifyListeners();
   }
 
@@ -113,7 +108,7 @@ class HomeViewModel extends BaseViewModel {
       "mettinges": extractedList,
       "Description": descriptionctrl.text,
     };
-    savedataService.saveData(uploadData);
+    savedataService.saveData(uploadData, eidtProjectId: eidtProjectId);
   }
 
   void deleteFile(int index) {
@@ -187,7 +182,6 @@ class HomeViewModel extends BaseViewModel {
 
   Future<void> fetchDatafromfirestore() async {
     try {
-    
       firestoreData = await fetchdataservice.fetchDatafromfirestore();
     } catch (e) {
       toastService.toastmessage("Error fetching data from Firestore: $e");
