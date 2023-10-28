@@ -1,5 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+//import 'dart:html' as html;
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 
@@ -41,15 +41,15 @@ class SpeechToTextService {
         "urduText": urduText,
       };
 
-      final blob = html.Blob([urduText]);
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      // ignore: unused_local_variable
-      final anchor = html.AnchorElement(href: url)
-        ..target = 'web'
-        ..download = 'urdu_text.txt'
-        ..click();
+      // final blob = html.Blob([urduText]);
+      // final url = html.Url.createObjectUrlFromBlob(blob);
+      // // ignore: unused_local_variable
+      // final anchor = html.AnchorElement(href: url)
+      //   ..target = 'web'
+      //   ..download = 'urdu_text.txt'
+      //   ..click();
 
-      html.Url.revokeObjectUrl(url);
+      // html.Url.revokeObjectUrl(url);
     } else {
       // ignore: avoid_print
       print("API call failed with status code: ${response.statusCode}");

@@ -54,10 +54,8 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                             Color: kcsliderColor,
                             width: quarterScreenWidth(context) * 0.3,
                             onTap: () {
-
-                            
                               viewModel.filePick(context);
-                              
+
                               //viewModel.uploadFile(context);
                               //showDialog(context: context, builder: builder)
                             },
@@ -104,41 +102,63 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                       ],
                     ),
                   ),
+                  verticalSpaceMedium,
                   viewModel.extractedList.isNotEmpty
                       ? ListView.builder(
                           itemCount: viewModel.extractedList.length,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.only(left: 20),
+                              padding: const EdgeInsets.only(left: 80),
                               child: Row(
                                 children: [
                                   Text(
                                     (index + 1).toString(),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 90),
+                                    padding: const EdgeInsets.only(left: 150),
                                     child: Text(viewModel.extractedList[index]
                                         ["fileName"]),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 60),
+                                    padding: const EdgeInsets.only(left: 150),
                                     child: Text(viewModel.extractedList[index]
                                                 ["size"]
                                             .toStringAsFixed(2) +
                                         " Mb"),
                                   ),
                                   Padding(
-                                      padding: const EdgeInsets.only(left: 60),
-                                      child: GestureDetector(
-                                          onTap: () {
-                                            viewModel.deleteFile(index);
-                                          },
-                                          child: const Icon(
-                                            Icons.delete,
-                                            color: kcPrimaryColor,
-                                            size: 20,
-                                          ))),
+                                      padding: const EdgeInsets.only(left: 90),
+                                      child: Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              viewModel.deleteFile(index);
+                                            },
+                                            child: const Icon(
+                                              Icons.delete,
+                                              color: kcPrimaryColor,
+                                              size: 20,
+                                            ),
+                                          ),
+                                          horizontalSpaceSmall,
+                                          GestureDetector(
+                                              onTap: () {},
+                                              child:
+                                                  const Icon(Icons.view_array)),
+                                          horizontalSpaceSmall,
+                                          GestureDetector(
+                                              onTap: () {
+                                                viewModel.displayDialog(
+                                                    viewModel.extractedList[
+                                                        index]["urduText"],
+                                                    viewModel.extractedList[
+                                                        index]["fileName"]);
+                                              },
+                                              child: const Icon(
+                                                  Icons.display_settings))
+                                        ],
+                                      )),
                                 ],
                               ),
                             );

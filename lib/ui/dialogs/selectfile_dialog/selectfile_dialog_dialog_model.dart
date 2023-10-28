@@ -1,7 +1,9 @@
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.locator.dart';
 import '../../../services/firestoredata_service.dart';
 import '../../../services/speech_to_text_service.dart';
@@ -11,18 +13,19 @@ class SelectfileDialogDialogModel extends BaseViewModel {
   TextEditingController projectctrl = TextEditingController();
   final FirestoredataService firestoreService = FirestoredataService();
   TextEditingController descriptionctrl = TextEditingController();
+  final _navigationService = locator<NavigationService>();
+
   final toastService = locator<ToastmessageService>();
   final speechtotextservice = locator<SpeechToTextService>();
-  List<dynamic> extractedList = [];
+  final Function(dynamic data) onDataChanged;
+
   final fileBytes;
   final fileName;
   final sizeInMb;
-  SelectfileDialogDialogModel(
-    this.fileBytes,
-    this.fileName,
-    this.sizeInMb,
-    
-  );
+  final extractedList;
+  final projectname;
+  SelectfileDialogDialogModel(this.fileBytes, this.fileName, this.sizeInMb,
+      this.extractedList, this.onDataChanged, this.projectname);
 
   bool loading = false;
   setloadingvalue(bool value) {
@@ -32,10 +35,10 @@ class SelectfileDialogDialogModel extends BaseViewModel {
 
   Future<void> saveDataToFirestore(Map<String, dynamic> uploadData) async {
     try {
-      setloadingvalue(true);
+      //setloadingvalue(true);
       String result = await firestoreService.saveData(uploadData);
       toastService.toastmessage(result);
-      setloadingvalue(false);
+      //setloadingvalue(false);
       // projectctrl.clear();
       // descriptionctrl.clear();
       // extractedList = [];
@@ -45,7 +48,8 @@ class SelectfileDialogDialogModel extends BaseViewModel {
     }
   }
 
-  Future<void> Uploadata(BuildContext context) async {
+  Future<void> uploadata(BuildContext context) async {
+    setBusy(true);
     try {
       if (fileBytes == null) {
         toastService.toastmessage(
@@ -66,7 +70,7 @@ class SelectfileDialogDialogModel extends BaseViewModel {
 
         // Construct the data to save to Firebase
         Map<String, dynamic> uploadData = {
-          "title": projectctrl.text,
+          "title": projectname,
           "mettinges": extractedList,
           "Description": descriptionctrl.text,
         };
@@ -76,12 +80,15 @@ class SelectfileDialogDialogModel extends BaseViewModel {
 
         // Show a success message
         toastService.toastmessage("File uploaded successfully.");
+
+        onDataChanged(extractedList);
+        _navigationService.back();
       } else {
         toastService.toastmessage("Failed to upload");
       }
     } catch (e) {
       toastService.toastmessage("Error$e");
-
     }
+    setBusy(false);
   }
 }

@@ -17,6 +17,7 @@ import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 import 'package:topicdetectionweb/services/firestoredata_service.dart';
 import 'package:topicdetectionweb/ui/views/dashborad/dashborad_view.dart';
 import 'package:topicdetectionweb/ui/dialogs/selectfile_dialog/selectfile_dialog_dialog.dart';
+import 'package:topicdetectionweb/services/fetchdata_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -40,6 +41,7 @@ import 'package:topicdetectionweb/ui/dialogs/selectfile_dialog/selectfile_dialog
     LazySingleton(classType: AuthenticationService),
     LazySingleton(classType: SpeechToTextService),
     LazySingleton(classType: FirestoredataService),
+    LazySingleton(classType: FetchdataService),
 // @stacked-service
   ],
   bottomsheets: [

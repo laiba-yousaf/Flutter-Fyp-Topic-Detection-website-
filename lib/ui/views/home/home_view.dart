@@ -54,9 +54,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 builder: (context, child) {
                   switch (viewModel.controller.selectedIndex) {
                     case 0:
-                      return Uploadfile(
-                        projectname: "my project",
-                      ); //DashboradView(homeViewModel: viewModel);
+                      return DashboradView(homeViewModel: viewModel);
                     //return const CreateProject();
                     //return HomePageShowView(homeViewModel: viewModel);
                     case 1:
@@ -73,7 +71,9 @@ class HomeView extends StackedView<HomeViewModel> {
                         heading: "Create Project",
                       );
                     case 5:
-                    // return UploadfileView();
+                      return Uploadfile(
+                        projectname: viewModel.projectctrl.text,
+                      );
                     default:
                       return Container();
                   }

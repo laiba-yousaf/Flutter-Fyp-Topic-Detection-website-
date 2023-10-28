@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
@@ -69,8 +71,17 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                 height: screenHeight(context) * 0.06,
                 width: thirdScreenWidth(context) * 1.0,
                 onTap: () {
-                  if (viewModel.formKey.currentState!.validate()) {
-                    viewModel.setcreate(5);
+                  if (heading == 'Create Project') {
+                    if (viewModel.formKey.currentState!.validate()) {
+                      viewModel.setcreate(5);
+                    }
+                  } else if (heading == 'Edit Project') {
+                    viewModel.setBusy(true);
+                    print("Enter edit Project");
+                    //viewModel.fetchData();
+                    viewModel.setPage(3,
+                        viewModel.firestoreData[viewModel.selectProjectindex]);
+                    viewModel.onProceed();
                   }
                 })
           ],

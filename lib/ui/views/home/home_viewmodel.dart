@@ -10,6 +10,7 @@ import 'package:topicdetectionweb/services/authentication_service.dart';
 import 'package:topicdetectionweb/services/speech_to_text_service.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import '../../../app/app.dialogs.dart';
+import '../../../services/fetchdata_service.dart';
 import '../../../services/firestoredata_service.dart';
 
 final dialogService = locator<DialogService>();
@@ -18,6 +19,7 @@ class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final dialogService = locator<DialogService>();
   final _authservice = locator<AuthenticationService>();
+  final savedataService = locator<FirestoredataService>();
   TextEditingController projectctrl = TextEditingController();
   final FirestoredataService firestoreService = FirestoredataService();
   TextEditingController descriptionctrl = TextEditingController();
@@ -28,6 +30,12 @@ class HomeViewModel extends BaseViewModel {
 
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   bool loading = false;
+  int selectProjectindex = 0;
+
+  setProjectindex(value) {
+    selectProjectindex = value;
+    notifyListeners();
+  }
 
   setloadingvalue(bool value) {
     loading = value;
@@ -61,13 +69,13 @@ class HomeViewModel extends BaseViewModel {
     _navigationService.navigateToLandingPageView();
   }
 
-  
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final toastService = locator<ToastmessageService>();
+  final fetchdataservice = locator<FetchdataService>();
   List<dynamic> extractedList = [];
 
   Future<FilePickerResult?> pickAFile() async {
-  FilePickerResult?  pickedFileResult = await FilePicker.platform.pickFiles(
+    FilePickerResult? pickedFileResult = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: [
         '.acc',
@@ -88,26 +96,25 @@ class HomeViewModel extends BaseViewModel {
       ],
     );
     if (pickedFileResult != null && pickedFileResult.files.isNotEmpty) {
-    final platformFile = pickedFileResult.files.first;
-    fileBytes = platformFile.bytes;
-    fileName = platformFile.name;
-    final sizeInBytes = fileBytes!.lengthInBytes;
-    sizeInMb = sizeInBytes / (1024 * 1024);
+      final platformFile = pickedFileResult.files.first;
+      fileBytes = platformFile.bytes;
+      fileName = platformFile.name;
+      final sizeInBytes = fileBytes!.lengthInBytes;
+      sizeInMb = sizeInBytes / (1024 * 1024);
+    }
+
+    notifyListeners();
+    return pickedFileResult;
   }
 
-  notifyListeners();
-  return pickedFileResult;
+  onProceed() {
+    Map<String, dynamic> uploadData = {
+      "title": projectctrl.text,
+      "mettinges": extractedList,
+      "Description": descriptionctrl.text,
+    };
+    savedataService.saveData(uploadData);
   }
-
- 
-  // onProceed() {
-  //   Map<String, dynamic> uploadData = {
-  //     "title": projectctrl.text,
-  //     "mettinges": extractedList,
-  //     "Description": descriptionctrl.text,
-  //   };
-  //   saveDataToFirestore(uploadData);
-  // }
 
   void deleteFile(int index) {
     if (index >= 0 && index < extractedList.length) {
@@ -123,24 +130,29 @@ class HomeViewModel extends BaseViewModel {
 
   void showDialog(String filename, double size) {
     dialogService.showCustomDialog(
-        variant: DialogType.selectfileDialog,
-        title: filename,
-        description: size.toStringAsFixed(2),
-        data:{
-      'fileBytes': fileBytes,
-      'fileName': fileName,
-      'sizeInMb': sizeInMb,
-    },
-        
-        );
+      variant: DialogType.selectfileDialog,
+      title: filename,
+      description: size.toStringAsFixed(2),
+      data: {
+        'fileBytes': fileBytes,
+        'fileName': fileName,
+        'sizeInMb': sizeInMb,
+        'homemodel': HomeViewModel(),
+        'extractedlist': extractedList,
+        'Projectname': projectctrl.text,
+        'onDataChanged': (data) {
+          // Call the callback function to update data in HomeViewModel
+          updateData(data);
+        },
+      },
+    );
   }
 
   Future<void> filePick(BuildContext context) async {
-   FilePickerResult? pickedFileResult = await pickAFile();
-   
+    FilePickerResult? pickedFileResult = await pickAFile();
+
     try {
       if (pickedFileResult != null && pickedFileResult.files.isNotEmpty) {
-       
         setBusy(true);
         showDialog(
           fileName!,
@@ -158,6 +170,32 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
- 
+  void updateData(dynamic data) {
+    extractedList = data;
+    notifyListeners();
   }
 
+  void displayDialog(String urdutext, String filename) {
+    dialogService.showCustomDialog(
+      variant: DialogType.infoAlert,
+      title: filename,
+      description: urdutext,
+    );
+  }
+
+  List<Map<String, dynamic>> firestoreData = [];
+
+  Future<void> fetchDatafromfirestore() async {
+    try {
+    
+      firestoreData = await fetchdataservice.fetchDatafromfirestore();
+    } catch (e) {
+      toastService.toastmessage("Error fetching data from Firestore: $e");
+    }
+  }
+
+  Future<void> fetchData() async {
+    await fetchDatafromfirestore();
+    notifyListeners();
+  }
+}
