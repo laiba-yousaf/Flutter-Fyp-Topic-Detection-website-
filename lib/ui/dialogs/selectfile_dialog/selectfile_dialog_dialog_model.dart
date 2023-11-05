@@ -11,7 +11,7 @@ import '../../../services/toastmessage_service.dart';
 
 class SelectfileDialogDialogModel extends BaseViewModel {
   TextEditingController projectctrl = TextEditingController();
-  final FirestoredataService firestoreService = FirestoredataService();
+  final firestoreService = locator<FirestoredataService>();
   TextEditingController descriptionctrl = TextEditingController();
   final _navigationService = locator<NavigationService>();
 
@@ -33,20 +33,19 @@ class SelectfileDialogDialogModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Future<void> saveDataToFirestore(Map<String, dynamic> uploadData) async {
-    try {
-      //setloadingvalue(true);
-      String result = await firestoreService.saveData(uploadData);
-      toastService.toastmessage(result);
-      //setloadingvalue(false);
-      // projectctrl.clear();
-      // descriptionctrl.clear();
-      // extractedList = [];
-    } catch (e) {
-      setBusy(false);
-      toastService.toastmessage(e.toString());
-    }
-  }
+  // Future<void> saveDataToFirestore(Map<String, dynamic> uploadData) async {
+  //   try {
+  //     //setloadingvalue(true);
+  //     String result = await firestoreService.saveData(uploadData);
+  //     toastService.toastmessage(result);
+  //     //setloadingvalue(false);
+  //     // projectctrl.clear();
+  //     // descriptionctrl.clear();
+  //     // extractedList = [];
+  //   } catch (e) {
+  //     toastService.toastmessage(e.toString());
+  //   }
+  // }
 
   Future<void> uploadata(BuildContext context) async {
     setBusy(true);
@@ -68,7 +67,6 @@ class SelectfileDialogDialogModel extends BaseViewModel {
         // Notify listeners to update the UI
         notifyListeners();
 
-        // Construct the data to save to Firebase
         Map<String, dynamic> uploadData = {
           "title": projectname,
           "mettinges": extractedList,
@@ -76,7 +74,7 @@ class SelectfileDialogDialogModel extends BaseViewModel {
         };
 
         // Save the data to Firebase
-        await saveDataToFirestore(uploadData);
+       // await saveDataToFirestore(uploadData);
 
         // Show a success message
         toastService.toastmessage("File uploaded successfully.");

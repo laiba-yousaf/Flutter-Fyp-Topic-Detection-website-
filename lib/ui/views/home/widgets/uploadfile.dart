@@ -18,9 +18,13 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
       padding: const EdgeInsets.only(left: 230, top: 70),
       child: Column(
         children: [
-          Text(
-            projectname,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          SizedBox(
+            height: 50,
+            width: 100,
+            child: Text(
+              projectname,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           verticalSpaceMedium,
           SizedBox(
@@ -43,23 +47,38 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Padding(
-                          padding: const EdgeInsets.only(right: 38),
-                          child: Button(
-                            textColor: kcVeryLightGrey,
-                            title: "Select File",
-                            loading: viewModel.isBusy,
-                            height: screenHeight(context) * 0.04,
-                            Color: kcsliderColor,
-                            width: quarterScreenWidth(context) * 0.3,
-                            onTap: () {
-                              viewModel.filePick(context);
-
-                              //viewModel.uploadFile(context);
-                              //showDialog(context: context, builder: builder)
-                            },
-                          ),
+                          padding: const EdgeInsets.only(right: 30),
+                          child: Row(children: [
+                            Button(
+                              textColor: kcVeryLightGrey,
+                              title: "Select File",
+                              loading: viewModel.isBusy,
+                              height: screenHeight(context) * 0.04,
+                              Color: kcsliderColor,
+                              width: quarterScreenWidth(context) * 0.3,
+                              onTap: () {
+                                viewModel.filePick(context);
+                              },
+                            ),
+                            horizontalSpaceSmall,
+                            Button(
+                              textColor: kcVeryLightGrey,
+                              title: "Save",
+                              loading: viewModel.loading,
+                              height: screenHeight(context) * 0.04,
+                              Color: kcsliderColor,
+                              width: quarterScreenWidth(context) * 0.4,
+                              onTap: () async {
+                                viewModel.setloadingvalue(true);
+                                //viewModel.fetchData();
+                                await viewModel.onProceed();
+                                viewModel.setloadingvalue(false);
+                                viewModel.setcreate(7);
+                              },
+                            )
+                          ]),
                         ),
                       ],
                     ),
@@ -112,23 +131,35 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                               padding: const EdgeInsets.only(left: 80),
                               child: Row(
                                 children: [
-                                  Text(
-                                    (index + 1).toString(),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 50,
+                                    child: Text(
+                                      (index + 1).toString(),
+                                    ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 150),
-                                    child: Text(viewModel.extractedList[index]
-                                        ["fileName"]),
+                                    padding: const EdgeInsets.only(left: 120),
+                                    child: SizedBox(
+                                      height: 50,
+                                      width: 100,
+                                      child: Text(viewModel.extractedList[index]
+                                          ["fileName"]),
+                                    ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 150),
-                                    child: Text(viewModel.extractedList[index]
-                                                ["size"]
-                                            .toStringAsFixed(2) +
-                                        " Mb"),
+                                    padding: const EdgeInsets.only(left: 110),
+                                    child: SizedBox(
+                                      height: 50,
+                                      width: 100,
+                                      child: Text(viewModel.extractedList[index]
+                                                  ["size"]
+                                              .toStringAsFixed(2) +
+                                          " Mb"),
+                                    ),
                                   ),
                                   Padding(
-                                      padding: const EdgeInsets.only(left: 90),
+                                      padding: const EdgeInsets.only(left: 65),
                                       child: Row(
                                         children: [
                                           GestureDetector(
@@ -143,9 +174,11 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                           ),
                                           horizontalSpaceSmall,
                                           GestureDetector(
-                                              onTap: () {},
-                                              child:
-                                                  const Icon(Icons.view_array)),
+                                            onTap: () {},
+                                            child: const Tooltip(
+                                                message: "Display Topics",
+                                                child: Icon(Icons.view_array)),
+                                          ),
                                           horizontalSpaceSmall,
                                           GestureDetector(
                                               onTap: () {
@@ -155,8 +188,11 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                                     viewModel.extractedList[
                                                         index]["fileName"]);
                                               },
-                                              child: const Icon(
-                                                  Icons.display_settings))
+                                              child: const Tooltip(
+                                                message: "Display Urdu Text",
+                                                child: Icon(
+                                                    Icons.display_settings),
+                                              ))
                                         ],
                                       )),
                                 ],

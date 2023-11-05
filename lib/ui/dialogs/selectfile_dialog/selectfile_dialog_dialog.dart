@@ -26,7 +26,7 @@ class SelectfileDialogDialog extends StackedView<SelectfileDialogDialogModel> {
     return viewModel.isBusy
         ? const SpinKitFadingCircle(
             size: 50,
-            color: Colors.pinkAccent,
+            color: kcsliderColor,
           )
         : Dialog(
             shape:

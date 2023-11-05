@@ -18,6 +18,7 @@ import 'package:topicdetectionweb/services/firestoredata_service.dart';
 import 'package:topicdetectionweb/ui/views/dashborad/dashborad_view.dart';
 import 'package:topicdetectionweb/ui/dialogs/selectfile_dialog/selectfile_dialog_dialog.dart';
 import 'package:topicdetectionweb/services/fetchdata_service.dart';
+import 'package:topicdetectionweb/ui/dialogs/delete_project/delete_project_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -51,6 +52,7 @@ import 'package:topicdetectionweb/services/fetchdata_service.dart';
   dialogs: [
     StackedDialog(classType: InfoAlertDialog),
     StackedDialog(classType: SelectfileDialogDialog),
+    StackedDialog(classType: DeleteProjectDialog),
 // @stacked-dialog
   ],
 )

@@ -66,7 +66,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 200),
+                            padding: EdgeInsets.only(left: 280),
                             child: Text(
                               "Action",
                               style: TextStyle(fontWeight: FontWeight.bold),

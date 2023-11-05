@@ -52,7 +52,7 @@ class Mytextfield extends StackedView<MytextfieldModel> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(value!)),
             ),
-            hintStyle: const TextStyle(fontSize: 12, color: kcsliderColor),
+            hintStyle: const TextStyle(fontSize: 14,),
             suffixIcon: suffix,
             prefixIcon: prefix),
         validator: validator,

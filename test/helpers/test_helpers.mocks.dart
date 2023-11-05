@@ -762,20 +762,15 @@ class MockSpeechToTextService extends _i1.Mock
 class MockFirestoredataService extends _i1.Mock
     implements _i10.FirestoredataService {
   @override
-  set eidtProjectId(String? _eidtProjectId) => super.noSuchMethod(
-        Invocation.setter(
-          #eidtProjectId,
-          _eidtProjectId,
-        ),
-        returnValueForMissingStub: null,
-      );
-
-  @override
-  _i5.Future<String> saveData(Map<String, dynamic>? uploadData) =>
+  _i5.Future<String> saveData(
+    Map<String, dynamic>? uploadData, {
+    String? eidtProjectId,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveData,
           [uploadData],
+          {#eidtProjectId: eidtProjectId},
         ),
         returnValue: _i5.Future<String>.value(''),
         returnValueForMissingStub: _i5.Future<String>.value(''),
@@ -785,4 +780,17 @@ class MockFirestoredataService extends _i1.Mock
 /// A class which mocks [FetchdataService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFetchdataService extends _i1.Mock implements _i11.FetchdataService {}
+class MockFetchdataService extends _i1.Mock implements _i11.FetchdataService {
+  @override
+  _i5.Future<List<Map<String, dynamic>>> fetchDatafromfirestore() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #fetchDatafromfirestore,
+          [],
+        ),
+        returnValue: _i5.Future<List<Map<String, dynamic>>>.value(
+            <Map<String, dynamic>>[]),
+        returnValueForMissingStub: _i5.Future<List<Map<String, dynamic>>>.value(
+            <Map<String, dynamic>>[]),
+      ) as _i5.Future<List<Map<String, dynamic>>>);
+}

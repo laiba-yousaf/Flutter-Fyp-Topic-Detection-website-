@@ -2,7 +2,6 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.dialogs.dart';
-
 import '../../../app/app.locator.dart';
 import '../../../services/fetchdata_service.dart';
 import '../../../services/toastmessage_service.dart';
@@ -30,22 +29,35 @@ class HistorypageViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-    void setindex(int index) {
-      selectedProjectIndex = index;
-      notifyListeners();
-    }
-
-    void setFileIndex(int index) {
-      selectedFileIndex = index;
-      notifyListeners();
-    }
-
-    void showDialog(String urdutext, String filename) {
-      dialogService.showCustomDialog(
-        variant: DialogType.infoAlert,
-        title: filename,
-        description: urdutext,
-      );
-    }
+  void setindex(int index) {
+    selectedProjectIndex = index;
+    notifyListeners();
   }
 
+  void setFileIndex(int index) {
+    selectedFileIndex = index;
+    notifyListeners();
+  }
+
+  void showDialog(String urdutext, String filename) {
+    dialogService.showCustomDialog(
+      variant: DialogType.infoAlert,
+      title: filename,
+      description: urdutext,
+    );
+  }
+
+
+
+  Future<void> deleteProjectDialog(String id) async {
+    final dialogResponse = await dialogService.showCustomDialog(
+        variant: DialogType.deleteProject, title: id);
+
+    if (dialogResponse != null) {
+    
+    firestoreData.removeWhere((project) => project['id'] == id);
+      notifyListeners();
+      
+    }
+  }
+}

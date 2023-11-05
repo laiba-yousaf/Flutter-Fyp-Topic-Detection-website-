@@ -58,22 +58,31 @@ class HomeView extends StackedView<HomeViewModel> {
                     //return const CreateProject();
                     //return HomePageShowView(homeViewModel: viewModel);
                     case 1:
-                      return HistorypageView(homeViewModel: viewModel);
+                      return Container();
+                    //return HistorypageView(homeViewModel: viewModel);
                     case 2:
+                      return Container();
+                    // viewModel.logout();
+                    //return Container();
+                    case 3:
                       viewModel.logout();
                       return Container();
-                    case 3:
-                      return const CreateProject(
-                        heading: "Edit Project",
-                      );
+
                     case 4:
                       return const CreateProject(
                         heading: "Create Project",
                       );
                     case 5:
+                      return const CreateProject(
+                        heading: "Edit Project",
+                      );
+                    case 6:
                       return Uploadfile(
                         projectname: viewModel.projectctrl.text,
                       );
+                    case 7:
+                      return HistorypageView(homeViewModel: viewModel);
+
                     default:
                       return Container();
                   }

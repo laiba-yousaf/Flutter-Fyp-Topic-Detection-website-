@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -18,9 +20,10 @@ class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final dialogService = locator<DialogService>();
   final _authservice = locator<AuthenticationService>();
-  final savedataService = locator<FirestoredataService>();
+  //final savedataService = locator<FirestoredataService>();
   TextEditingController projectctrl = TextEditingController();
-  final FirestoredataService firestoreService = FirestoredataService();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final firestoreService = locator<FirestoredataService>();
   TextEditingController descriptionctrl = TextEditingController();
   Uint8List? fileBytes;
   String? fileName;
@@ -30,12 +33,13 @@ class HomeViewModel extends BaseViewModel {
 
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   bool loading = false;
-  int selectProjectindex = 0;
+  String name = 'Edit Project';
+  // int selectProjectindex = 0;
 
-  setProjectindex(value) {
-    selectProjectindex = value;
-    notifyListeners();
-  }
+  // setProjectindex(value) {
+  //   selectProjectindex = value;
+  //   notifyListeners();
+  // }
 
   setloadingvalue(bool value) {
     loading = value;
@@ -102,20 +106,34 @@ class HomeViewModel extends BaseViewModel {
     return pickedFileResult;
   }
 
-  onProceed() {
+  onProceed() async {
     Map<String, dynamic> uploadData = {
       "title": projectctrl.text,
       "mettinges": extractedList,
       "Description": descriptionctrl.text,
     };
-    savedataService.saveData(uploadData, eidtProjectId: eidtProjectId);
+
+    try {
+      String result = await firestoreService.saveData(uploadData,
+          eidtProjectId: eidtProjectId);
+
+      toastService.toastmessage(result);
+      projectctrl.clear();
+      descriptionctrl.clear();
+      extractedList = [];
+    } catch (e) {
+      toastService.toastmessage(e.toString());
+    }
   }
 
   void deleteFile(int index) {
     if (index >= 0 && index < extractedList.length) {
       extractedList.removeAt(index);
+  
+         
     }
-    notifyListeners();
+      notifyListeners();
+   
   }
 
   setcreate(val) {
@@ -178,18 +196,8 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  List<Map<String, dynamic>> firestoreData = [];
-
-  Future<void> fetchDatafromfirestore() async {
-    try {
-      firestoreData = await fetchdataservice.fetchDatafromfirestore();
-    } catch (e) {
-      toastService.toastmessage("Error fetching data from Firestore: $e");
-    }
-  }
-
-  Future<void> fetchData() async {
-    await fetchDatafromfirestore();
+  void updatename(String updatename) {
+    name = updatename;
     notifyListeners();
   }
 }

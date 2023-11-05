@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
+import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'sidebarx_widget_model.dart';
 
 class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
@@ -39,7 +40,8 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
           label: "DashBoard",
           icon: Icons.home,
         ),
-        SidebarXItem(icon: Icons.history, label: "View Projects"),
+        SidebarXItem(icon: Icons.settings, label: "Settings"),
+        SidebarXItem(icon: Icons.lock, label: "Privacy Policy"),
         SidebarXItem(icon: Icons.logout, label: "Logout"),
       ],
       extendedTheme: const SidebarXTheme(width: 140),

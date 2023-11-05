@@ -27,14 +27,14 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
               child: Text(heading,
                   style: const TextStyle(
                       fontSize: 30,
-                      color: kcsliderColor,
+                    
                       fontWeight: FontWeight.bold)),
             ),
             verticalSpaceMedium,
             const Text("Title of Project",
                 style: TextStyle(
                   fontSize: 16,
-                  color: kcsliderColor,
+                
                 )),
             verticalSpaceSmall,
             Mytextfield(
@@ -51,7 +51,7 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
             ),
             verticalSpaceMedium,
             const Text("Description",
-                style: TextStyle(fontSize: 16, color: kcsliderColor)),
+                style: TextStyle(fontSize: 16, )),
             verticalSpaceSmall,
             Mytextfield(
                 maxlines: 10,
@@ -71,14 +71,13 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                 onTap: () async {
                   if (viewModel.formKey.currentState!.validate()) {
                     if (heading == 'Create Project') {
-                      viewModel.setcreate(5);
+                      viewModel.updatename("Create");
+                      viewModel.setcreate(6);
                     } else if (heading == 'Edit Project') {
-                      viewModel.setBusy(true);
-                      print("Enter edit Project");
-                      //viewModel.fetchData();
+                      viewModel.setBusy(true);                   
                       await viewModel.onProceed();
                       viewModel.setBusy(false);
-                      viewModel.setcreate(1);
+                      viewModel.setcreate(7);
                     }
                   }
                 })
@@ -87,154 +86,5 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
       ),
     );
 
-    // Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     verticalSpaceMedium,
-    //     Container(
-    //       width: thirdScreenWidth(context) * 1.2,
-    //       height: thirdScreenWidth(context) * 0.55,
-    //       decoration: BoxDecoration(
-    //           borderRadius: BorderRadius.circular(2),
-    //           border: Border.all(
-    //             color: kcLightGrey,
-    //           )),
-    //       child: Column(
-    //         children: [
-    //           verticalSpaceMedium,
-    //           const Padding(
-    //             padding: EdgeInsets.only(left: 20),
-    //             child: Row(
-    //               children: [
-    //                 Text(
-    //                   "No",
-    //                   style: TextStyle(fontWeight: FontWeight.bold),
-    //                 ),
-    //                 Padding(
-    //                   padding: EdgeInsets.only(left: 90),
-    //                   child: Text(
-    //                     "FileName",
-    //                     style:
-    //                         TextStyle(fontWeight: FontWeight.bold),
-    //                   ),
-    //                 ),
-    //                 Padding(
-    //                   padding: EdgeInsets.only(left: 100),
-    //                   child: Text(
-    //                     "Size",
-    //                     style:
-    //                         TextStyle(fontWeight: FontWeight.bold),
-    //                   ),
-    //                 ),
-    //                 Padding(
-    //                   padding: EdgeInsets.only(left: 100),
-    //                   child: Text(
-    //                     "Action",
-    //                     style:
-    //                         TextStyle(fontWeight: FontWeight.bold),
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //           Divider(),
-    //           viewModel.extractedList.isNotEmpty
-    //               ? ListView.builder(
-    //                   itemCount: viewModel.extractedList.length,
-    //                   shrinkWrap: true,
-    //                   itemBuilder: (context, index) {
-    //                     return Padding(
-    //                       padding: EdgeInsets.only(left: 20),
-    //                       child: Row(
-    //                         children: [
-    //                           Text(
-    //                             (index + 1).toString(),
-    //                           ),
-    //                           Padding(
-    //                             padding:
-    //                                 const EdgeInsets.only(left: 90),
-    //                             child: Text(
-    //                                 viewModel.extractedList[index]
-    //                                     ["fileName"]),
-    //                           ),
-    //                           Padding(
-    //                             padding:
-    //                                 const EdgeInsets.only(left: 60),
-    //                             child: Text(viewModel
-    //                                     .extractedList[index]
-    //                                         ["size"]
-    //                                     .toStringAsFixed(2) +
-    //                                 " Mb"),
-    //                           ),
-    //                           Padding(
-    //                               padding: const EdgeInsets.only(
-    //                                   left: 60),
-    //                               child: GestureDetector(
-    //                                   onTap: () {
-    //                                     viewModel.deleteFile(index);
-    //                                   },
-    //                                   child: const Icon(
-    //                                     Icons.delete,
-    //                                     color: kcPrimaryColor,
-    //                                     size: 20,
-    //                                   ))),
-    //                         ],
-    //                       ),
-    //                     );
-    //                   },
-    //                 )
-    //               : SizedBox(
-    //                   height: thirdScreenWidth(context) * 0.4,
-    //                   child: const Center(
-    //                     child: Text(
-    //                       "No File Uploaded So Far",
-    //                       style: TextStyle(
-    //                         color: kcLightGrey,
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 ),
-    //         ],
-    //       ),
-    //     ),
-    //     Container(
-    //       width: thirdScreenWidth(context) * 1.2,
-    //       height: 50,
-    //       decoration: BoxDecoration(
-    //           border: Border.all(
-    //         color: kcLightGrey,
-    //       )),
-    //       child: Row(
-    //         children: [
-    //           const Spacer(),
-    //           Button(
-    //             textColor: kcVeryLightGrey,
-    //             title: "Upload File",
-    //             loading: viewModel.isBusy,
-    //             height: screenHeight(context) * 0.04,
-    //             Color: kcsliderColor,
-    //             width: quarterScreenWidth(context) * 0.3,
-    //             onTap: () {
-    //               if (viewModel.formKey.currentState!.validate()) {
-    //                 viewModel.uploadFile(context);
-    //               }
-    //             },
-    //           ),
-    //           horizontalSpaceSmall,
-    //           Button(
-    //               title: "Proceed",
-    //               loading: viewModel.loading,
-    //               height: screenHeight(context) * 0.04,
-    //               width: quarterScreenWidth(context) * 0.3,
-    //               Color: kcsliderColor,
-    //               textColor: kcVeryLightGrey,
-    //               onTap: () {
-    //                 viewModel.onProceed();
-    //               }),
-    //         ],
-    //       ),
-    //     ),
-    //   ],
-    // ),
-  }
+     }
 }

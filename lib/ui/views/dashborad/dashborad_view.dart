@@ -86,10 +86,15 @@ class DashboradView extends StackedView<DashboradViewModel> {
                     //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       verticalSpaceSmall,
-                      SvgPicture.asset(
-                        viewProject,
-                        width: 150,
-                        height: 150,
+                      InkWell(
+                        onTap: () {
+                          homeViewModel.setcreate(7);
+                        },
+                        child: SvgPicture.asset(
+                          viewProject,
+                          width: 150,
+                          height: 150,
+                        ),
                       ),
                       verticalSpaceSmall,
                       const Text(
