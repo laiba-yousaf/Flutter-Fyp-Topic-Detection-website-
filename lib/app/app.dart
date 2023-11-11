@@ -7,7 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/ui/views/signup/signup_view.dart';
 import 'package:topicdetectionweb/ui/views/signin/signin_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_view.dart';
-import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
+import 'package:topicdetectionweb/ui/views/historypage/Project_view.dart';
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart';
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
@@ -19,6 +19,10 @@ import 'package:topicdetectionweb/ui/views/dashborad/dashborad_view.dart';
 import 'package:topicdetectionweb/ui/dialogs/selectfile_dialog/selectfile_dialog_dialog.dart';
 import 'package:topicdetectionweb/services/fetchdata_service.dart';
 import 'package:topicdetectionweb/ui/dialogs/delete_project/delete_project_dialog.dart';
+import 'package:topicdetectionweb/ui/views/setting/setting_view.dart';
+import 'package:topicdetectionweb/services/profileinformation_service.dart';
+import 'package:topicdetectionweb/ui/views/privacy_policy/privacy_policy_view.dart';
+import 'package:topicdetectionweb/ui/views/f_a_qs/f_a_qs_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -32,6 +36,9 @@ import 'package:topicdetectionweb/ui/dialogs/delete_project/delete_project_dialo
     MaterialRoute(page: ContactusView),
     MaterialRoute(page: LandingPageView),
     MaterialRoute(page: DashboradView),
+    MaterialRoute(page: SettingView),
+    MaterialRoute(page: PrivacyPolicyView),
+    MaterialRoute(page: FAQsView),
 // @stacked-route
   ],
   dependencies: [
@@ -43,6 +50,7 @@ import 'package:topicdetectionweb/ui/dialogs/delete_project/delete_project_dialo
     LazySingleton(classType: SpeechToTextService),
     LazySingleton(classType: FirestoredataService),
     LazySingleton(classType: FetchdataService),
+    LazySingleton(classType: ProfileinformationService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -20,7 +20,6 @@ class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final dialogService = locator<DialogService>();
   final _authservice = locator<AuthenticationService>();
-  //final savedataService = locator<FirestoredataService>();
   TextEditingController projectctrl = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   final firestoreService = locator<FirestoredataService>();
@@ -34,12 +33,6 @@ class HomeViewModel extends BaseViewModel {
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   bool loading = false;
   String name = 'Edit Project';
-  // int selectProjectindex = 0;
-
-  // setProjectindex(value) {
-  //   selectProjectindex = value;
-  //   notifyListeners();
-  // }
 
   setloadingvalue(bool value) {
     loading = value;
@@ -129,11 +122,8 @@ class HomeViewModel extends BaseViewModel {
   void deleteFile(int index) {
     if (index >= 0 && index < extractedList.length) {
       extractedList.removeAt(index);
-  
-         
     }
-      notifyListeners();
-   
+    notifyListeners();
   }
 
   setcreate(val) {
@@ -154,7 +144,6 @@ class HomeViewModel extends BaseViewModel {
         'extractedlist': extractedList,
         'Projectname': projectctrl.text,
         'onDataChanged': (data) {
-          // Call the callback function to update data in HomeViewModel
           updateData(data);
         },
       },
@@ -199,5 +188,15 @@ class HomeViewModel extends BaseViewModel {
   void updatename(String updatename) {
     name = updatename;
     notifyListeners();
+  }
+
+  String? userName;
+
+  Future<void> fetchUserDisplayName() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      userName = user.displayName;
+      notifyListeners(); // Notify the UI to update
+    }
   }
 }

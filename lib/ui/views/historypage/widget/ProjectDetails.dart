@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-import 'package:topicdetectionweb/ui/views/historypage/historypage_viewmodel.dart';
+import 'package:topicdetectionweb/ui/views/historypage/ProjectView_viewmodel.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 

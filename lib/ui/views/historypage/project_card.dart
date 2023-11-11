@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import '../home/home_viewmodel.dart';
-import 'historypage_viewmodel.dart';
+import 'ProjectView_viewmodel.dart';
 
 class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
   final HomeViewModel homeViewModel;
@@ -63,7 +64,10 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
                     value: 'editProject',
                     child: Row(
                       children: [
-                        Icon(Icons.edit_document),
+                        Icon(
+                          Icons.edit_document,
+                          color: kcsliderColor,
+                        ),
                         SizedBox(width: 8),
                         Text('Edit Project'),
                       ],
@@ -73,7 +77,10 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
                     value: 'editFile',
                     child: Row(
                       children: [
-                        Icon(Icons.edit_attributes),
+                        Icon(
+                          Icons.edit_attributes,
+                          color: kcsliderColor,
+                        ),
                         SizedBox(width: 8),
                         Text('Edit File'),
                       ],
@@ -83,7 +90,10 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
                     value: 'delete',
                     child: Row(
                       children: [
-                        Icon(Icons.delete),
+                        Icon(
+                          Icons.delete,
+                          color: kcsliderColor,
+                        ),
                         SizedBox(width: 8),
                         Text('Delete'),
                       ],
@@ -98,9 +108,6 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
                     homeViewModel.setPage(6, projectData);
                   } else if (value == 'delete') {
                     viewModel.deleteProjectDialog(projectData['id']);
-                    // print("after delete fuction");
-                    // viewModel.fetchData();
-                    // print("Fetchdata fuction");
                   }
                 },
               ),

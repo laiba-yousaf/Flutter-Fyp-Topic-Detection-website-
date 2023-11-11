@@ -13,6 +13,8 @@ import 'package:stacked_services/stacked_services.dart' as _i3;
 import 'package:topicdetectionweb/services/authentication_service.dart' as _i8;
 import 'package:topicdetectionweb/services/fetchdata_service.dart' as _i11;
 import 'package:topicdetectionweb/services/firestoredata_service.dart' as _i10;
+import 'package:topicdetectionweb/services/profileinformation_service.dart'
+    as _i12;
 import 'package:topicdetectionweb/services/speech_to_text_service.dart' as _i9;
 import 'package:topicdetectionweb/services/toastmessage_service.dart' as _i7;
 
@@ -793,4 +795,35 @@ class MockFetchdataService extends _i1.Mock implements _i11.FetchdataService {
         returnValueForMissingStub: _i5.Future<List<Map<String, dynamic>>>.value(
             <Map<String, dynamic>>[]),
       ) as _i5.Future<List<Map<String, dynamic>>>);
+}
+
+/// A class which mocks [ProfileinformationService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockProfileinformationService extends _i1.Mock
+    implements _i12.ProfileinformationService {
+  @override
+  _i5.Future<void> saveDataFirestore(
+    String? name,
+    String? pass,
+    String? confirmPass,
+    String? phone,
+    String? email,
+    String? uid,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveDataFirestore,
+          [
+            name,
+            pass,
+            confirmPass,
+            phone,
+            email,
+            uid,
+          ],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }

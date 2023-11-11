@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.locator.dart';
 import 'package:topicdetectionweb/app/app.router.dart';
+import 'package:topicdetectionweb/services/profileinformation_service.dart';
 
 import '../../../services/toastmessage_service.dart';
 
@@ -20,6 +21,9 @@ class SignupViewModel extends BaseViewModel {
 
   final _navigationService = locator<NavigationService>();
   final toastService = locator<ToastmessageService>();
+
+  final ProfileinformationService profileservice =
+      locator<ProfileinformationService>();
 
   FirebaseAuth auth = FirebaseAuth.instance;
   bool loading = false;
@@ -38,8 +42,18 @@ class SignupViewModel extends BaseViewModel {
     _navigationService.navigateToSigninView();
   }
 
-  // setloadingvalue(bool value) {
-  //   loading = value;
-  //   notifyListeners();
-  // }
+  saveUserinformation(String uid) async {
+    try {
+      profileservice.saveDataFirestore(
+        namectrl.text.toString(),
+        passctrl.text.toString(),
+        conpassctrl.text.toString(),
+        phonectrl.text.toString(),
+        emailctrl.text.toString(),
+        uid,
+      );
+    } catch (e) {
+      toastService.toastmessage("Error in storing information $e");
+    }
+  }
 }

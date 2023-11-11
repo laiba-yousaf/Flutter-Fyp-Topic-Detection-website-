@@ -1,4 +1,3 @@
-
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:topicdetectionweb/app/app.dialogs.dart';
@@ -47,17 +46,13 @@ class HistorypageViewModel extends BaseViewModel {
     );
   }
 
-
-
   Future<void> deleteProjectDialog(String id) async {
     final dialogResponse = await dialogService.showCustomDialog(
         variant: DialogType.deleteProject, title: id);
 
     if (dialogResponse != null) {
-    
-    firestoreData.removeWhere((project) => project['id'] == id);
+      firestoreData.removeWhere((project) => project['id'] == id);
       notifyListeners();
-      
     }
   }
 }

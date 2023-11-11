@@ -14,6 +14,7 @@ import 'package:stacked_shared/stacked_shared.dart';
 import '../services/authentication_service.dart';
 import '../services/fetchdata_service.dart';
 import '../services/firestoredata_service.dart';
+import '../services/profileinformation_service.dart';
 import '../services/speech_to_text_service.dart';
 import '../services/toastmessage_service.dart';
 
@@ -36,4 +37,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => SpeechToTextService());
   locator.registerLazySingleton(() => FirestoredataService());
   locator.registerLazySingleton(() => FetchdataService());
+  locator.registerLazySingleton(() => ProfileinformationService());
 }

@@ -4,15 +4,22 @@ import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/dashborad/dashborad_view.dart';
-import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart';
+import 'package:topicdetectionweb/ui/views/historypage/Project_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/views/home/widgets/create_project.dart';
 import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/sidebarx_widget.dart';
 
+import '../privacy_policy/privacy_policy_view.dart';
+import '../setting/settingBody.dart';
 import 'widgets/uploadfile.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
+  @override
+  void onViewModelReady(HomeViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+    viewModel.fetchUserDisplayName();
+  }
 
   @override
   Widget builder(
@@ -22,7 +29,28 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     return Builder(builder: (context) {
       return Scaffold(
-        appBar: AppBar(backgroundColor: Color.fromARGB(255, 202, 163, 253)),
+        appBar: AppBar(
+          actions: [
+            Tooltip(
+              message: viewModel.userName ?? 'Guest User',
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: CircleAvatar(
+                  backgroundColor: kcpurpleColor,
+                  child: Text(
+                    viewModel.userName?.isNotEmpty == true
+                        ? viewModel.userName![0].toUpperCase()
+                        : 'G',
+                    style:
+                        const TextStyle(color: kcVeryLightGrey, fontSize: 18),
+                  ),
+                ),
+              ),
+            )
+          ],
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color.fromARGB(255, 202, 163, 253),
+        ),
         key: viewModel.key,
         body: Stack(children: [
           Container(
@@ -58,10 +86,10 @@ class HomeView extends StackedView<HomeViewModel> {
                     //return const CreateProject();
                     //return HomePageShowView(homeViewModel: viewModel);
                     case 1:
-                      return Container();
+                      return const SettingBodyView();
                     //return HistorypageView(homeViewModel: viewModel);
                     case 2:
-                      return Container();
+                      return PrivacyPolicyView();
                     // viewModel.logout();
                     //return Container();
                     case 3:

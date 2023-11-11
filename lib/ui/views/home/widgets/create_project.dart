@@ -26,15 +26,12 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
               padding: const EdgeInsets.only(left: 100),
               child: Text(heading,
                   style: const TextStyle(
-                      fontSize: 30,
-                    
-                      fontWeight: FontWeight.bold)),
+                      fontSize: 30, fontWeight: FontWeight.bold)),
             ),
             verticalSpaceMedium,
             const Text("Title of Project",
                 style: TextStyle(
                   fontSize: 16,
-                
                 )),
             verticalSpaceSmall,
             Mytextfield(
@@ -51,7 +48,9 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
             ),
             verticalSpaceMedium,
             const Text("Description",
-                style: TextStyle(fontSize: 16, )),
+                style: TextStyle(
+                  fontSize: 16,
+                )),
             verticalSpaceSmall,
             Mytextfield(
                 maxlines: 10,
@@ -71,10 +70,11 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                 onTap: () async {
                   if (viewModel.formKey.currentState!.validate()) {
                     if (heading == 'Create Project') {
+                      viewModel.setBusy(true);
                       viewModel.updatename("Create");
                       viewModel.setcreate(6);
                     } else if (heading == 'Edit Project') {
-                      viewModel.setBusy(true);                   
+                      viewModel.setBusy(true);
                       await viewModel.onProceed();
                       viewModel.setBusy(false);
                       viewModel.setcreate(7);
@@ -85,6 +85,5 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
         ),
       ),
     );
-
-     }
+  }
 }

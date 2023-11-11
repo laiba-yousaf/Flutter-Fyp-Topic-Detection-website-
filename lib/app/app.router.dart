@@ -5,21 +5,25 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i14;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i13;
+import 'package:stacked_services/stacked_services.dart' as _i16;
 import 'package:topicdetectionweb/ui/views/aboutus/aboutus_view.dart' as _i7;
 import 'package:topicdetectionweb/ui/views/contactus/contactus_view.dart'
     as _i8;
 import 'package:topicdetectionweb/ui/views/dashborad/dashborad_view.dart'
     as _i10;
-import 'package:topicdetectionweb/ui/views/historypage/historypage_view.dart'
+import 'package:topicdetectionweb/ui/views/f_a_qs/f_a_qs_view.dart' as _i13;
+import 'package:topicdetectionweb/ui/views/historypage/Project_view.dart'
     as _i6;
 import 'package:topicdetectionweb/ui/views/home/home_view.dart' as _i5;
-import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart' as _i12;
+import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart' as _i15;
 import 'package:topicdetectionweb/ui/views/landing_page/landing_page_view.dart'
     as _i9;
+import 'package:topicdetectionweb/ui/views/privacy_policy/privacy_policy_view.dart'
+    as _i12;
+import 'package:topicdetectionweb/ui/views/setting/setting_view.dart' as _i11;
 import 'package:topicdetectionweb/ui/views/signin/signin_view.dart' as _i4;
 import 'package:topicdetectionweb/ui/views/signup/signup_view.dart' as _i3;
 import 'package:topicdetectionweb/ui/views/startup/startup_view.dart' as _i2;
@@ -43,6 +47,12 @@ class Routes {
 
   static const dashboradView = '/dashborad-view';
 
+  static const settingView = '/setting-view';
+
+  static const privacyPolicyView = '/privacy-policy-view';
+
+  static const fAQsView = '/f-aqs-view';
+
   static const all = <String>{
     startupView,
     signupView,
@@ -53,6 +63,9 @@ class Routes {
     contactusView,
     landingPageView,
     dashboradView,
+    settingView,
+    privacyPolicyView,
+    fAQsView,
   };
 }
 
@@ -94,64 +107,97 @@ class StackedRouter extends _i1.RouterBase {
       Routes.dashboradView,
       page: _i10.DashboradView,
     ),
+    _i1.RouteDef(
+      Routes.settingView,
+      page: _i11.SettingView,
+    ),
+    _i1.RouteDef(
+      Routes.privacyPolicyView,
+      page: _i12.PrivacyPolicyView,
+    ),
+    _i1.RouteDef(
+      Routes.fAQsView,
+      page: _i13.FAQsView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.StartupView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
     _i3.SignupView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.SignupView(),
         settings: data,
       );
     },
     _i4.SigninView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.SigninView(),
         settings: data,
       );
     },
     _i5.HomeView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.HomeView(),
         settings: data,
       );
     },
     _i6.HistorypageView: (data) {
       final args = data.getArgs<HistorypageViewArguments>(nullOk: false);
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => _i6.HistorypageView(
             key: args.key, homeViewModel: args.homeViewModel),
         settings: data,
       );
     },
     _i7.AboutusView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.AboutusView(),
         settings: data,
       );
     },
     _i8.ContactusView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ContactusView(),
         settings: data,
       );
     },
     _i9.LandingPageView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.LandingPageView(),
         settings: data,
       );
     },
     _i10.DashboradView: (data) {
       final args = data.getArgs<DashboradViewArguments>(nullOk: false);
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => _i10.DashboradView(
             key: args.key, homeViewModel: args.homeViewModel),
+        settings: data,
+      );
+    },
+    _i11.SettingView: (data) {
+      final args = data.getArgs<SettingViewArguments>(
+        orElse: () => const SettingViewArguments(),
+      );
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => _i11.SettingView(key: args.key, data: args.data),
+        settings: data,
+      );
+    },
+    _i12.PrivacyPolicyView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.PrivacyPolicyView(),
+        settings: data,
+      );
+    },
+    _i13.FAQsView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i13.FAQsView(),
         settings: data,
       );
     },
@@ -170,9 +216,9 @@ class HistorypageViewArguments {
     required this.homeViewModel,
   });
 
-  final _i11.Key? key;
+  final _i14.Key? key;
 
-  final _i12.HomeViewModel homeViewModel;
+  final _i15.HomeViewModel homeViewModel;
 
   @override
   String toString() {
@@ -197,9 +243,9 @@ class DashboradViewArguments {
     required this.homeViewModel,
   });
 
-  final _i11.Key? key;
+  final _i14.Key? key;
 
-  final _i12.HomeViewModel homeViewModel;
+  final _i15.HomeViewModel homeViewModel;
 
   @override
   String toString() {
@@ -218,7 +264,34 @@ class DashboradViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i13.NavigationService {
+class SettingViewArguments {
+  const SettingViewArguments({
+    this.key,
+    this.data,
+  });
+
+  final _i14.Key? key;
+
+  final dynamic data;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "data": "$data"}';
+  }
+
+  @override
+  bool operator ==(covariant SettingViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.data == data;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ data.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i16.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -276,8 +349,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToHistorypageView({
-    _i11.Key? key,
-    required _i12.HomeViewModel homeViewModel,
+    _i14.Key? key,
+    required _i15.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -336,8 +409,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToDashboradView({
-    _i11.Key? key,
-    required _i12.HomeViewModel homeViewModel,
+    _i14.Key? key,
+    required _i15.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -347,6 +420,51 @@ extension NavigatorStateExtension on _i13.NavigationService {
     return navigateTo<dynamic>(Routes.dashboradView,
         arguments:
             DashboradViewArguments(key: key, homeViewModel: homeViewModel),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSettingView({
+    _i14.Key? key,
+    dynamic data,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.settingView,
+        arguments: SettingViewArguments(key: key, data: data),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToPrivacyPolicyView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.privacyPolicyView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToFAQsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.fAQsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -410,8 +528,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithHistorypageView({
-    _i11.Key? key,
-    required _i12.HomeViewModel homeViewModel,
+    _i14.Key? key,
+    required _i15.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -470,8 +588,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithDashboradView({
-    _i11.Key? key,
-    required _i12.HomeViewModel homeViewModel,
+    _i14.Key? key,
+    required _i15.HomeViewModel homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -481,6 +599,51 @@ extension NavigatorStateExtension on _i13.NavigationService {
     return replaceWith<dynamic>(Routes.dashboradView,
         arguments:
             DashboradViewArguments(key: key, homeViewModel: homeViewModel),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSettingView({
+    _i14.Key? key,
+    dynamic data,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.settingView,
+        arguments: SettingViewArguments(key: key, data: data),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPrivacyPolicyView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.privacyPolicyView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithFAQsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.fAQsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

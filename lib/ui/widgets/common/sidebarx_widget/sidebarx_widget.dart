@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/app_strings.dart';
-import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'sidebarx_widget_model.dart';
 
 class SidebarxWidget extends StackedView<SidebarxWidgetModel> {

@@ -3,7 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/historypage/project_card.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
-import 'historypage_viewmodel.dart';
+import 'ProjectView_viewmodel.dart';
 
 class HistorypageView extends StackedView<HistorypageViewModel> {
   final HomeViewModel homeViewModel;
@@ -102,13 +102,3 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
   ) =>
       HistorypageViewModel();
 }
-
-// Expanded(
-//   flex: 1,
-//   child: Padding(
-//     padding: const EdgeInsets.only(top: 25, right: 20),
-//     child: ProjectDetails(
-//       homeViewModel: homeViewModel,
-//     ),
-//   ),
-// )
