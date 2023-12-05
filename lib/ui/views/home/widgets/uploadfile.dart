@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -180,21 +181,17 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                             horizontalSpaceSmall,
                                             GestureDetector(
                                               onTap: () async {
-                                               
-                                                  try {
-                                                    String filePath =
-                                                        'assets/MR001_input.txt';
-                                                    List<String> segments =
-                                                        await viewModel.segment
-                                                            .tokenizeTextFileFromAssets(
-                                                                );
-                                                    print(
-                                                        'Segments: $segments');
-                                                  } catch (e) {
-                                                    print('Error: $e');
-                                                  }
-                                                } ,
-                                              
+                                                try {
+                                                  String filePath =
+                                                      'assets/MR001_input.txt';
+                                                  List<String> segments =
+                                                      await viewModel.segment
+                                                          .tokenizeTextFileFromAssets();
+                                                  log('Segments: $segments');
+                                                } catch (e) {
+                                                  log('Error: $e');
+                                                }
+                                              },
                                               child: const Tooltip(
                                                   message: "Display Topics",
                                                   child: Icon(

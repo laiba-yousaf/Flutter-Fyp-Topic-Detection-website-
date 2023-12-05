@@ -1,42 +1,44 @@
 
-import 'dart:io';
-
+import 'dart:html' as html;
+import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class SegmentapiService {
   Future tokenizeTextFileFromAssets() async {
     // Replace with your API endpoint
     String apiUrl = 'http://127.0.0.1:5000/api/tokenize';
+   String apiUrl = 'http://127.0.0.1:5000/api/tokenize';
 
-    // Replace with the path of the file you want to upload
-    File file = File("assets/MR001_input.txt");
+    var formData = http.MultipartRequest('POST', Uri.parse(apiUrl));
 
-    // Create a multipart request
-    var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
+    html.FileUploadInputElement uploadInput = html.FileUploadInputElement();
+    uploadInput.click();
 
-    // Add file to the request
-    var fileStream = http.ByteStream(file.openRead());
-    var length = await file.lengthSync(); // Use lengthSync instead of length
-    var multipartFile = http.MultipartFile('file', fileStream, length,
-        filename: file.path.split('/').last);
+    await uploadInput.onChange.first;
 
-    // Add form data if needed
-    request.fields['key'] = 'value';
+    html.File file = uploadInput.files!.first;
 
-    // Add the file to the request
-    request.files.add(multipartFile);
+    try {
+      final List<int> bytes = await file.readAsBytes();
 
-    // Send the request
-    var response = await request.send();
+      formData.files.add(http.MultipartFile.fromBytes(
+        'file',
+        bytes,
+        filename: file.name,
+      ));
 
-    // Check the status code of the response
-    if (response.statusCode == 200) {
-      print('File uploaded successfully');
-      var res = await response.stream.bytesToString();
-      // Print the response body
-      print(res.toString());
-    } else {
-      print('Error uploading file. Status code: ${response.statusCode}');
+      var response = await formData.send();
+
+      if (response.statusCode == 200) {
+        print('File uploaded successfully');
+        print(await response.stream.bytesToString());
+      } else {
+        print('Error uploading file. Status code: ${response.statusCode}');
+        print(await response.stream.bytesToString());
+      }
+    } catch (e) {
+      print('Error uploading file: $e');
     }
     // try {
     //   // Read the file as bytes from the assets
