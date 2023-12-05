@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'mytextfield_model.dart';
 
 class Mytextfield extends StackedView<MytextfieldModel> {

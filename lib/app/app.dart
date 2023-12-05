@@ -23,6 +23,7 @@ import 'package:topicdetectionweb/ui/views/setting/setting_view.dart';
 import 'package:topicdetectionweb/services/profileinformation_service.dart';
 import 'package:topicdetectionweb/ui/views/privacy_policy/privacy_policy_view.dart';
 import 'package:topicdetectionweb/ui/views/f_a_qs/f_a_qs_view.dart';
+import 'package:topicdetectionweb/services/segmentapi_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -51,6 +52,7 @@ import 'package:topicdetectionweb/ui/views/f_a_qs/f_a_qs_view.dart';
     LazySingleton(classType: FirestoredataService),
     LazySingleton(classType: FetchdataService),
     LazySingleton(classType: ProfileinformationService),
+    LazySingleton(classType: SegmentapiService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:stacked/stacked.dart';
-import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'sidebarx_widget_model.dart';
 
 class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
@@ -17,21 +16,12 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
     return SidebarX(
       headerBuilder: (context, extended) {
         return Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Image(
-            image: AssetImage(logopic),
-            width: 50,
-            height: 50,
-          ),
-        );
+            padding: const EdgeInsets.only(top: 30), child: Container());
       },
       controller: controller,
       theme: const SidebarXTheme(
           decoration: BoxDecoration(
             color: Color.fromARGB(255, 202, 161, 248),
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(15),
-                bottomRight: Radius.circular(15)),
           ),
           iconTheme: IconThemeData(color: Colors.white)),
       items: const [
@@ -39,7 +29,7 @@ class SidebarxWidget extends StackedView<SidebarxWidgetModel> {
           label: "DashBoard",
           icon: Icons.home,
         ),
-        SidebarXItem(icon: Icons.settings, label: "Settings"),
+        SidebarXItem(icon: Icons.settings, label: "Update Profile"),
         SidebarXItem(icon: Icons.lock, label: "Privacy Policy"),
         SidebarXItem(icon: Icons.logout, label: "Logout"),
       ],

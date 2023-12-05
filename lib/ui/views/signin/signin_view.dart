@@ -32,7 +32,7 @@ class SigninView extends StackedView<SigninViewModel> {
                     const Text(
                       "Login",
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     verticalSpaceLarge,
                     Googlebutton(
@@ -77,7 +77,7 @@ class SigninView extends StackedView<SigninViewModel> {
                           viewModel.obsecure
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
-                          color: kcPrimaryColor,
+                          color: kcAppbarColor,
                         ),
                       ),
                       obscureText: viewModel.obsecure,
@@ -111,11 +111,12 @@ class SigninView extends StackedView<SigninViewModel> {
                                 viewModel.toastService
                                     .toastmessage(error.toString());
                               });
+                              viewModel.setBusy(false);
                             }
                           },
                           child: const Text(
                             "Forgot Password?",
-                            style: TextStyle(color: kcPrimaryColor),
+                            style: TextStyle(color: kcAppbarColor),
                           )),
                     ),
                     verticalSpaceLarge,
@@ -123,12 +124,11 @@ class SigninView extends StackedView<SigninViewModel> {
                         textColor: kcVeryLightGrey,
                         loading: viewModel.isBusy,
                         title: "Login",
-                        Color: kcPrimaryColor,
+                        Color: kcAppbarColor,
                         height: screenHeight(context) * 0.06,
                         width: thirdScreenWidth(context) * 0.7,
                         onTap: () {
                           if (viewModel.formKey.currentState!.validate()) {
-                            viewModel.setBusy(true);
                             viewModel.login();
                           }
                         }),
@@ -145,7 +145,7 @@ class SigninView extends StackedView<SigninViewModel> {
                             viewModel.navigation();
                           },
                           child: const Text("Create one",
-                              style: TextStyle(color: kcPrimaryColor)),
+                              style: TextStyle(color: kcAppbarColor)),
                         ),
                       ],
                     ),

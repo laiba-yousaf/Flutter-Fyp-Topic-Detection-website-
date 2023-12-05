@@ -69,16 +69,15 @@ class CreateProject extends ViewModelWidget<HomeViewModel> {
                 width: thirdScreenWidth(context) * 1.0,
                 onTap: () async {
                   if (viewModel.formKey.currentState!.validate()) {
+                    viewModel.setBusy(true);
                     if (heading == 'Create Project') {
-                      viewModel.setBusy(true);
                       viewModel.updatename("Create");
                       viewModel.setcreate(6);
                     } else if (heading == 'Edit Project') {
-                      viewModel.setBusy(true);
                       await viewModel.onProceed();
-                      viewModel.setBusy(false);
                       viewModel.setcreate(7);
                     }
+                    viewModel.setBusy(false);
                   }
                 })
           ],

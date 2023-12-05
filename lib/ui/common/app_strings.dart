@@ -27,6 +27,7 @@ String feature4 = 'assets/images/feature4.png';
 String working = 'assets/images/website working.png';
 String benifits = 'assets/images/benifit.png';
 String Tick = 'assets/images/tick.png';
+// String logopic = 'assets/images/logo.png';
 String logopic = 'assets/images/logo.png';
 String about = 'assets/images/about us.png';
 String arrow = 'assets/images/arrow-purple-right.gif';
@@ -36,6 +37,9 @@ String video = 'assets/images/videoIcon.png';
 String newbackground = 'assets/images/newbackground.png';
 String createProject = 'assets/images/create Project.svg';
 String viewProject = 'assets/images/view Project.svg';
+String laiba = 'assets/images/Laiba.png';
+String najm = 'assets/images/najm.jpg';
+String kashif = 'assets/images/kashif.jpg';
 
 // strings
 

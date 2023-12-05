@@ -15,6 +15,7 @@ import 'package:topicdetectionweb/services/fetchdata_service.dart' as _i11;
 import 'package:topicdetectionweb/services/firestoredata_service.dart' as _i10;
 import 'package:topicdetectionweb/services/profileinformation_service.dart'
     as _i12;
+import 'package:topicdetectionweb/services/segmentapi_service.dart' as _i13;
 import 'package:topicdetectionweb/services/speech_to_text_service.dart' as _i9;
 import 'package:topicdetectionweb/services/toastmessage_service.dart' as _i7;
 
@@ -827,3 +828,9 @@ class MockProfileinformationService extends _i1.Mock
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
 }
+
+/// A class which mocks [SegmentapiService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSegmentapiService extends _i1.Mock
+    implements _i13.SegmentapiService {}

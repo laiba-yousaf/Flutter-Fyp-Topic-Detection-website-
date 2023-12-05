@@ -19,32 +19,40 @@ class DashboradView extends StackedView<DashboradViewModel> {
     DashboradViewModel viewModel,
     Widget? child,
   ) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 100, left: 300),
-      child: Column(
-        children: [
-          const Text(
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+      const Center(
+        child: Padding(
+          padding: EdgeInsets.only(left: 230, top: 50),
+          child: Text(
             "DashBoard",
-            style: TextStyle(color: kcsliderColor, fontSize: 40),
+            style: TextStyle(
+                color: kcsliderColor,
+                fontSize: 30,
+                fontWeight: FontWeight.bold),
           ),
-          verticalSpaceMassive,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MouseRegion(
-                onEnter: (_) {
-                  viewModel.setcontainer1(hoverColor, 10.0);
-                },
-                onExit: (_) {
-                  viewModel.setcontainer1(kcVeryLightGrey, 0.0);
-                },
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: viewModel.color1,
-                  ),
+        ),
+      ),
+      verticalSpaceMedium,
+      Padding(
+        padding: const EdgeInsets.only(left: 300),
+        child: Row(
+          children: [
+            MouseRegion(
+              onEnter: (_) {
+                viewModel.setcontainer1(hoverColor, 10.0);
+              },
+              onExit: (_) {
+                viewModel.setcontainer1(kcfeatureColor, 0.0);
+              },
+              child: Container(
+                height: 150,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: viewModel.color1,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20),
                   child: Column(
                     //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -54,11 +62,11 @@ class DashboradView extends StackedView<DashboradViewModel> {
                         },
                         child: SvgPicture.asset(
                           createProject,
-                          width: 150,
-                          height: 150,
+                          width: 60,
+                          height: 60,
                         ),
                       ),
-                      verticalSpaceSmall,
+                      verticalSpaceMedium,
                       const Text(
                         "Create Projects",
                         style: TextStyle(fontSize: 20, color: kcsliderColor),
@@ -67,23 +75,26 @@ class DashboradView extends StackedView<DashboradViewModel> {
                   ),
                 ),
               ),
-              horizontalSpacemassiveLarge,
-              MouseRegion(
-                onEnter: (_) {
-                  viewModel.setcontainer2(hoverColor1, 10.0);
-                },
-                onExit: (_) {
-                  viewModel.setcontainer2(kcVeryLightGrey, 0.0);
-                },
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: viewModel.color2,
-                  ),
+            ),
+            horizontalSpaceLarge,
+            MouseRegion(
+              onEnter: (_) {
+                viewModel.setcontainer2(hoverColor1, 10.0);
+              },
+              onExit: (_) {
+                viewModel.setcontainer2(kcfeatureColor, 0.0);
+              },
+              child: Container(
+                height: 150,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: viewModel.color2,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
                   child: Column(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       verticalSpaceSmall,
                       InkWell(
@@ -92,24 +103,96 @@ class DashboradView extends StackedView<DashboradViewModel> {
                         },
                         child: SvgPicture.asset(
                           viewProject,
-                          width: 150,
-                          height: 150,
+                          width: 60,
+                          height: 60,
                         ),
                       ),
-                      verticalSpaceSmall,
+                      verticalSpaceMedium,
                       const Text(
                         "View Projects",
                         style: TextStyle(fontSize: 20, color: kcsliderColor),
-                      )
+                      ),
                     ],
                   ),
                 ),
-              )
-            ],
-          )
-        ],
+              ),
+            )
+          ],
+        ),
       ),
-    );
+      //verticalSpaceMedium,
+      const Padding(
+        padding: EdgeInsets.only(left: 280, top: 50),
+        child: Text(
+          "Meeting Information",
+          style: TextStyle(
+              color: kcsliderColor, fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
+      const Padding(
+        padding: EdgeInsets.only(left: 330, top: 50),
+        child: Row(
+          children: [
+            Text("Language",
+                style: TextStyle(fontSize: 16, color: kcsliderColor)),
+            horizontalSpaceMedium,
+            Text("Minimum Limit",
+                style: TextStyle(fontSize: 16, color: kcsliderColor)),
+            horizontalSpaceMedium,
+            Text("Maximum Limit",
+                style: TextStyle(fontSize: 16, color: kcsliderColor)),
+            horizontalSpaceMedium,
+            Text("Supported Format",
+                style: TextStyle(fontSize: 16, color: kcsliderColor))
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 270, top: 10),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text("URDU",
+                style: TextStyle(fontSize: 16, color: kcDarkGreyColor)),
+            horizontalSpaceLarge,
+            const Text("15 minutes",
+                style: TextStyle(fontSize: 16, color: kcDarkGreyColor)),
+            horizontalSpaceLarge,
+            horizontalSpaceTiny,
+            const Text("60 minutes",
+                style: TextStyle(fontSize: 16, color: kcDarkGreyColor)),
+            horizontalSpaceLarge,
+            horizontalSpaceTiny,
+            DropdownButton<String>(
+              items: [
+                'flac',
+                'mp4',
+                'wav',
+                '.acc',
+                'aiff',
+                'mp3',
+                'flv',
+                'mkv',
+                'mov',
+                'webm',
+                'm4v',
+                'mpeg',
+                'HEVC'
+              ].map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value,
+                      style:
+                          const TextStyle(fontSize: 16, color: Colors.black)),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {},
+              value: 'flac',
+            )
+          ],
+        ),
+      ),
+    ]);
   }
 
   @override

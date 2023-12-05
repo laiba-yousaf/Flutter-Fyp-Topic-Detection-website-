@@ -60,51 +60,57 @@ class Cardwidget extends ViewModelWidget<AboutusViewModel> {
                     ? const Color.fromARGB(255, 241, 240, 240)
                     : Colors.white,
                 elevation: 3,
-                child: Column(
-                  children: [
-                    verticalSpaceMedium,
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.grey),
-                        image: DecorationImage(
-                          image: AssetImage(pic),
-                          fit: BoxFit.cover,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      verticalSpaceMedium,
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.grey),
+                          image: DecorationImage(
+                            image: AssetImage(pic),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    verticalSpaceSmall,
-                    Text(name),
-                    verticalSpaceSmall,
-                    Text(description),
-                    verticalSpaceLarge,
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage(twitter),
-                          width: 40,
-                          height: 40,
-                        ),
-                        horizontalSpaceSmall,
-                        SvgPicture.asset(
-                          linkdinicon,
-                          width: 30,
-                          height: 30, // Replace with the path to your SVG file
-                          //color: Colors.blue, // Customize the color
-                        ),
-                        horizontalSpaceSmall,
-                        Image(
-                          image: AssetImage(githubicon),
-                          width: 25,
-                          height: 25,
-                        ),
-                      ],
-                    )
-                  ],
+                      verticalSpaceSmall,
+                      Text(name),
+                      verticalSpaceSmall,
+                      Text(
+                        description,
+                        style: TextStyle(fontSize: 11),
+                      ),
+                      verticalSpaceMedium,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image(
+                            image: AssetImage(twitter),
+                            width: 40,
+                            height: 40,
+                          ),
+                          horizontalSpaceSmall,
+                          SvgPicture.asset(
+                            linkdinicon,
+                            width: 30,
+                            height:
+                                30, // Replace with the path to your SVG file
+                            //color: Colors.blue, // Customize the color
+                          ),
+                          horizontalSpaceSmall,
+                          Image(
+                            image: AssetImage(githubicon),
+                            width: 25,
+                            height: 25,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

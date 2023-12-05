@@ -56,6 +56,7 @@ class SigninViewModel extends BaseViewModel {
 
   login() async {
     try {
+      setBusy(true);
       User? user = await authservices.login(emailctrl.text, passctrl.text);
       if (user != null) {
         toastService.toastmessage("Login Successfully");

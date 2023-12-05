@@ -20,12 +20,15 @@ class FeatureDescription extends ViewModelWidget<LandingPageViewModel> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         verticalSpaceLarge,
-        const Text(
-          "Features",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-            color: kcpurpleColor,
+        const Padding(
+          padding: EdgeInsets.only(left: 370),
+          child: Text(
+            "Features",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              color: kcpurpleColor,
+            ),
           ),
         ),
         verticalSpaceMedium,
@@ -39,25 +42,25 @@ class FeatureDescription extends ViewModelWidget<LandingPageViewModel> {
                 img: feature1,
                 title: "Seamless Audio Upload",
                 dec:
-                    "Our platform offers a user-friendly\nexperience where you can effortlessly\nupload your audio files."),
+                    "  Our platform offers a user-friendly\n  experience   where   you  can \n  effortlessly upload your audio\n  files."),
             horizontalSpaceMedium,
             Featurecard(
                 img: video,
                 title: "Seamless Video Upload",
                 dec:
-                    "Discover our platform's seamless experience for effortlessly uploading\nyour video files."),
+                    "  Discover our platform's seamless\n  experience   for   effortlessly\n  uploading your video files."),
             horizontalSpaceMedium,
             Featurecard(
                 img: feature3,
                 title: "Clear Topic Visualization",
                 dec:
-                    "Once your audio is processed, our\n website presents the extracted topics\nin a clear and organized manner\nmaking it easy for you to grasp the key\ndiscussion points."),
+                    " Once your audio is processed, our\n website  presents  the  extracted \n topics in a clear  and  organized \n manner making it easy for you to \n grasp the key discussion points."),
             horizontalSpaceMedium,
             Featurecard(
                 img: feature4,
                 title: "Effortless Export to Excel",
                 dec:
-                    "\tTake control of your data with the option\n to export the extracted topics directly\n to an Excel (.xls) file This feature simplifies your workflow and allows for\n convenient data management."),
+                    "   Take control of your data with the \n   option  to export the extracted \n   topics directly  to an Excel (.xls) \n   file This feature simplifies your\n   workflow and allows for  convenient\n   data management."),
           ],
         )
       ],

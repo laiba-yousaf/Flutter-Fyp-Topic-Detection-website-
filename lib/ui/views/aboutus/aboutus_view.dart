@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:topicdetectionweb/ui/common/app_strings.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/aboutus/widget/card.dart';
 import 'aboutus_viewmodel.dart';
@@ -13,64 +14,83 @@ class AboutusView extends StackedView<AboutusViewModel> {
     AboutusViewModel viewModel,
     Widget? child,
   ) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.only(top: 50),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "About us",
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-          ),
-          verticalSpaceMedium,
-          Text(
-            "We're a dedicated team working on Topic Detection from Urdu Meetings.Our mission extract",
-            textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: 16),
-          ),
-          verticalSpaceSmall,
-          Text(
-            "valuable insights from spoken Urdu meetings to enhance decision-making and content retrieval.",
-            textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: 16),
-          ),
-          verticalSpaceSmall,
-          Text(
-            "Guided by Dr .Farah Aeeba, our expertise  in NLP drives a powerful, user-friendly solution.",
-            textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: 16),
-          ),
-          verticalSpaceSmall,
-          Text(
-            "Join us on this journey of discovery!",
-            textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: 16),
-          ),
-          verticalSpaceLarge,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Cardwidget(
-                pic: "pic",
-                name: "Najm",
-                description: "I am from RANA TOWN",
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Center(
+              child: Text(
+                "About us",
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
-              horizontalSpaceSmall,
-              Cardwidget(
-                pic: "pic",
-                name: "Kashif",
-                description: "I am from PASROOR",
+            ),
+            verticalSpaceMedium,
+            const Padding(
+              padding: EdgeInsets.only(left: 300),
+              child: Text(
+                "We're a dedicated team working on Topic Detection from Urdu Meetings.Our mission extract",
+                style: TextStyle(fontSize: 16),
               ),
-              horizontalSpaceSmall,
-              Cardwidget(
-                pic: "pic",
-                name: "Laiba",
-                description: "I am from LAHORE",
+            ),
+            verticalSpaceSmall,
+            const Padding(
+              padding: EdgeInsets.only(left: 300),
+              child: Text(
+                "valuable insights from spoken Urdu meetings to enhance decision-making and content .",
+                style: TextStyle(fontSize: 16),
               ),
-            ],
-          )
-        ],
+            ),
+            verticalSpaceSmall,
+            const Padding(
+              padding: EdgeInsets.only(left: 300),
+              child: Text(
+                "retrieval Guided by Dr .Farah Aeeba, our expertise  in NLP drives a powerful user-friendly,",
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            verticalSpaceSmall,
+            const Padding(
+              padding: EdgeInsets.only(left: 300),
+              child: Text(
+                "solution.Join us on this journey of discovery!",
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            verticalSpaceLarge,
+            Padding(
+              padding: EdgeInsets.only(left: 90),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Cardwidget(
+                    pic: laiba,
+                    name: "Laiba",
+                    description:
+                        "     Final-year BSCS student specializing \n    in front-end and back-end development\n    with expertise in seamless modal integration,\n    contributing to the success of our project. ",
+                  ),
+                  horizontalSpaceSmall,
+                  Cardwidget(
+                    pic: kashif,
+                    name: "Kashif",
+                    description:
+                        "     Final-year BSCS student specializing in \n     modal creation, imparting valuable \n     training and expertise  to elevate user\n     experiences., contributing to the \n     success of our project.",
+                  ),
+                  horizontalSpaceSmall,
+                  Cardwidget(
+                    pic: najm,
+                    name: "Najm",
+                    description:
+                        "     Final-year BSCS student specializing in \n     modal creation, imparting valuable \n     training and expertise  to elevate user\n     experiences., contributing to the \n     success of our project.",
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

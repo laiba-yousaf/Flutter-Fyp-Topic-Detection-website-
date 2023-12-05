@@ -41,7 +41,7 @@ class Googlebutton extends ViewModelWidget<SigninViewModel> {
               width: 20.0,
               height: 20.0,
             ),
-            horizontalSpaceLarge,
+            horizontalSpaceMedium,
             Text(
               title,
               style: const TextStyle(color: kcDarkGreyColor),

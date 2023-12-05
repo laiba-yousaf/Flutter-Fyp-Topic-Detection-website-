@@ -21,8 +21,8 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
     InfoAlertDialogModel viewModel,
     Widget? child,
   ) {
-    String title = request.description!;
-    String formattedText = title.replaceAll('\n', '');
+    // String title = request.description!;
+    // String formattedText = title.replaceAll('\n', '');
     return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: Colors.white,
@@ -30,6 +30,7 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
           padding: const EdgeInsets.all(40.0),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(children: [
                   Row(
@@ -60,7 +61,7 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                       horizontalSpaceSmall,
                       TextButton(
                         onPressed: () {
-                          viewModel.copyToClipboard(formattedText);
+                          viewModel.copyToClipboard(request.description!);
                           viewModel.toastService
                               .toastmessage("copy sucessfull");
                         },
@@ -98,13 +99,12 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                     },
                     child: Transform.scale(
                       scale: viewModel.scale,
-                      child: Text(
-                        formattedText,
-                        style: const TextStyle(
-                          fontFamily: 'NotoNastaliqUrdu',
-                          fontSize: 16,
-                        ),
-                      ),
+                      child: Text(request.description!.replaceAll('۔', '\n'),
+                          style: const TextStyle(
+                            fontFamily: 'NotoNastaliqUrdu',
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.right),
                     ),
                   ),
                 ]),

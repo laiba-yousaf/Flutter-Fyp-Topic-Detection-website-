@@ -26,9 +26,12 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 191, 152, 202),
-          leading: Image(
-            image: AssetImage(logopic),
-            //width: 150,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Image(
+              image: AssetImage(logopic),
+              //width: 150,
+            ),
           ),
           actions: [
             Padding(
@@ -97,7 +100,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                     viewModel.navigateSignup();
                     viewModel.pagenavigate("register");
                   },
-                  child: Text("Register",
+                  child: Text("Sign Up",
                       style: TextStyle(
                         fontSize: 17,
                         color: viewModel.name == "register"
@@ -142,38 +145,55 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 100, top: 170),
+                            padding: const EdgeInsets.only(left: 100, top: 100),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              //crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("Topic Detection From ",
-                                    style: TextStyle(fontSize: 40)),
-                                verticalSpaceSmall,
                                 const Padding(
-                                  padding: EdgeInsets.only(left: 50),
-                                  child: Text("Urdu Meeting ",
+                                  padding: EdgeInsets.only(left: 150),
+                                  child: Text("Topic Detection From",
                                       style: TextStyle(fontSize: 40)),
                                 ),
-                                verticalSpaceMassive,
+                                verticalSpaceSmall,
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 150),
+                                  child: Text("Urdu Meetings ",
+                                      style: TextStyle(fontSize: 40)),
+                                ),
                                 verticalSpaceMedium,
-                                Row(
-                                  children: [
-                                    Image(
-                                      image: AssetImage(arrow),
-                                      width: 100,
-                                      height: 40,
-                                    ),
-                                    Button(
-                                      textColor: kcVeryLightGrey,
-                                      Color: kcPrimaryColor,
-                                      height: screenHeight(context) * 0.06,
-                                      width: quarterScreenWidth(context) * 0.5,
-                                      title: "Get Started",
-                                      onTap: () {
-                                        viewModel.navigateTOSignin();
-                                      },
-                                    ),
-                                  ],
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 70, top: 20),
+                                  child: Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "            Our Project is a Topic Detection System that detect  the\n            topics  from  Urdu  meetings  using Bert. It   automates\n            the  analysis  of  meeting  data. It  saves time, uncovers\n            valuable insights and empwers decision-maker.",
+                                        style: TextStyle(fontSize: 18),
+                                      )),
+                                ),
+                                //verticalSpaceMassive,
+                                verticalSpaceLarge,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 50),
+                                  child: Row(
+                                    children: [
+                                      Image(
+                                        image: AssetImage(arrow),
+                                        width: 100,
+                                        height: 40,
+                                      ),
+                                      Button(
+                                        textColor: kcVeryLightGrey,
+                                        Color: kcAppbarColor,
+                                        height: screenHeight(context) * 0.06,
+                                        width:
+                                            quarterScreenWidth(context) * 0.9,
+                                        title: "Get Started",
+                                        onTap: () {
+                                          viewModel.navigateTOSignin();
+                                        },
+                                      ),
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
@@ -188,7 +208,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                               "Introduction",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.purple,
+                                  color: kcpurpleColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30),
                             ),
@@ -198,7 +218,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                       ),
                       Stack(
                         children: [
-                          Container(
+                          SizedBox(
                             //color: Colors.red,
                             height: 800,
                             child: Align(
@@ -211,7 +231,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                           Padding(
                             padding: const EdgeInsets.only(left: 240),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const FeatureDescription(),
                                 verticalSpaceLarge,
@@ -234,7 +254,7 @@ class LandingPageView extends StackedView<LandingPageViewModel> {
                                             style: TextStyle(
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.purple,
+                                              color: kcpurpleColor,
                                             ),
                                           ),
                                           verticalSpaceMedium,

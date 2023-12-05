@@ -33,11 +33,10 @@ class SettingViewModel extends BaseViewModel {
       )
           .then((value) {
         toastService.toastmessage("Data uploaded sucessfully.....");
-        setBusy(false);
       });
     } catch (e) {
-      setBusy(false);
       toastService.toastmessage("Error in storing information $e");
     }
+    setBusy(false);
   }
 }

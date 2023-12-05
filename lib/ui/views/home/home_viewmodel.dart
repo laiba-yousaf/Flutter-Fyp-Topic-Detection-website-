@@ -13,6 +13,7 @@ import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import '../../../app/app.dialogs.dart';
 import '../../../services/fetchdata_service.dart';
 import '../../../services/firestoredata_service.dart';
+import '../../../services/segmentapi_service.dart';
 
 final dialogService = locator<DialogService>();
 
@@ -23,6 +24,9 @@ class HomeViewModel extends BaseViewModel {
   TextEditingController projectctrl = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   final firestoreService = locator<FirestoredataService>();
+  final segment  = locator<SegmentapiService>();
+
+
   TextEditingController descriptionctrl = TextEditingController();
   Uint8List? fileBytes;
   String? fileName;
@@ -31,6 +35,7 @@ class HomeViewModel extends BaseViewModel {
   final controller = SidebarXController(selectedIndex: 0, extended: true);
 
   final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+
   bool loading = false;
   String name = 'Edit Project';
 
@@ -160,16 +165,14 @@ class HomeViewModel extends BaseViewModel {
           fileName!,
           sizeInMb!,
         );
-        setBusy(false);
         notifyListeners();
       } else {
-        setBusy(false);
         toastService.toastmessage("No .wav file selected.");
       }
     } catch (e) {
-      setBusy(false);
       toastService.toastmessage(" $e");
     }
+    setBusy(false);
   }
 
   void updateData(dynamic data) {

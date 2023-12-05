@@ -20,7 +20,7 @@ class ContactusView extends StackedView<ContactusViewModel> {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 100, left: 200),
+          padding: const EdgeInsets.only(top: 90, left: 200),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             const Text(
@@ -46,7 +46,11 @@ class ContactusView extends StackedView<ContactusViewModel> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Email"),
+                const Padding(
+                  padding: EdgeInsets.only(right: 330),
+                  child: Text("Email"),
+                ),
+                verticalSpaceSmall,
                 Mytextfield(
                   title: "example@gmail.com",
                   ctrl: viewModel.mailctrl,
@@ -63,16 +67,13 @@ class ContactusView extends StackedView<ContactusViewModel> {
                   value: 8.0,
                 ),
                 verticalSpaceLarge,
-                Padding(
-                  padding: const EdgeInsets.only(left: 100),
-                  child: Button(
-                    textColor: kcVeryLightGrey,
-                    Color: kcPrimaryColor,
-                    height: screenHeight(context) * 0.06,
-                    width: quarterScreenWidth(context) * 0.5,
-                    title: "Submit",
-                    onTap: () {},
-                  ),
+                Button(
+                  textColor: kcVeryLightGrey,
+                  Color: kcPrimaryColor,
+                  height: screenHeight(context) * 0.06,
+                  width: thirdScreenWidth(context) * 0.7,
+                  title: "Submit",
+                  onTap: () {},
                 )
               ],
             ),

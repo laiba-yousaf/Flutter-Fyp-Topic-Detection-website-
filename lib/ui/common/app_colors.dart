@@ -12,3 +12,4 @@ const Color hoverColor = Color.fromARGB(255, 224, 207, 247);
 const Color hoverColor1 = Color.fromARGB(255, 224, 207, 247);
 const Color kcpurpleColor = Colors.purple;
 const Color kcfeatureColor = Color.fromARGB(255, 248, 237, 250);
+const Color kcAppbarColor = const Color.fromARGB(255, 191, 152, 202);

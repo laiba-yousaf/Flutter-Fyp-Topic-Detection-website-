@@ -18,7 +18,9 @@ class HistorypageViewModel extends BaseViewModel {
     try {
       setBusy(true);
       firestoreData = await fetchdataservice.fetchDatafromfirestore();
+      setBusy(false);
     } catch (e) {
+      setBusy(false);
       toastService.toastmessage("Error fetching data from Firestore: $e");
     }
   }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/historypage/project_card.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
+import '../../common/app_colors.dart';
 import 'ProjectView_viewmodel.dart';
 
 class HistorypageView extends StackedView<HistorypageViewModel> {
@@ -39,55 +41,65 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
               Expanded(
                   child: Padding(
                 padding: const EdgeInsets.only(top: 30),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 100),
-                            child: Text(
-                              "No",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 200),
-                            child: Text(
-                              "ProjectName",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 200),
-                            child: Text(
-                              "Date",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 280),
-                            child: Text(
-                              "Action",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                      verticalSpaceMedium,
-                      ListView.builder(
-                        itemCount: viewModel.firestoreData.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return ProjectCardHistory(
-                              projectData: viewModel.firestoreData[index],
-                              index: index,
-                              homeViewModel: homeViewModel);
-                        },
+                child: viewModel.isBusy
+                    ? const SpinKitFadingCircle(
+                        // Use the SpinKitWave spinner
+                        color: kcPrimaryColor,
+                        size: 30.0,
                       )
-                    ],
-                  ),
-                ),
+                    : SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 100),
+                                  child: Text(
+                                    "No",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 200),
+                                  child: Text(
+                                    "ProjectName",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 200),
+                                  child: Text(
+                                    "Date",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 280),
+                                  child: Text(
+                                    "Action",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            verticalSpaceMedium,
+                            ListView.builder(
+                              itemCount: viewModel.firestoreData.length,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return ProjectCardHistory(
+                                    projectData: viewModel.firestoreData[index],
+                                    index: index,
+                                    homeViewModel: homeViewModel);
+                              },
+                            )
+                          ],
+                        ),
+                      ),
               )),
             ],
           ),

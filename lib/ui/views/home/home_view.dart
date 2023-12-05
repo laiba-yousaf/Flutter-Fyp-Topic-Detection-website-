@@ -8,7 +8,6 @@ import 'package:topicdetectionweb/ui/views/historypage/Project_view.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/views/home/widgets/create_project.dart';
 import 'package:topicdetectionweb/ui/widgets/common/sidebarx_widget/sidebarx_widget.dart';
-
 import '../privacy_policy/privacy_policy_view.dart';
 import '../setting/settingBody.dart';
 import 'widgets/uploadfile.dart';
@@ -30,6 +29,7 @@ class HomeView extends StackedView<HomeViewModel> {
     return Builder(builder: (context) {
       return Scaffold(
         appBar: AppBar(
+          leading: Image(image: AssetImage(logopic)),
           actions: [
             Tooltip(
               message: viewModel.userName ?? 'Guest User',
