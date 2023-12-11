@@ -12,6 +12,7 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/authentication_service.dart';
+import '../services/display_topic_service.dart';
 import '../services/fetchdata_service.dart';
 import '../services/firestoredata_service.dart';
 import '../services/profileinformation_service.dart';
@@ -40,4 +41,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => FetchdataService());
   locator.registerLazySingleton(() => ProfileinformationService());
   locator.registerLazySingleton(() => SegmentapiService());
+  locator.registerLazySingleton(() => DisplayTopicService());
 }

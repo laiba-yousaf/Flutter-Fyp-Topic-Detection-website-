@@ -53,7 +53,7 @@ class SelectfileDialogDialogModel extends BaseViewModel {
       if (fileBytes == null) {
         toastService.toastmessage(
             "No file has been picked. Please select a file first.");
-        return; // Exit the function if no file has been picked
+        return;
       }
       if (fileBytes != null && fileName != null && sizeInMb != null) {
         extractedList.add(

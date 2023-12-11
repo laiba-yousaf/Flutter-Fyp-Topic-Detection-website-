@@ -11,6 +11,7 @@ import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i3;
 import 'package:topicdetectionweb/services/authentication_service.dart' as _i8;
+import 'package:topicdetectionweb/services/display_topic_service.dart' as _i14;
 import 'package:topicdetectionweb/services/fetchdata_service.dart' as _i11;
 import 'package:topicdetectionweb/services/firestoredata_service.dart' as _i10;
 import 'package:topicdetectionweb/services/profileinformation_service.dart'
@@ -832,5 +833,31 @@ class MockProfileinformationService extends _i1.Mock
 /// A class which mocks [SegmentapiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSegmentapiService extends _i1.Mock
-    implements _i13.SegmentapiService {}
+class MockSegmentapiService extends _i1.Mock implements _i13.SegmentapiService {
+  @override
+  _i5.Future<List<String>> tokenizeTextFileFromAssets() => (super.noSuchMethod(
+        Invocation.method(
+          #tokenizeTextFileFromAssets,
+          [],
+        ),
+        returnValue: _i5.Future<List<String>>.value(<String>[]),
+        returnValueForMissingStub: _i5.Future<List<String>>.value(<String>[]),
+      ) as _i5.Future<List<String>>);
+}
+
+/// A class which mocks [DisplayTopicService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDisplayTopicService extends _i1.Mock
+    implements _i14.DisplayTopicService {
+  @override
+  _i5.Future<List<dynamic>> getSummaries(List<String>? segments) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getSummaries,
+          [segments],
+        ),
+        returnValue: _i5.Future<List<dynamic>>.value(<dynamic>[]),
+        returnValueForMissingStub: _i5.Future<List<dynamic>>.value(<dynamic>[]),
+      ) as _i5.Future<List<dynamic>>);
+}

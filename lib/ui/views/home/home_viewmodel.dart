@@ -11,6 +11,7 @@ import 'package:topicdetectionweb/app/app.router.dart';
 import 'package:topicdetectionweb/services/authentication_service.dart';
 import 'package:topicdetectionweb/services/toastmessage_service.dart';
 import '../../../app/app.dialogs.dart';
+import '../../../services/display_topic_service.dart';
 import '../../../services/fetchdata_service.dart';
 import '../../../services/firestoredata_service.dart';
 import '../../../services/segmentapi_service.dart';
@@ -24,8 +25,10 @@ class HomeViewModel extends BaseViewModel {
   TextEditingController projectctrl = TextEditingController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   final firestoreService = locator<FirestoredataService>();
-  final segment  = locator<SegmentapiService>();
+  final segment = locator<SegmentapiService>();
+  final displayTopic = locator<DisplayTopicService>();
 
+  List<String> displayedSegments = [];
 
   TextEditingController descriptionctrl = TextEditingController();
   Uint8List? fileBytes;
@@ -175,10 +178,13 @@ class HomeViewModel extends BaseViewModel {
     setBusy(false);
   }
 
+
+
   void updateData(dynamic data) {
     extractedList = data;
     notifyListeners();
   }
+
 
   void displayDialog(String urdutext, String filename) {
     dialogService.showCustomDialog(
@@ -201,5 +207,25 @@ class HomeViewModel extends BaseViewModel {
       userName = user.displayName;
       notifyListeners(); // Notify the UI to update
     }
+  }
+
+  void updateSegment(segment) {
+    displayedSegments = segment;
+    notifyListeners();
+  }
+
+  void displaySegment() {
+    dialogService.showCustomDialog(
+      variant: DialogType.displaySegments,
+      data: {
+        'segment': displayedSegments,
+      },
+    );
+  }
+
+  void displaysummary() {
+    dialogService.showCustomDialog(
+      variant: DialogType.displayTopic,
+    );
   }
 }

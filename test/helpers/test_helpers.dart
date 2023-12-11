@@ -9,6 +9,7 @@ import 'package:topicdetectionweb/services/firestoredata_service.dart';
 import 'package:topicdetectionweb/services/fetchdata_service.dart';
 import 'package:topicdetectionweb/services/profileinformation_service.dart';
 import 'package:topicdetectionweb/services/segmentapi_service.dart';
+import 'package:topicdetectionweb/services/display_topic_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -25,6 +26,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<ProfileinformationService>(
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SegmentapiService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<DisplayTopicService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -38,6 +40,7 @@ void registerServices() {
   getAndRegisterFetchdataService();
   getAndRegisterProfileinformationService();
   getAndRegisterSegmentapiService();
+  getAndRegisterDisplayTopicService();
 // @stacked-mock-register
 }
 
@@ -137,6 +140,13 @@ MockSegmentapiService getAndRegisterSegmentapiService() {
   _removeRegistrationIfExists<SegmentapiService>();
   final service = MockSegmentapiService();
   locator.registerSingleton<SegmentapiService>(service);
+  return service;
+}
+
+MockDisplayTopicService getAndRegisterDisplayTopicService() {
+  _removeRegistrationIfExists<DisplayTopicService>();
+  final service = MockDisplayTopicService();
+  locator.registerSingleton<DisplayTopicService>(service);
   return service;
 }
 // @stacked-mock-create

@@ -24,6 +24,9 @@ import 'package:topicdetectionweb/services/profileinformation_service.dart';
 import 'package:topicdetectionweb/ui/views/privacy_policy/privacy_policy_view.dart';
 import 'package:topicdetectionweb/ui/views/f_a_qs/f_a_qs_view.dart';
 import 'package:topicdetectionweb/services/segmentapi_service.dart';
+import 'package:topicdetectionweb/ui/dialogs/display_segments/display_segments_dialog.dart';
+import 'package:topicdetectionweb/services/display_topic_service.dart';
+import 'package:topicdetectionweb/ui/dialogs/display_topic/display_topic_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -53,6 +56,7 @@ import 'package:topicdetectionweb/services/segmentapi_service.dart';
     LazySingleton(classType: FetchdataService),
     LazySingleton(classType: ProfileinformationService),
     LazySingleton(classType: SegmentapiService),
+    LazySingleton(classType: DisplayTopicService),
 // @stacked-service
   ],
   bottomsheets: [
@@ -63,6 +67,8 @@ import 'package:topicdetectionweb/services/segmentapi_service.dart';
     StackedDialog(classType: InfoAlertDialog),
     StackedDialog(classType: SelectfileDialogDialog),
     StackedDialog(classType: DeleteProjectDialog),
+    StackedDialog(classType: DisplaySegmentsDialog),
+    StackedDialog(classType: DisplayTopicDialog),
 // @stacked-dialog
   ],
 )

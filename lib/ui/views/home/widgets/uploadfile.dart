@@ -1,13 +1,14 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
-import '../../../../services/segmentapi_service.dart';
 import '../../../common/app_colors.dart';
+import 'dart:html' as html;
 
 class Uploadfile extends ViewModelWidget<HomeViewModel> {
   final String projectname;
@@ -163,60 +164,92 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                             " Mb"),
                                       ),
                                     ),
-                                    Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 60, right: 5),
-                                        child: Row(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                viewModel.deleteFile(index);
-                                              },
-                                              child: const Icon(
-                                                Icons.delete,
+                                    Row(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            viewModel.deleteFile(index);
+                                          },
+                                          child: const Icon(
+                                            Icons.delete,
+                                            color: kcPrimaryColor,
+                                            size: 20,
+                                          ),
+                                        ),
+                                        horizontalSpaceSmall,
+                                        GestureDetector(
+                                          onTap: () async {
+                                            try {
+                                              final urduTextLines = viewModel
+                                                  .extractedList[index]
+                                                      ["urduText"]
+                                                  .split('۔')
+                                                  .join('\n\n');
+                                              final blob = html.Blob([
+                                                Uint8List.fromList(
+                                                    utf8.encode(urduTextLines))
+                                              ], 'text/plain;charset=utf-8');
+
+                                              final url = html.Url
+                                                  .createObjectUrlFromBlob(
+                                                      blob);
+                                              // ignore: avoid_print
+                                              print(File(url));
+                                              List<String> segments =
+                                                  await viewModel.segment
+                                                      .tokenizeTextFileFromUrl(url);
+
+                                              // Display each segment with a new heading
+
+                                              viewModel.updateSegment(segments);
+                                              viewModel.displaySegment();
+                                            } catch (e) {
+                                              log('Error: $e');
+                                            }
+                                          },
+                                          child: const Tooltip(
+                                              message: "Display Segments",
+                                              child: Icon(
+                                                Icons.view_array,
                                                 color: kcPrimaryColor,
-                                                size: 20,
+                                              )),
+                                        ),
+                                        horizontalSpaceSmall,
+                                        GestureDetector(
+                                            onTap: () {
+                                              viewModel.displayDialog(
+                                                  viewModel.extractedList[index]
+                                                      ["urduText"],
+                                                  viewModel.extractedList[index]
+                                                      ["fileName"]);
+                                            },
+                                            child: const Tooltip(
+                                              message: "Display Urdu Text",
+                                              child: Icon(
+                                                Icons.display_settings,
+                                                color: kcPrimaryColor,
                                               ),
-                                            ),
-                                            horizontalSpaceSmall,
-                                            GestureDetector(
-                                              onTap: () async {
-                                                try {
-                                                  String filePath =
-                                                      'assets/MR001_input.txt';
-                                                  List<String> segments =
-                                                      await viewModel.segment
-                                                          .tokenizeTextFileFromAssets();
-                                                  log('Segments: $segments');
-                                                } catch (e) {
-                                                  log('Error: $e');
-                                                }
-                                              },
-                                              child: const Tooltip(
-                                                  message: "Display Topics",
-                                                  child: Icon(
-                                                    Icons.view_array,
-                                                    color: kcPrimaryColor,
-                                                  )),
-                                            ),
-                                            horizontalSpaceSmall,
-                                            GestureDetector(
-                                                onTap: () {
-                                                  viewModel.displayDialog(
-                                                      viewModel.extractedList[
-                                                          index]["urduText"],
-                                                      viewModel.extractedList[
-                                                          index]["fileName"]);
-                                                },
-                                                child: const Tooltip(
-                                                  message: "Display Urdu Text",
-                                                  child: Icon(
-                                                    Icons.display_settings,
-                                                    color: kcPrimaryColor,
-                                                  ),
-                                                ))
-                                          ],
-                                        )),
+                                            )),
+                                        horizontalSpaceSmall,
+                                        GestureDetector(
+                                            onTap: () {
+                                              // List<dynamic> summaries =
+                                              //     await viewModel.displayTopic
+                                              //         .getSummaries(
+                                              //   viewModel.displayedSegments,
+                                              // );
+                                              // print(summaries);
+                                              viewModel.displaysummary();
+                                            },
+                                            child: const Tooltip(
+                                              message: "Display Topic",
+                                              child: Icon(
+                                                Icons.smart_display,
+                                                color: kcPrimaryColor,
+                                              ),
+                                            ))
+                                      ],
+                                    ),
                                   ],
                                 ),
                               );

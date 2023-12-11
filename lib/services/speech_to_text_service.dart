@@ -1,5 +1,8 @@
 // ignore: avoid_web_libraries_in_flutter
-//import 'dart:html' as html;
+import 'dart:convert';
+import 'dart:html' as html;
+import 'dart:io';
+import 'dart:typed_data';
 //import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -86,7 +89,7 @@ class SpeechToTextService {
         if (line.contains('spk')) {
           var parts = line.split(' ');
           if (parts.length >= 5) {
-            urduText += '${parts.sublist(5).join(' ')}';
+            urduText += parts.sublist(5).join(' ');
           }
         }
       }
@@ -95,16 +98,24 @@ class SpeechToTextService {
         "size": size,
         "urduText": urduText,
       };
+      final urduTextLines= urduText.split('۔').join('\n\n');
+      final blob = html.Blob([Uint8List.fromList(utf8.encode(urduTextLines))], 'text/plain;charset=utf-8');
 
-      // final blob = html.Blob([urduText]);
-      // final url = html.Url.createObjectUrlFromBlob(blob);
-      // // ignore: unused_local_variable
-      // final anchor = html.AnchorElement(href: url)
-      //   ..target = 'web'
-      //   ..download = 'urdu_text.txt'
-      //   ..click();
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      // ignore: avoid_print
+      print(File(url));
 
-      // html.Url.revokeObjectUrl(url);
+
+      //html.window.open(url, 'web');
+
+      // ignore: unused_local_variable
+      
+    //   final anchor = html.AnchorElement(href: url)
+    //     ..target = 'web'
+    //     ..download = 'urdu_text'
+    //     ..click();
+
+    //  html.Url.revokeObjectUrl(url);
     } else {
       // ignore: avoid_print
       print("API call failed with status code: ${response.statusCode}");
