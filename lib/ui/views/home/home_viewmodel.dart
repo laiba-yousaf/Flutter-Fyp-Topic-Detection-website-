@@ -15,6 +15,7 @@ import '../../../services/display_topic_service.dart';
 import '../../../services/fetchdata_service.dart';
 import '../../../services/firestoredata_service.dart';
 import '../../../services/segmentapi_service.dart';
+import '../../../services/textto_file_service.dart';
 
 final dialogService = locator<DialogService>();
 
@@ -27,6 +28,8 @@ class HomeViewModel extends BaseViewModel {
   final firestoreService = locator<FirestoredataService>();
   final segment = locator<SegmentapiService>();
   final displayTopic = locator<DisplayTopicService>();
+  final  textTofile = locator<TexttoFileService>();
+
 
   List<String> displayedSegments = [];
 
@@ -178,13 +181,10 @@ class HomeViewModel extends BaseViewModel {
     setBusy(false);
   }
 
-
-
   void updateData(dynamic data) {
     extractedList = data;
     notifyListeners();
   }
-
 
   void displayDialog(String urdutext, String filename) {
     dialogService.showCustomDialog(

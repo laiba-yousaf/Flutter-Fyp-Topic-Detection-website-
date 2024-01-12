@@ -10,6 +10,7 @@ import 'package:topicdetectionweb/services/fetchdata_service.dart';
 import 'package:topicdetectionweb/services/profileinformation_service.dart';
 import 'package:topicdetectionweb/services/segmentapi_service.dart';
 import 'package:topicdetectionweb/services/display_topic_service.dart';
+import 'package:topicdetectionweb/services/textto_file_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -27,6 +28,7 @@ import 'test_helpers.mocks.dart';
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SegmentapiService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DisplayTopicService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<TexttoFileService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -41,6 +43,7 @@ void registerServices() {
   getAndRegisterProfileinformationService();
   getAndRegisterSegmentapiService();
   getAndRegisterDisplayTopicService();
+  getAndRegisterTexttoFileService();
 // @stacked-mock-register
 }
 
@@ -147,6 +150,13 @@ MockDisplayTopicService getAndRegisterDisplayTopicService() {
   _removeRegistrationIfExists<DisplayTopicService>();
   final service = MockDisplayTopicService();
   locator.registerSingleton<DisplayTopicService>(service);
+  return service;
+}
+
+MockTexttoFileService getAndRegisterTexttoFileService() {
+  _removeRegistrationIfExists<TexttoFileService>();
+  final service = MockTexttoFileService();
+  locator.registerSingleton<TexttoFileService>(service);
   return service;
 }
 // @stacked-mock-create

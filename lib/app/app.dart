@@ -27,6 +27,7 @@ import 'package:topicdetectionweb/services/segmentapi_service.dart';
 import 'package:topicdetectionweb/ui/dialogs/display_segments/display_segments_dialog.dart';
 import 'package:topicdetectionweb/services/display_topic_service.dart';
 import 'package:topicdetectionweb/ui/dialogs/display_topic/display_topic_dialog.dart';
+import 'package:topicdetectionweb/services/textto_file_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -57,6 +58,7 @@ import 'package:topicdetectionweb/ui/dialogs/display_topic/display_topic_dialog.
     LazySingleton(classType: ProfileinformationService),
     LazySingleton(classType: SegmentapiService),
     LazySingleton(classType: DisplayTopicService),
+    LazySingleton(classType: TexttoFileService),
 // @stacked-service
   ],
   bottomsheets: [

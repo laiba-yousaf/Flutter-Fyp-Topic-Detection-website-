@@ -18,6 +18,7 @@ import '../services/firestoredata_service.dart';
 import '../services/profileinformation_service.dart';
 import '../services/segmentapi_service.dart';
 import '../services/speech_to_text_service.dart';
+import '../services/textto_file_service.dart';
 import '../services/toastmessage_service.dart';
 
 final locator = StackedLocator.instance;
@@ -42,4 +43,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => ProfileinformationService());
   locator.registerLazySingleton(() => SegmentapiService());
   locator.registerLazySingleton(() => DisplayTopicService());
+  locator.registerLazySingleton(() => TexttoFileService());
 }

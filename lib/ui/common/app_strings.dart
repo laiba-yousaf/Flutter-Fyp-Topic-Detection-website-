@@ -1,8 +1,8 @@
 // assets
 
-String image1 = 'assets/images/nlp slider.jpg';
-String image2 = 'assets/images/nlp slider2.jpg';
-String image3 = 'assets/images/sliderpicimg3.png';
+String image1 = 'assets/images/sliderpic.png';
+String image2 = 'assets/images/sliderpic2.png';
+String image3 = 'assets/images/sliderpic3.png';
 String image4 = 'assets/images/checkimage.jpg';
 String googleicon = 'assets/images/google-icon.svg';
 String backgroundimg = 'assets/images/homeimg.png';

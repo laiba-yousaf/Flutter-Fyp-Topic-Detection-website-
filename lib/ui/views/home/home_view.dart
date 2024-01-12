@@ -29,7 +29,10 @@ class HomeView extends StackedView<HomeViewModel> {
     return Builder(builder: (context) {
       return Scaffold(
         appBar: AppBar(
-          leading: Image(image: AssetImage(logopic)),
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 15.0),
+            child: Image(image: AssetImage(logopic)),
+          ),
           actions: [
             Tooltip(
               message: viewModel.userName ?? 'Guest User',

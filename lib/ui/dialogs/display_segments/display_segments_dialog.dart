@@ -70,4 +70,3 @@ class DisplaySegmentsDialog extends StackedView<DisplaySegmentsDialogModel> {
   DisplaySegmentsDialogModel viewModelBuilder(BuildContext context) =>
       DisplaySegmentsDialogModel(request.data['segment']);
 }
-

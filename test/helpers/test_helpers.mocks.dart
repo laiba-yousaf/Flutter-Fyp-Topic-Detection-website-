@@ -18,6 +18,7 @@ import 'package:topicdetectionweb/services/profileinformation_service.dart'
     as _i12;
 import 'package:topicdetectionweb/services/segmentapi_service.dart' as _i13;
 import 'package:topicdetectionweb/services/speech_to_text_service.dart' as _i9;
+import 'package:topicdetectionweb/services/textto_file_service.dart' as _i15;
 import 'package:topicdetectionweb/services/toastmessage_service.dart' as _i7;
 
 // ignore_for_file: type=lint
@@ -861,3 +862,9 @@ class MockDisplayTopicService extends _i1.Mock
         returnValueForMissingStub: _i5.Future<List<dynamic>>.value(<dynamic>[]),
       ) as _i5.Future<List<dynamic>>);
 }
+
+/// A class which mocks [TexttoFileService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTexttoFileService extends _i1.Mock
+    implements _i15.TexttoFileService {}

@@ -6,7 +6,8 @@ class DisplayTopicDialogModel extends BaseViewModel {
 
   Future<List<List<String>>> getSummariesFromFirestore() async {
     try {
-      QuerySnapshot querySnapshot = await _firestore.collection('summaries').get();
+      QuerySnapshot querySnapshot =
+          await _firestore.collection('summaries').get();
 
       List<List<String>> summaries = querySnapshot.docs
           .map((doc) => List<String>.from(doc['summary'] as List<dynamic>))

@@ -29,9 +29,7 @@
 //     }
 //   }
 
-
 // }
-
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -69,10 +67,12 @@ class DisplayTopicService {
       return [];
     }
   }
+  
 
   Future<void> _storeSummariesInFirestore(List<dynamic> summaries) async {
     try {
-      CollectionReference summariesCollection = _firestore.collection('summaries');
+      CollectionReference summariesCollection =
+          _firestore.collection('summaries');
 
       // Add each summary to Firestore
       for (dynamic summary in summaries) {
@@ -83,4 +83,3 @@ class DisplayTopicService {
     }
   }
 }
-

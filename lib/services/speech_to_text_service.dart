@@ -98,24 +98,24 @@ class SpeechToTextService {
         "size": size,
         "urduText": urduText,
       };
-      final urduTextLines= urduText.split('۔').join('\n\n');
-      final blob = html.Blob([Uint8List.fromList(utf8.encode(urduTextLines))], 'text/plain;charset=utf-8');
+      final urduTextLines = urduText.split('۔').join('\n\n');
+      final blob = html.Blob([Uint8List.fromList(utf8.encode(urduTextLines))],
+          'text/plain;charset=utf-8');
 
       final url = html.Url.createObjectUrlFromBlob(blob);
       // ignore: avoid_print
       print(File(url));
 
-
       //html.window.open(url, 'web');
 
       // ignore: unused_local_variable
-      
-    //   final anchor = html.AnchorElement(href: url)
-    //     ..target = 'web'
-    //     ..download = 'urdu_text'
-    //     ..click();
 
-    //  html.Url.revokeObjectUrl(url);
+      //   final anchor = html.AnchorElement(href: url)
+      //     ..target = 'web'
+      //     ..download = 'urdu_text'
+      //     ..click();
+
+      //  html.Url.revokeObjectUrl(url);
     } else {
       // ignore: avoid_print
       print("API call failed with status code: ${response.statusCode}");

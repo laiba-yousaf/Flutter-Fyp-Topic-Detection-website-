@@ -71,7 +71,6 @@
 //       DisplayTopicDialogModel(request.data['summary']);
 // }
 
-
 //2nd code
 
 // import 'package:flutter/material.dart';
@@ -182,7 +181,6 @@
 //       DisplayTopicDialogModel();
 // }
 
-
 //3rd code
 
 import 'package:flutter/material.dart';
@@ -255,13 +253,16 @@ class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    completer(DialogResponse(confirmed: true));
-                  },
-                  child: const Icon(
-                    Icons.close,
-                    color: kcsliderColor,
+                Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: TextButton(
+                    onPressed: () {
+                      completer(DialogResponse(confirmed: true));
+                    },
+                    child: const Icon(
+                      Icons.close,
+                      color: kcsliderColor,
+                    ),
                   ),
                 ),
               ],
@@ -283,24 +284,40 @@ class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
                       int segmentNumber = entry.key + 1;
                       List<String> summaryList = entry.value;
                       return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Topic $segmentNumber:',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          // Text(
+                          //   '$segmentNumber:',
+                          //   style: const TextStyle(
+                          //     fontSize: 18,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
                           ...summaryList.map((summary) {
                             String cleanedSummary = cleanSummaryText(summary);
-                            return Text(
-                              cleanedSummary,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 400),
+                              child: Row(
+                                //mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '$segmentNumber:',
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  horizontalSpaceMedium,
+                                  Text(
+                                    cleanedSummary,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ],
                               ),
-                              textAlign: TextAlign.right,
                             );
                           }),
                         ],
@@ -320,4 +337,3 @@ class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
   DisplayTopicDialogModel viewModelBuilder(BuildContext context) =>
       DisplayTopicDialogModel();
 }
-

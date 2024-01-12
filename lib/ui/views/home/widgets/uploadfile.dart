@@ -185,19 +185,31 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                                       ["urduText"]
                                                   .split('۔')
                                                   .join('\n\n');
-                                              final blob = html.Blob([
-                                                Uint8List.fromList(
-                                                    utf8.encode(urduTextLines))
-                                              ], 'text/plain;charset=utf-8');
 
-                                              final url = html.Url
-                                                  .createObjectUrlFromBlob(
-                                                      blob);
+                                              // final blob = html.Blob([
+                                              //   Uint8List.fromList(
+                                              //       utf8.encode(urduTextLines))
+                                              // ], 'text/plain;charset=utf-8');
+
+                                              // final url = html.Url
+                                              //     .createObjectUrlFromBlob(
+                                              //         blob);
                                               // ignore: avoid_print
-                                              print(File(url));
+                                              // print(File(url));
+
+                                              // Replace with the actual content you want to send to the server
+
+                                              try {
+                                                await viewModel.textTofile.writeFile(
+                                                   urduTextLines,
+                                                    'file.txt');
+                                              } catch (e) {
+                                                print('Error: $e');
+                                              }
+
                                               List<String> segments =
                                                   await viewModel.segment
-                                                      .tokenizeTextFileFromUrl(url);
+                                                      .tokenizeTextFileFromAssets();
 
                                               // Display each segment with a new heading
 
@@ -232,13 +244,13 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                             )),
                                         horizontalSpaceSmall,
                                         GestureDetector(
-                                            onTap: () {
-                                              // List<dynamic> summaries =
-                                              //     await viewModel.displayTopic
-                                              //         .getSummaries(
-                                              //   viewModel.displayedSegments,
-                                              // );
-                                              // print(summaries);
+                                            onTap: () async {
+                                              List<dynamic> summaries =
+                                                  await viewModel.displayTopic
+                                                      .getSummaries(
+                                                viewModel.displayedSegments,
+                                              );
+                                              print(summaries);
                                               viewModel.displaysummary();
                                             },
                                             child: const Tooltip(
