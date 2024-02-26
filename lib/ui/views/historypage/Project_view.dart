@@ -35,7 +35,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
             children: [
               const Text(
                 "View Projects",
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const Divider(),
               Expanded(
@@ -52,20 +52,13 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                           children: [
                             const Row(
                               children: [
+
                                 Padding(
-                                  padding: EdgeInsets.only(left: 100),
-                                  child: Text(
-                                    "No",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 200),
+                                  padding: EdgeInsets.only(left: 130),
                                   child: Text(
                                     "ProjectName",
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        TextStyle(fontWeight: FontWeight.bold,fontSize:16),
                                   ),
                                 ),
                                 Padding(
@@ -73,7 +66,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                   child: Text(
                                     "Date",
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        TextStyle(fontWeight: FontWeight.bold,fontSize:16),
                                   ),
                                 ),
                                 Padding(
@@ -81,7 +74,7 @@ class HistorypageView extends StackedView<HistorypageViewModel> {
                                   child: Text(
                                     "Action",
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        TextStyle(fontWeight: FontWeight.bold,fontSize:16),
                                   ),
                                 ),
                               ],

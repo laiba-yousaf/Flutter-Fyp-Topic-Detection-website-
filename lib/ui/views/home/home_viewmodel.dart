@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,10 +30,10 @@ class HomeViewModel extends BaseViewModel {
   final firestoreService = locator<FirestoredataService>();
   final segment = locator<SegmentapiService>();
   final displayTopic = locator<DisplayTopicService>();
-  final  textTofile = locator<TexttoFileService>();
-
+  final textTofile = locator<TexttoFileService>();
 
   List<String> displayedSegments = [];
+ var summaryList;
 
   TextEditingController descriptionctrl = TextEditingController();
   Uint8List? fileBytes;
@@ -59,6 +61,7 @@ class HomeViewModel extends BaseViewModel {
       descriptionctrl.text = data['Description'];
     }
     extractedList = data["mettinges"];
+    summaryList = data["Summries"];
     eidtProjectId = data["id"];
     notifyListeners();
   }
@@ -76,6 +79,8 @@ class HomeViewModel extends BaseViewModel {
   final toastService = locator<ToastmessageService>();
   final fetchdataservice = locator<FetchdataService>();
   List<dynamic> extractedList = [];
+
+  List<dynamic> summariesList = [];
 
   Future<FilePickerResult?> pickAFile() async {
     FilePickerResult? pickedFileResult = await FilePicker.platform.pickFiles(
@@ -110,21 +115,27 @@ class HomeViewModel extends BaseViewModel {
     return pickedFileResult;
   }
 
-  onProceed() async {
+  void updateSummaries(summries) {
+    summariesList = summries;
+    notifyListeners();
+  }
+
+  onProceed(int index) async {
     Map<String, dynamic> uploadData = {
       "title": projectctrl.text,
       "mettinges": extractedList,
       "Description": descriptionctrl.text,
+      "Summries": summariesList,
     };
 
     try {
-      String result = await firestoreService.saveData(uploadData,
+      String result = await firestoreService.saveData(index, uploadData,
           eidtProjectId: eidtProjectId);
 
       toastService.toastmessage(result);
-      projectctrl.clear();
-      descriptionctrl.clear();
-      extractedList = [];
+      // projectctrl.clear();
+      //descriptionctrl.clear();
+      // extractedList = [];
     } catch (e) {
       toastService.toastmessage(e.toString());
     }
@@ -223,9 +234,25 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  void displaysummary() {
+ void displaysummary(List<dynamic> summaryDataList,String urduText) async {
+  try {
+    // Show custom dialog with the list data
     dialogService.showCustomDialog(
       variant: DialogType.displayTopic,
+   data:{
+       'urduText': urduText,
+       'summaries': summaryDataList,      
+    }
+
     );
+  } catch (e) {
+    
+    print('Error displaying summary: $e');
   }
+}
+
+
+ 
+
+
 }

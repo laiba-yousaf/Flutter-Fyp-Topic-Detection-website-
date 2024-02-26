@@ -57,4 +57,24 @@ class HistorypageViewModel extends BaseViewModel {
       notifyListeners();
     }
   }
+
+// Display time format
+
+ String formatDateTime(DateTime timestamp) {
+    String day = '${timestamp.day}';
+    if (day.length == 1) {
+      day = '0$day';
+    }
+    String month = '${timestamp.month}';
+    if (month.length == 1) {
+      month = '0$month';
+    }
+    String year = '${timestamp.year}';
+  
+
+    return '$day/$month/$year';
+  }
+
+
+  
 }

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoredataService {
-  Future<String> saveData(Map<String, dynamic> uploadData,
+  Future<String> saveData(int index,  Map<String, dynamic> uploadData,
       {String? eidtProjectId}) async {
     try {
       FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -14,10 +14,11 @@ class FirestoredataService {
         DocumentReference documentReference =
             firestore.collection('your_collection_name').doc(key);
 
-        await documentReference.set({
+        await documentReference.update({
           'title': uploadData['title'],
           'mettinges': uploadData['mettinges'],
           'Description': uploadData['Description'],
+          'Summries.Meating$index': uploadData['Summries'],
           'timestamp': FieldValue.serverTimestamp(),
           'id': key
         });

@@ -120,131 +120,113 @@
 
 //TEXT api
 
-// import 'dart:convert';
-// import 'package:http/http.dart' as http;
-
-// class SegmentapiService {
-//   Future<List<String>> tokenizeText(String text) async {
-//     if (text.length <= 200) {
-//       print('Error: Input text needs to be longer than the window size.');
-//       return [];
-//     }
-//     String apiUrl = 'http://127.0.0.1:5000/api/tokenize';
-
-//     try {
-//       print(
-//           'Text length before API request: ${text.length}'); // Add this line for debugging
-//       // Pass the text to the server
-//       var response = await http.post(
-//         Uri.parse(apiUrl),
-//         body: {'text': text},
-//       );
-
-//       if (response.statusCode == 200) {
-//         Map<String, dynamic> data = jsonDecode(response.body);
-
-//         if (data.containsKey('segments') && data['segments'] is List) {
-//           List<String> segments = List<String>.from(data['segments']);
-//           print('Text processed successfully. Segments: $segments');
-//           return segments;
-//         } else {
-//           print('Error: Invalid response format');
-//         }
-//       } else {
-//         print('Error processing text. Status code: ${response.statusCode}');
-//         print('Error response: ${response.body}');
-//       }
-//     } catch (e) {
-//       print('Error making API request: $e');
-//       throw Exception('Failed to make the API request');
-//     }
-
-//     return [];
-//   }
-// }
-
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
 class SegmentapiService {
-  Future<List<String>> tokenizeTextFileFromAssets() async {
-    // Replace with your API endpoint
+  Future<List<String>> tokenizeText(String text) async {
+    if (text.length <= 200) {
+      print('Error: Input text needs to be longer than the window size.');
+      return [];
+    }
     String apiUrl = 'http://127.0.0.1:5000/api/tokenize';
 
     try {
-      String assetPath = 'assets/urdu_text.txt';
+      (
+          'Text length before API request: ${text.length}'); // Add this line for debugging
+      // Pass the text to the server
+      var response = await http.post(
+        Uri.parse(apiUrl),
+        body: {'text': text},
+      );
 
-      // Fetch the asset file content using http.get
-      http.Response response = await http.get(Uri.parse(assetPath));
-
-      // Check if the request was successful
       if (response.statusCode == 200) {
-        Uint8List bytes = response.bodyBytes;
+        Map<String, dynamic> data = jsonDecode(response.body);
 
-        // Create a MultipartRequest
-        var formData = http.MultipartRequest('POST', Uri.parse(apiUrl));
-
-        // Add the file to the MultipartRequest
-        formData.files.add(http.MultipartFile.fromBytes(
-          'file',
-          bytes,
-          filename: assetPath.split('/').last,
-        ));
-
-        // Send the request
-        var apiResponse = await formData.send();
-
-        // Check the response status
-        if (apiResponse.statusCode == 200) {
-          print('File uploaded successfully');
-          var responseString = await apiResponse.stream.bytesToString();
-          print(responseString);
-          Map<String, dynamic> data = jsonDecode(responseString);
+        if (data.containsKey('segments') && data['segments'] is List) {
           List<String> segments = List<String>.from(data['segments']);
+          print('Text processed successfully. Segments: $segments');
+       
           return segments;
-          // Handle the response as needed
         } else {
-          print('Error uploading file. Status code: ${apiResponse.statusCode}');
-          var errorString = await apiResponse.stream.bytesToString();
-          print(errorString);
-          // Handle the error
+          print('Error: Invalid response format');
         }
       } else {
-        print('Error fetching asset file. Status code: ${response.statusCode}');
-        throw Exception('Failed to tokenize text file');
-        // Handle the error
+        print('Error processing text. Status code: ${response.statusCode}');
+        print('Error response: ${response.body}');
       }
     } catch (e) {
       print('Error making API request: $e');
       throw Exception('Failed to make the API request');
     }
+
     return [];
   }
 }
 
-// try {
-//   // Read the file as bytes from the assets
-//   final ByteData data = await rootBundle.load(assetPath);
-//   final Uint8List bytes = data.buffer.asUint8List();
 
-//   // Convert bytes to base64
-//   final String base64File = base64Encode(bytes);
 
-//   var response = await http.post(
-//     Uri.parse('http://127.0.0.1:5000/api/tokenize'),
-//     headers: {'Content-Type': 'application/json'},
-//     body: jsonEncode({'file_data': base64File}),
-//   );
+//through File integration
 
-//   if (response.statusCode == 200) {
-//     Map<String, dynamic> data = jsonDecode(response.body);
-//     List<String> segments = List<String>.from(data['segments']);
-//     return segments;
-//   } else {
-//     throw Exception('Failed to tokenize text file');
+
+// import 'dart:convert';
+// import 'dart:typed_data';
+// import 'package:http/http.dart' as http;
+
+// class SegmentapiService {
+//   Future<List<String>> tokenizeTextFileFromAssets() async {
+//     // Replace with your API endpoint
+//     String apiUrl = 'http://127.0.0.1:5000/api/tokenize';
+
+//     try {
+//       String assetPath = 'assets/urdu_text.txt';
+
+//       // Fetch the asset file content using http.get
+//       http.Response response = await http.get(Uri.parse(assetPath));
+
+//       // Check if the request was successful
+//       if (response.statusCode == 200) {
+//         Uint8List bytes = response.bodyBytes;
+
+//         // Create a MultipartRequest
+//         var formData = http.MultipartRequest('POST', Uri.parse(apiUrl));
+
+//         // Add the file to the MultipartRequest
+//         formData.files.add(http.MultipartFile.fromBytes(
+//           'file',
+//           bytes,
+//           filename: assetPath.split('/').last,
+//         ));
+
+//         // Send the request
+//         var apiResponse = await formData.send();
+
+//         // Check the response status
+//         if (apiResponse.statusCode == 200) {
+//           print('File uploaded successfully');
+//           var responseString = await apiResponse.stream.bytesToString();
+//           print(responseString);
+//           Map<String, dynamic> data = jsonDecode(responseString);
+//           List<String> segments = List<String>.from(data['segments']);
+//           return segments;
+//           // Handle the response as needed
+//         } else {
+//           print('Error uploading file. Status code: ${apiResponse.statusCode}');
+//           var errorString = await apiResponse.stream.bytesToString();
+//           print(errorString);
+//           // Handle the error
+//         }
+//       } else {
+//         print('Error fetching asset file. Status code: ${response.statusCode}');
+//         throw Exception('Failed to tokenize text file');
+//         // Handle the error
+//       }
+//     } catch (e) {
+//       print('Error making API request: $e');
+//       throw Exception('Failed to make the API request');
+//     }
+//     return [];
 //   }
-// } catch (e) {
-//   print('Error making API request: $e');
-//   throw Exception('Failed to make the API request');
 // }
+
+

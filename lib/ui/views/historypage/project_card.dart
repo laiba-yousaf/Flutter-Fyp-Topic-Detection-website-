@@ -22,19 +22,13 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
     BuildContext context,
     HistorypageViewModel viewModel,
   ) {
+    DateTime timestamp = (projectData['timestamp'] as Timestamp).toDate();
+    String  formattedDateTime= viewModel.formatDateTime(timestamp);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 90),
-            child: SizedBox(
-              height: 30,
-              width: 50,
-              child: Text("${index + 1}"),
-            ),
-          ),
-          horizontalSpaceLarge,
           Padding(
             padding: const EdgeInsets.only(left: 120),
             child: SizedBox(
@@ -49,7 +43,7 @@ class ProjectCardHistory extends ViewModelWidget<HistorypageViewModel> {
               height: 40,
               width: 190,
               child: Text(
-                (projectData['timestamp'] as Timestamp).toDate().toString(),
+               formattedDateTime,
               ),
             ),
           ),

@@ -1,193 +1,9 @@
-// import 'package:flutter/material.dart';
-// import 'package:topicdetectionweb/ui/common/app_colors.dart';
-// import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-// import 'package:stacked/stacked.dart';
-// import 'package:stacked_services/stacked_services.dart';
-
-// import 'display_topic_dialog_model.dart';
-
-// class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
-//   final DialogRequest request;
-//   final Function(DialogResponse) completer;
-
-//   const DisplayTopicDialog({
-//     Key? key,
-//     required this.request,
-//     required this.completer,
-//   }) : super(key: key);
-
-//   @override
-//   Widget builder(
-//     BuildContext context,
-//     DisplayTopicDialogModel viewModel,
-//     Widget? child,
-//   ) {
-//      return Dialog(
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//       backgroundColor: Colors.white,
-//       child: SingleChildScrollView(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             verticalSpaceMassive,
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 const Text(
-//                   'Summary',
-//                   style: TextStyle(
-//                     fontSize: 18,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//                 TextButton(
-//                   onPressed: () {
-//                     completer(DialogResponse(confirmed: true));
-//                   },
-//                   child: const Icon(
-//                     Icons.close,
-//                     color: kcsliderColor,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             verticalSpaceMedium,
-//             if (request.data['segment'] != null)
-//               for (int i = 0; i < request.data['segment']!.length; i++)
-//                 Text(
-//                   'Segment ${i + 1}:\n${request.data['segment']![i].replaceAll('            ', '')}', //RegExp(r'\s+'),'      ')}',
-//                   style: const TextStyle(
-//                       fontSize: 16, fontWeight: FontWeight.bold),
-//                   textAlign: TextAlign.right,
-//                 ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   DisplayTopicDialogModel viewModelBuilder(BuildContext context) =>
-//       DisplayTopicDialogModel(request.data['summary']);
-// }
-
-//2nd code
-
-// import 'package:flutter/material.dart';
-// import 'package:topicdetectionweb/ui/common/app_colors.dart';
-// import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
-// import 'package:stacked/stacked.dart';
-// import 'package:stacked_services/stacked_services.dart';
-
-// import 'display_topic_dialog_model.dart';
-
-// class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
-//   final DialogRequest request;
-//   final Function(DialogResponse) completer;
-
-//   const DisplayTopicDialog({
-//     Key? key,
-//     required this.request,
-//     required this.completer,
-//   }) : super(key: key);
-
-//   @override
-//   Widget builder(
-//     BuildContext context,
-//     DisplayTopicDialogModel viewModel,
-//     Widget? child,
-//   ) {
-//     return Dialog(
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//       backgroundColor: Colors.white,
-//       child: SingleChildScrollView(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             verticalSpaceMassive,
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 const Text(
-//                   'Summary',
-//                   style: TextStyle(
-//                     fontSize: 18,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//                 TextButton(
-//                   onPressed: () {
-//                     completer(DialogResponse(confirmed: true));
-//                   },
-//                   child: const Icon(
-//                     Icons.close,
-//                     color: kcsliderColor,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             verticalSpaceMedium,
-//             FutureBuilder<List<List<String>>>(
-//               future: viewModel.getSummariesFromFirestore(),
-//               builder: (context, snapshot) {
-//                 if (snapshot.connectionState == ConnectionState.waiting) {
-//                   return const CircularProgressIndicator();
-//                 } else if (snapshot.hasError) {
-//                   return Text('Error: ${snapshot.error}');
-//                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-//                   return const Text('No summaries available.');
-//                 } else {
-//                   return Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: snapshot.data!.asMap().entries.map((entry) {
-//                       int segmentNumber = entry.key + 1;
-//                       List<String> summaryList = entry.value;
-
-//                       return Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: [
-//                           Text(
-//                             'Segment $segmentNumber:',
-//                             style: const TextStyle(
-//                               fontSize: 18,
-//                               fontWeight: FontWeight.bold,
-//                             ),
-//                           ),
-//                           ...summaryList.map((summary) {
-//                             return Text(
-//                               summary,
-//                               style: const TextStyle(
-//                                 fontSize: 16,
-//                                 fontWeight: FontWeight.bold,
-//                               ),
-//                               textAlign: TextAlign.right,
-//                             );
-//                           }),
-//                         ],
-//                       );
-//                     }).toList(),
-//                   );
-//                 }
-//               },
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   DisplayTopicDialogModel viewModelBuilder(BuildContext context) =>
-//       DisplayTopicDialogModel();
-// }
-
-//3rd code
-
 import 'package:flutter/material.dart';
 import 'package:topicdetectionweb/ui/common/app_colors.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:topicdetectionweb/ui/dialogs/display_topic/Widget/HighlightText.dart';
 
 import 'display_topic_dialog_model.dart';
 
@@ -202,6 +18,7 @@ class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
   }) : super(key: key);
 
   String cleanSummaryText(String inputText) {
+    inputText = inputText.replaceAll('["', '').replaceAll(']', '');
     List<String> startRemove = ["اس میٹنگ میں", "آبوئسلی", "بیسکلی"];
     List<String> phrasesToRemove = [
       "کی گئی",
@@ -235,98 +52,93 @@ class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
     DisplayTopicDialogModel viewModel,
     Widget? child,
   ) {
+    // Extract the summaries from the request data
+    List<dynamic> summaries = request.data['summaries'];
+
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       backgroundColor: Colors.white,
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            verticalSpaceMassive,
+            verticalSpaceLarge,
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Container(),
+                ),
                 const Text(
                   'TOPICS',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 200),
-                  child: TextButton(
-                    onPressed: () {
-                      completer(DialogResponse(confirmed: true));
-                    },
-                    child: const Icon(
-                      Icons.close,
-                      color: kcsliderColor,
-                    ),
+                TextButton(
+                  onPressed: () {
+                    completer(DialogResponse(confirmed: true));
+                  },
+                  child: const Icon(
+                    Icons.close,
+                    color: kcsliderColor,
                   ),
                 ),
               ],
             ),
             verticalSpaceMedium,
-            FutureBuilder<List<List<String>>>(
-              future: viewModel.getSummariesFromFirestore(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return const Text('No summaries available.');
-                } else {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: snapshot.data!.asMap().entries.map((entry) {
-                      int segmentNumber = entry.key + 1;
-                      List<String> summaryList = entry.value;
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          // Text(
-                          //   '$segmentNumber:',
-                          //   style: const TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-                          ...summaryList.map((summary) {
-                            String cleanedSummary = cleanSummaryText(summary);
-                            return Padding(
-                              padding: const EdgeInsets.only(left: 400),
-                              child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '$segmentNumber:',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  horizontalSpaceMedium,
-                                  Text(
-                                    cleanedSummary,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.right,
-                                  ),
-                                ],
-                              ),
-                            );
-                          }),
-                        ],
-                      );
-                    }).toList(),
+            if (summaries.isNotEmpty)
+              // Display cleaned summaries with numbering
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: summaries.asMap().entries.map<Widget>((entry) {
+                  int index = entry.key + 1;
+                  dynamic summary = entry.value;
+                  String cleanedSummary = cleanSummaryText(summary);
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          cleanedSummary,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        horizontalSpaceMedium,
+                        Text(
+                          '$index',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                      ],
+                    ),
                   );
-                }
-              },
-            ),
+                }).toList(),
+              )
+            else
+              // Display a message when there are no summaries
+              const Text(
+                'No summaries available.',
+                style: TextStyle(fontSize: 16),
+              ),
+            // Pass each cleaned summary individually to highlightText
+            for (dynamic summary in summaries)
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: highlightText(
+                  request.data['urduText'], // Pass the Urdu text
+                  cleanSummaryText(summary), // Pass each cleaned summary
+                ),
+              ),
           ],
         ),
       ),
@@ -335,5 +147,6 @@ class DisplayTopicDialog extends StackedView<DisplayTopicDialogModel> {
 
   @override
   DisplayTopicDialogModel viewModelBuilder(BuildContext context) =>
-      DisplayTopicDialogModel();
+      DisplayTopicDialogModel(
+          request.data['urduText'], request.data['summaries']);
 }

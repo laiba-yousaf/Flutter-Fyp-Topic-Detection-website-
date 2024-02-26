@@ -18,7 +18,7 @@ class SelectfileDialogDialogModel extends BaseViewModel {
   final toastService = locator<ToastmessageService>();
   final speechtotextservice = locator<SpeechToTextService>();
   final Function(dynamic data) onDataChanged;
-
+  
   final fileBytes;
   final fileName;
   final sizeInMb;
@@ -67,11 +67,6 @@ class SelectfileDialogDialogModel extends BaseViewModel {
         // Notify listeners to update the UI
         notifyListeners();
 
-        Map<String, dynamic> uploadData = {
-          "title": projectname,
-          "mettinges": extractedList,
-          "Description": descriptionctrl.text,
-        };
 
         // Save the data to Firebase
         // await saveDataToFirestore(uploadData);

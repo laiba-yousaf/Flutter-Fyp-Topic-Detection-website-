@@ -22,63 +22,65 @@ class ContactusView extends StackedView<ContactusViewModel> {
         Padding(
           padding: const EdgeInsets.only(top: 90, left: 200),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const Text(
-              "Contact us",
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            ),
-            verticalSpaceSmall,
-            const Text(
-              "Get in touch with us",
-            ),
-            verticalSpaceLarge,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                contactwidget(Icons.location_on, "123,city,lahore"),
-                horizontalSpaceMedium,
-                contactwidget(Icons.email, "example@gmail.com"),
-                horizontalSpaceMedium,
-                contactwidget(Icons.phone, "+9234567899"),
-              ],
-            ),
-            verticalSpaceLarge,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 330),
-                  child: Text("Email"),
-                ),
-                verticalSpaceSmall,
-                Mytextfield(
-                  title: "example@gmail.com",
-                  ctrl: viewModel.mailctrl,
-                  textfiledwidth: quarterScreenWidth(context),
-                  value: 8.0,
-                ),
-                verticalSpaceSmall,
-                const Text("phone"),
-                verticalSpaceSmall,
-                Mytextfield(
-                  title: "12345678",
-                  textfiledwidth: quarterScreenWidth(context),
-                  ctrl: viewModel.phonectrl,
-                  value: 8.0,
-                ),
-                verticalSpaceLarge,
-                Button(
-                  textColor: kcVeryLightGrey,
-                  Color: kcPrimaryColor,
-                  height: screenHeight(context) * 0.06,
-                  width: thirdScreenWidth(context) * 0.7,
-                  title: "Submit",
-                  onTap: () {},
-                )
-              ],
-            ),
-            horizontalSpaceLarge,
-          ]),
+              SingleChildScrollView(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                          const Text(
+                "Contact us",
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                          ),
+                          verticalSpaceSmall,
+                          const Text(
+                "Get in touch with us",
+                          ),
+                          verticalSpaceLarge,
+                          Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  contactwidget(Icons.location_on, "123,city,lahore"),
+                  horizontalSpaceMedium,
+                  contactwidget(Icons.email, "2020cs653@student.uet.edu.pk"),
+                  horizontalSpaceMedium,
+                  contactwidget(Icons.phone, "+9234567899"),
+                ],
+                          ),
+                          verticalSpaceLarge,
+                          Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(right: 330),
+                    child: Text("Email"),
+                  ),
+                  verticalSpaceSmall,
+                  Mytextfield(
+                    title: "example@gmail.com",
+                    ctrl: viewModel.mailctrl,
+                    textfiledwidth: quarterScreenWidth(context),
+                    value: 8.0,
+                  ),
+                  verticalSpaceSmall,
+                  const Text("phone"),
+                  verticalSpaceSmall,
+                  Mytextfield(
+                    title: "12345678",
+                    textfiledwidth: quarterScreenWidth(context),
+                    ctrl: viewModel.phonectrl,
+                    value: 8.0,
+                  ),
+                 verticalSpaceMedium,
+                  Button(
+                    textColor: kcVeryLightGrey,
+                    Color: kcPrimaryColor,
+                    height: screenHeight(context) * 0.06,
+                    width: thirdScreenWidth(context) * 0.7,
+                    title: "Submit",
+                    onTap: () {},
+                  )
+                ],
+                          ),
+                          horizontalSpaceLarge,
+                        ]),
+              ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 100, left: 200),

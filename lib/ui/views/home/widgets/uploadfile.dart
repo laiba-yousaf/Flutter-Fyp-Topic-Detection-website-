@@ -1,14 +1,10 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:topicdetectionweb/ui/common/ui_helpers.dart';
 import 'package:topicdetectionweb/ui/views/home/home_viewmodel.dart';
 import 'package:topicdetectionweb/ui/widgets/common/button/button.dart';
 import '../../../common/app_colors.dart';
-import 'dart:html' as html;
 
 class Uploadfile extends ViewModelWidget<HomeViewModel> {
   final String projectname;
@@ -20,18 +16,20 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
     HomeViewModel viewModel,
   ) {
     return Padding(
-      padding: const EdgeInsets.only(left: 230, top: 20),
+      padding: const EdgeInsets.only(
+        left: 230,
+      ),
       child: Column(
         children: [
+          verticalSpaceLarge,
           SizedBox(
             height: 50,
-            width: 100,
+            width: 200,
             child: Text(
               projectname,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          verticalSpaceMedium,
           SizedBox(
             height: 400,
             width: thirdScreenWidth(context) * 1.7,
@@ -79,7 +77,7 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                 onTap: () async {
                                   viewModel.setloadingvalue(true);
                                   //viewModel.fetchData();
-                                  await viewModel.onProceed();
+                                  await viewModel.onProceed(10);
                                   viewModel.setloadingvalue(false);
                                   viewModel.setcreate(7);
                                 },
@@ -94,23 +92,16 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                       padding: EdgeInsets.only(top: 20),
                       child: Row(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 80),
-                            child: Text(
-                              "No",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
                           //horizontalSpaceLarge,
                           Padding(
-                            padding: EdgeInsets.only(left: 150),
+                            padding: EdgeInsets.only(left: 80),
                             child: Text(
                               "FileName",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 150),
+                            padding: EdgeInsets.only(left: 180),
                             child: Text(
                               "Size",
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -118,7 +109,7 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                           ),
 
                           Padding(
-                            padding: EdgeInsets.only(left: 150),
+                            padding: EdgeInsets.only(left: 180),
                             child: Text(
                               "Actions",
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -133,38 +124,32 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                             itemCount: viewModel.extractedList.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(left: 80),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
+                              return Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 80),
+                                    child: SizedBox(
                                       height: 50,
-                                      width: 50,
-                                      child: Text(
-                                        (index + 1).toString(),
-                                      ),
+                                      width: 200,
+                                      child: Text(viewModel.extractedList[index]
+                                          ["fileName"]),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 120),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: 100,
-                                        child: Text(viewModel
-                                            .extractedList[index]["fileName"]),
-                                      ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 40),
+                                    child: SizedBox(
+                                      height: 50,
+                                      width: 100,
+                                      child: Text(viewModel.extractedList[index]
+                                                  ["size"]
+                                              .toStringAsFixed(2) +
+                                          " Mb"),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 110),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: 100,
-                                        child: Text(viewModel
-                                                .extractedList[index]["size"]
-                                                .toStringAsFixed(2) +
-                                            " Mb"),
-                                      ),
-                                    ),
-                                    Row(
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 90, bottom: 30),
+                                    child: Row(
                                       children: [
                                         GestureDetector(
                                           onTap: () {
@@ -199,22 +184,27 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
 
                                               // Replace with the actual content you want to send to the server
 
-                                              try {
-                                                await viewModel.textTofile.writeFile(
-                                                   urduTextLines,
-                                                    'file.txt');
-                                              } catch (e) {
-                                                print('Error: $e');
-                                              }
-
                                               List<String> segments =
                                                   await viewModel.segment
-                                                      .tokenizeTextFileFromAssets();
+                                                      .tokenizeText(
+                                                          urduTextLines);
+                                              //   .tokenizeTextFileFromAssets();
+                                              log(
+                                                "segments are----$segments",
+                                              );
 
                                               // Display each segment with a new heading
 
                                               viewModel.updateSegment(segments);
                                               viewModel.displaySegment();
+                                              List<dynamic> summaries =
+                                                  await viewModel.displayTopic
+                                                      .getSummaries(viewModel
+                                                          .displayedSegments);
+                                              print("summries are $summaries");
+                                              viewModel
+                                                  .updateSummaries(summaries);
+                                              viewModel.onProceed(index);
                                             } catch (e) {
                                               log('Error: $e');
                                             }
@@ -244,14 +234,19 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                             )),
                                         horizontalSpaceSmall,
                                         GestureDetector(
-                                            onTap: () async {
-                                              List<dynamic> summaries =
-                                                  await viewModel.displayTopic
-                                                      .getSummaries(
-                                                viewModel.displayedSegments,
-                                              );
-                                              print(summaries);
-                                              viewModel.displaysummary();
+                                            onTap:() async {
+                                              log("projectName is ${viewModel.projectctrl.text}");
+                                              log(viewModel.summaryList["Meating$index"].toString());
+                                              log("==================================");
+
+                                              //  await viewModel.fetchData(viewModel.extractedList[index]);
+
+                                              // viewModel.topics(index+1);
+                                              // Map<String, dynamic> summaryData =
+                                              //     viewModel
+                                              //         .firestoreData[index];
+                                              viewModel.displaysummary(viewModel.summaryList["Meating$index"],viewModel.extractedList[index]
+                                                      ["urduText"],);
                                             },
                                             child: const Tooltip(
                                               message: "Display Topic",
@@ -262,8 +257,8 @@ class Uploadfile extends ViewModelWidget<HomeViewModel> {
                                             ))
                                       ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               );
                             },
                           )
